@@ -3,8 +3,7 @@
     <style name="Theme.Epa51" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
 
-        <item name="android:buttonStyle">@color/yellow</item>
-        <item name="colorButtonNormal">@color/yellow</item>
+
         <item name="colorPrimary">@color/yellow</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -20,8 +19,8 @@
     
     
     <style name="Theme2" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
-
-        <item name="colorPrimary">@color/yellow</item>
+        <item name="hintTextColor">@color/darkblue</item>
+        <item name="colorPrimary">@color/darkblue</item>
     </style>
 </resources>
 

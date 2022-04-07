@@ -6,7 +6,9 @@
         <entry key="Epa_admin/src/main/res/layout/activity_dashboard.xml" value="0.2334330910645575" />
         <entry key="app/src/main/res/drawable-v24/bluecircle.xml" value="0.2385" />
         <entry key="app/src/main/res/drawable-v24/whitecircle.xml" value="0.2385" />
+        <entry key="app/src/main/res/drawable/buttomlightblue.xml" value="0.2385" />
         <entry key="app/src/main/res/drawable/dashboard_bg.xml" value="0.2385" />
+        <entry key="app/src/main/res/drawable/lightbluerounded.xml" value="0.2385" />
         <entry key="app/src/main/res/drawable/yellowbgcornered.xml" value="0.2385" />
         <entry key="app/src/main/res/drawable/yellowcircle.xml" value="0.2385" />
         <entry key="app/src/main/res/layout-land/activity_login.xml" value="0.2" />
@@ -21,10 +23,14 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2463768115942029" />
         <entry key="app/src/main/res/layout/activity_modify_delete_gear.xml" value="0.2334330910645575" />
         <entry key="app/src/main/res/layout/activity_modify_delete_user.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_pointage_page1.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_pointage_page2.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_typewriter_welcome.xml" value="0.2334330910645575" />
         <entry key="app/src/main/res/layout/activity_user_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_admin.xml" value="0.22" />
         <entry key="app/src/main/res/layout/gear_cell.xml" value="0.2334330910645575" />
+        <entry key="app/src/main/res/layout/lightblueroudcorners.xml" value="0.2334330910645575" />
+        <entry key="app/src/main/res/layout/pointage2_cell.xml" value="0.33" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.22" />
         <entry key="app/src/main/res/layout/user_cell.xml" value="0.2334330910645575" />
         <entry key="app/src/main/res/menu/listuser_menu.xml" value="0.2334330910645575" />
