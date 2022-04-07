@@ -263,4 +263,40 @@ public class Gears_db extends SQLiteOpenHelper {
     }
 
 
+    public List<String> getalltypes()
+    {
+        List<String> returnedList=new ArrayList<String>();
+        String query="SELECT * FROM "+GEARS_TABLE;
+        SQLiteDatabase db=this.getReadableDatabase();  //getReadablDatabase is for reading inside the database
+        Cursor cursor = db.rawQuery(query,null); //result of the query in a cursur
+
+        if (cursor.moveToFirst())
+        {
+            //loop through the result (the cursor)  and create new list objet for each result
+            do {
+
+
+                //0 for first column ,1 for sec colum .......
+                int GearID=cursor.getInt(0);
+                String GearType=cursor.getString(1);
+                int GearNumber=cursor.getInt(2);
+
+
+
+                returnedList.add(GearType);
+
+            }
+            while (cursor.moveToNext());
+        }
+        else
+        {
+            //this is a failure so we do nothin
+        }
+
+
+
+        return returnedList;
+    }
+
+
 }

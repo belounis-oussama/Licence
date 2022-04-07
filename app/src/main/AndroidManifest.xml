@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Epa51">
         <activity
+            android:name=".choose_stoppages"
+            android:exported="false" />
+        <activity
+            android:name=".choose_gear"
+            android:exported="false" />
+        <activity
             android:name=".pointagePage2"
             android:exported="false" />
         <activity
@@ -45,10 +51,7 @@
         <activity
             android:name=".login"
             android:exported="false" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
+
         <activity
             android:name=".splash"
             android:exported="true">
