@@ -7,6 +7,88 @@
     tools:context=".choose_stoppages"
     android:theme="@style/Theme2">
 
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="100dp"
+        android:text="DEBUT :"
+        android:textColor="@color/darkblue"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:text="FIN :"
+        android:textColor="@color/darkblue"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4325"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:boxStrokeColor="@color/darkblue"
+
+        app:hintTextColor="@color/darkblue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textInputLayout22"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout25">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:hint="HEURE"
+            android:inputType="time"
+            android:textColorHint="@color/darkblue"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout22"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:boxStrokeColor="@color/darkblue"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="30dp"
+        app:hintTextColor="@color/darkblue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/enddate"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:hint="DATE"
+            android:inputType="date"
+            android:textColorHint="@color/darkblue"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -27,7 +109,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:boxStrokeColor="@color/darkblue"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="380dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +120,7 @@
             android:id="@+id/autoCompletemotif"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:hint="  Motif"
             android:completionThreshold="1"
             android:completionHint="choisissez le motif d'arrêt"
@@ -57,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         app:boxStrokeColor="@color/darkblue"
         app:hintTextColor="@color/darkblue"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,11 +147,11 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/starttime"
-            android:layout_width="100dp"
+            android:id="@+id/startdate"
+            android:layout_width="120dp"
             android:layout_height="60dp"
             android:hint="DATE"
-            android:inputType="datetime"
+
             android:textColorHint="@color/darkblue"
 
             app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +167,7 @@
         android:layout_height="wrap_content"
         app:boxStrokeColor="@color/darkblue"
         app:hintTextColor="@color/darkblue"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/textView3">
@@ -96,7 +178,7 @@
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:hint="HEURE"
-            android:inputType="datetime"
+            android:inputType="time"
             android:textColorHint="@color/darkblue"
 
             app:layout_constraintStart_toStartOf="parent"
