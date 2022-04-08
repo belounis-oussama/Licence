@@ -50,12 +50,13 @@
 
         <com.google.android.material.textfield.TextInputEditText
 
+            android:id="@+id/endtime"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:hint="HEURE"
             android:inputType="time"
             android:textColorHint="@color/darkblue"
-
+            android:onClick="popupTimerend"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />
 
@@ -109,7 +110,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:boxStrokeColor="@color/darkblue"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="320dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -174,13 +175,13 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/endtime"
+            android:id="@+id/starttime"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:hint="HEURE"
             android:inputType="time"
             android:textColorHint="@color/darkblue"
-
+            android:onClick="popupTimer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />
 

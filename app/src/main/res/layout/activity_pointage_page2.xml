@@ -65,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:hint="NOMBRE"
+            android:inputType="number"
             android:textColorHint="@color/darkblue" />
 
 
@@ -89,6 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:hint="POIDS /KG"
+            android:inputType="number"
             android:textColorHint="@color/darkblue" />
 
 
@@ -162,6 +164,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pointage2add" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

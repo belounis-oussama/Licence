@@ -40,24 +40,21 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
-        goods_models.add(new Goods_Model("fer",1,3));
-        goods_models.add(new Goods_Model("fqf",1,3));
-        goods_models.add(new Goods_Model("fa",1,3));
-        goods_models.add(new Goods_Model("fehdhr",1,3));
-        goods_models.add(new Goods_Model("hdher",1,3));
-        goods_models.add(new Goods_Model("fehr",1,3));
+
 
 
 
 
         setAdapter();
 
+        
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                goods_models.add(new Goods_Model(nature.getText().toString(),4,4));
+                goods_models.add(new Goods_Model(nature.getText().toString(),Integer.parseInt(nombre.getText().toString()),Integer.parseInt(poid.getText().toString())));
                 setAdapter();
             }
         });
