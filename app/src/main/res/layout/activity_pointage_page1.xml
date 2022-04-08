@@ -10,6 +10,20 @@
 
     >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -73,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="BRIGADE"
+            android:inputType="number"
             android:textColorHint="@color/darkblue" />
 
 
@@ -95,6 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="SHIFT"
+            android:inputType="number"
             android:textColorHint="@color/darkblue" />
 
 
@@ -141,6 +157,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="QUAI"
+            android:inputType="number"
             android:textColorHint="@color/darkblue" />
 
 
@@ -225,6 +242,7 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView
+        android:id="@+id/p1Top2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="32dp"
@@ -232,4 +250,7 @@
         android:src="@drawable/nextyello"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

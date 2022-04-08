@@ -1,14 +1,18 @@
 package com.example.epa51;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -19,6 +23,7 @@ public class pointagePage2 extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button add,delete;
     private EditText nature,nombre,poid;
+    ImageView p2Top1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +35,19 @@ public class pointagePage2 extends AppCompatActivity {
         nature=findViewById(R.id.natureinpute);
         poid=findViewById(R.id.poidinput);
         nombre=findViewById(R.id.nombreinpute);
+        p2Top1=findViewById(R.id.p2Top1);
+
+
+        p2Top1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(pointagePage2.this,pointagePage1.class);
+
+
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            }
+        });
 
 
 
@@ -43,11 +61,21 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goods_models.remove(goods_models.size()-1); //delete last item in the list
+
+
+                setAdapter();
+            }
+        });
 
 
         setAdapter();
 
-        
+
+
 
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +98,28 @@ public class pointagePage2 extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
         recyclerView.setAdapter(adapter);
+
+
+        ItemTouchHelper.SimpleCallback itemtouchhelpercallback= new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT |ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+                goods_models.remove(viewHolder.getAdapterPosition());
+
+                adapter.notifyDataSetChanged();
+                setAdapter();
+
+
+            }
+        };
+        new ItemTouchHelper(itemtouchhelpercallback).attachToRecyclerView(recyclerView);
 
     }
 }

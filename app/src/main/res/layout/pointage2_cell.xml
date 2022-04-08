@@ -16,6 +16,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:text="Nature/Reference"
+        android:textColor="@color/darkblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +28,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:gravity="start"
+        android:textColor="@color/darkblue"
         android:text="Nombre"
         app:layout_constraintStart_toEndOf="@+id/naturecell"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +39,7 @@
         android:layout_marginLeft="30dp"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/darkblue"
         android:text="Poid"
         android:gravity="start"
         app:layout_constraintStart_toEndOf="@+id/nombrecell"

@@ -68,7 +68,7 @@ public class login extends AppCompatActivity {
                     {
                         Toast.makeText(login.this,"Correct infos",Toast.LENGTH_SHORT).show();
 
-                        Intent intent =new Intent(login.this,pointagePage2.class);
+                        Intent intent =new Intent(login.this,pointagePage1.class);
                         intent.putExtra("namekey",User);//send name to typewriter
 
                         startActivity(intent);

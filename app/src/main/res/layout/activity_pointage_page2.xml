@@ -97,18 +97,18 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/pointage2add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/yellow"
-        android:text="ajouter"
-        android:textColor="@color/darkblue"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/pointage2add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/yellow"
+            android:text="ajouter"
+            android:textColor="@color/darkblue"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -134,6 +134,7 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView
+
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="32dp"
@@ -144,6 +145,7 @@
 
 
     <ImageView
+        android:id="@+id/p2Top1"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/previousblue"
@@ -152,18 +154,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:src="@color/yellow"
 
-        android:id="@+id/pointage_recycle"
-        android:layout_width="wrap_content"
-        android:layout_height="500dp"
-        android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pointage2add" />
 
-        android:layout_marginBottom="20dp"
+        <TextView
+            android:id="@+id/nature"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:gravity="start"
+            android:text="Nature/Reference"
+            android:textColor="@color/darkblue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pointage2add" />
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pointage2add" />
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:gravity="start"
+            android:text="Nombre"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/darkblue"
+            app:layout_constraintStart_toEndOf="@+id/nature"
+            app:layout_constraintTop_toBottomOf="@+id/pointage2add" />
+
+        <TextView
+            android:id="@+id/poid"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:gravity="start"
+            android:layout_marginTop="30dp"
+            android:text="Poid"
+            android:textColor="@color/darkblue"
+            app:layout_constraintStart_toEndOf="@+id/nombre"
+            app:layout_constraintTop_toBottomOf="@+id/pointage2add" />
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/pointage_recycle"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
