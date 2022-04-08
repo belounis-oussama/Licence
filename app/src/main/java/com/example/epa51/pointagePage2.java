@@ -66,7 +66,6 @@ public class pointagePage2 extends AppCompatActivity {
             public void onClick(View view) {
                 goods_models.remove(goods_models.size()-1); //delete last item in the list
 
-
                 setAdapter();
             }
         });
