@@ -114,9 +114,11 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dateinpute"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="DATE"
+            android:inputType="date"
             android:textColorHint="@color/darkblue" />
 
 
@@ -159,6 +161,7 @@
 
 
     <ImageView
+        android:id="@+id/addgearpointgae"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -169,6 +172,7 @@
 
 
     <ImageView
+        android:id="@+id/addarret"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"

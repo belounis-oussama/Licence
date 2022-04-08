@@ -39,6 +39,7 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
+
         goods_models.add(new Goods_Model("fer",1,3));
         goods_models.add(new Goods_Model("fqf",1,3));
         goods_models.add(new Goods_Model("fa",1,3));

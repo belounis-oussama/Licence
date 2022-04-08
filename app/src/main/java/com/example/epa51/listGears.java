@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 public class listGears extends AppCompatActivity {
 ListView gearlist;
-ImageButton add_listgears;
+ImageButton add_listgears,backbtn_listgears;
 
 
     public void setGearAdapter()
@@ -34,6 +34,9 @@ GearAdapter gearAdapter=new GearAdapter(getApplicationContext(),db.getallgears()
 
         gearlist=findViewById(R.id.listView_gears);
         add_listgears=findViewById(R.id.add_listgears);
+        backbtn_listgears=findViewById(R.id.backbtn_listgears);
+
+
         setGearAdapter();
         gearlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -53,6 +56,14 @@ GearAdapter gearAdapter=new GearAdapter(getApplicationContext(),db.getallgears()
             }
         });
 
+
+        backbtn_listgears.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(listGears.this,admin_dashboard.class);
+                startActivity(intent);
+            }
+        });
 
 
 

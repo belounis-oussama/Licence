@@ -17,6 +17,7 @@ public class Gear_details extends AppCompatActivity {
     private EditText editgear, editnumber,canceltext;
     ImageView cancelimg;
     Button addGear;
+    ImageView backbtn_gear_details;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class Gear_details extends AppCompatActivity {
         editgear=findViewById(R.id.editgear);
         editnumber=findViewById(R.id.editnumber);
         addGear=findViewById(R.id.addGear);
+        backbtn_gear_details=findViewById(R.id.backbtn_gear_details);
 
 
         addGear.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +53,7 @@ public class Gear_details extends AppCompatActivity {
 
                     //dont forget to implement this plz
 
-                    if (data.Checkgeartype(Gear)==true)
+                    if (data.Checkgearinfos(Gear,Number)==true)
                     {
                         Toast.makeText(Gear_details.this,"Gear already exists",Toast.LENGTH_SHORT).show();
                     }
@@ -73,6 +75,17 @@ else
 
                 }
             } });
+
+
+
+        backbtn_gear_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(Gear_details.this,listGears.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     public void gotolistgear(View view) {

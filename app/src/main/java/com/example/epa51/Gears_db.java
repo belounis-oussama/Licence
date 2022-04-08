@@ -249,10 +249,10 @@ public class Gears_db extends SQLiteOpenHelper {
 
 
 
-    public boolean Checkgeartype(String gear)
+    public boolean Checkgearinfos(String gear, String number)
     {
         SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cursor= db.rawQuery("SELECT * FROM "+GEARS_TABLE+" WHERE "+COL_TYPE+" = ?",new String[]{gear});
+        Cursor cursor= db.rawQuery("SELECT * FROM "+GEARS_TABLE+" WHERE "+COL_TYPE+" = ? AND "+COL_NUMBER+" = ?",new String[]{gear,number});
         if (cursor.getCount() >0)
         {
             return true;  //if cursor is not empty so al least one user found
