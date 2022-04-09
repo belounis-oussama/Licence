@@ -37,7 +37,7 @@ public class listusers extends AppCompatActivity {
 
 
            UserAdapter userAdapter=new UserAdapter(getApplicationContext(),db.getall());
-        //UserAdapter userAdapter=new UserAdapter(getApplicationContext(),User_Model.user_modelArrayList);
+
         userslistview.setAdapter(userAdapter);
         userslistview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

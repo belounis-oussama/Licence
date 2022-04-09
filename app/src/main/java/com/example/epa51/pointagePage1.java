@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -19,6 +20,7 @@ public class pointagePage1 extends AppCompatActivity {
     Calendar calendar;
     TextInputEditText dateinpute;
     ImageView addgearpointgae,addarret,p1Top2;
+    ListView listofgears;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class pointagePage1 extends AppCompatActivity {
         addgearpointgae=findViewById(R.id.addgearpointgae);
         addarret=findViewById(R.id.addarret);
         p1Top2=findViewById(R.id.p1Top2);
+        listofgears=findViewById(R.id.listofgearsp1);
+        setGearsAdapter();
 
 
 
@@ -97,5 +101,15 @@ public class pointagePage1 extends AppCompatActivity {
 
 
 
+    }
+
+    private void setGearsAdapter() {
+        ArrayList<Gear_Model> gearstest=new ArrayList<>();
+        gearstest.add(new Gear_Model(1,"new",1));
+        gearstest.add(new Gear_Model(2,"gegws",47));
+        gearstest.add(new Gear_Model(5,"hweherh",754));
+
+        PointageGearAdapter pointageGearAdapter=new PointageGearAdapter(getApplicationContext(),gearstest);
+        listofgears.setAdapter(pointageGearAdapter);
     }
 }

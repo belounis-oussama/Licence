@@ -173,7 +173,7 @@
         android:text="ENGINS UTILISER"
         android:textColor="@color/darkblue"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/listofgears"
+        app:layout_constraintEnd_toStartOf="@+id/listofgearsp1"
         app:layout_constraintTop_toBottomOf="@+id/date" />
 
 
@@ -184,7 +184,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="68dp"
         android:src="@drawable/plusyellowadd"
-        app:layout_constraintEnd_toStartOf="@+id/listofgears"
+        app:layout_constraintEnd_toStartOf="@+id/listofgearsp1"
         app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
 
 
@@ -198,7 +198,7 @@
         app:layout_constraintEnd_toStartOf="@+id/listofarrets"
         app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
     <ListView
-        android:id="@+id/listofgears"
+        android:id="@+id/listofgearsp1"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_marginTop="68dp"
@@ -230,7 +230,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listofgears" />
+        app:layout_constraintTop_toBottomOf="@+id/listofgearsp1" />
 
 
 
@@ -250,6 +250,8 @@
         android:src="@drawable/nextyello"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
