@@ -20,7 +20,7 @@ public class pointagePage1 extends AppCompatActivity {
     Calendar calendar;
     TextInputEditText dateinpute;
     ImageView addgearpointgae,addarret,p1Top2;
-    ListView listofgears;
+    ListView listofgears,listofarrets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,9 @@ public class pointagePage1 extends AppCompatActivity {
         addarret=findViewById(R.id.addarret);
         p1Top2=findViewById(R.id.p1Top2);
         listofgears=findViewById(R.id.listofgearsp1);
+        listofarrets=findViewById(R.id.listofarrets);
         setGearsAdapter();
+        setArretAdapter();
 
 
 
@@ -103,6 +105,14 @@ public class pointagePage1 extends AppCompatActivity {
 
     }
 
+    private void setArretAdapter() {
+        ArrayList<EtasArret_Model> etasArret_models=new ArrayList<>();
+        etasArret_models.add(new EtasArret_Model("1/30","1:00","3/4","6:00","mauvais temps"));
+        etasArret_models.add(new EtasArret_Model("3/30","3:00","1/4","64:00","idk"));
+        PointageArretAdapter pointageArretAdapter=new PointageArretAdapter(getApplicationContext(),etasArret_models);
+listofarrets.setAdapter(pointageArretAdapter);
+    }
+
     private void setGearsAdapter() {
         ArrayList<Gear_Model> gearstest=new ArrayList<>();
         gearstest.add(new Gear_Model(1,"new",1));
@@ -111,5 +121,6 @@ public class pointagePage1 extends AppCompatActivity {
 
         PointageGearAdapter pointageGearAdapter=new PointageGearAdapter(getApplicationContext(),gearstest);
         listofgears.setAdapter(pointageGearAdapter);
+
     }
 }

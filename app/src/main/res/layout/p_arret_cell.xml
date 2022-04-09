@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-android:gravity="center"
-    android:layout_height="50dp">
+    android:gravity="center"
+    android:layout_height="80dp"
+    >
 
     <TextView
-        android:id="@+id/p_typeGear_cell"
+        android:id="@+id/startend_arret_cell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="gear_type"
+        android:text="Debut/fin"
         android:textColor="@color/darkblue"
 
         android:layout_marginRight="20dp"
@@ -16,10 +17,11 @@ android:gravity="center"
         />
 
     <TextView
+        android:id="@+id/motif_arret_cell"
         android:textColor="@color/darkblue"
-        android:id="@+id/p_number_cell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="number" />
+        android:text="Motif" />
+
 </LinearLayout>
