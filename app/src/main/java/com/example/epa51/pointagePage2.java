@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -38,14 +39,21 @@ public class pointagePage2 extends AppCompatActivity {
         p2Top1=findViewById(R.id.p2Top1);
 
 
+
+
+
+
         p2Top1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(pointagePage2.this,pointagePage1.class);
 
 
+
+                intent.putExtra("listofgoods",goods_models);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+
             }
         });
 
@@ -55,6 +63,30 @@ public class pointagePage2 extends AppCompatActivity {
 
         //change this after the test
 
+
+
+
+
+        //this code section is for backing up data saved from parent activity
+        Intent newintent=getIntent();
+        if (newintent.hasExtra("backuplist"))
+        {
+
+
+           ArrayList<Goods_Model> backedupList  = (ArrayList<Goods_Model>) getIntent().getSerializableExtra("backuplist");
+
+            int i ;
+            for (i=0; i < backedupList.size(); i++) {
+
+                goods_models.add(backedupList.get(i));setAdapter();
+        }
+
+
+
+
+
+
+        }
 
 
 

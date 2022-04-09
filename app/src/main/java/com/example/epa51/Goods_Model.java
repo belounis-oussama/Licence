@@ -1,6 +1,6 @@
 package com.example.epa51;
 
-public class Goods_Model {
+public class Goods_Model implements java.io.Serializable{
 
     private String reference;
     private int quantite;
