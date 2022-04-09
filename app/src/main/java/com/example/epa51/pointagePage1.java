@@ -21,6 +21,9 @@ public class pointagePage1 extends AppCompatActivity {
     TextInputEditText dateinpute;
     ImageView addgearpointgae,addarret,p1Top2;
     ListView listofgears,listofarrets;
+    public ArrayList<EtasArret_Model> etasArret_models;
+    public ArrayList<Gear_Model> gearstest;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,31 @@ public class pointagePage1 extends AppCompatActivity {
         listofarrets=findViewById(R.id.listofarrets);
         setGearsAdapter();
         setArretAdapter();
+
+
+
+
+        Intent newintent=getIntent();
+
+        if (newintent.hasExtra("gearused"))
+        {
+
+            ArrayList<Gear_Model>newgear=(ArrayList<Gear_Model>) getIntent().getSerializableExtra("gearused");
+
+            Toast.makeText(pointagePage1.this,newgear.toString(),Toast.LENGTH_SHORT).show();
+
+            for (int i=0;i<newgear.size();i++)
+            {
+                gearstest.add(newgear.get(i));
+
+            }
+
+
+
+
+
+
+        }
 
 
 
@@ -58,7 +86,7 @@ public class pointagePage1 extends AppCompatActivity {
 
 
                 Intent newintent=getIntent();
-                //save data history
+                //save data history from pointage page 2
                 if (newintent.hasExtra("listofgoods"))
                 {
 
@@ -81,6 +109,7 @@ public class pointagePage1 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent =new Intent(pointagePage1.this,choose_stoppages.class);
 
+                intent.putExtra("currentarret",etasArret_models);
 
                 startActivity(intent);
             }
@@ -91,7 +120,7 @@ public class pointagePage1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(pointagePage1.this,choose_gear.class);
-
+                intent.putExtra("currentgear",gearstest);
 
                 startActivity(intent);
 
@@ -106,7 +135,14 @@ public class pointagePage1 extends AppCompatActivity {
     }
 
     private void setArretAdapter() {
-        ArrayList<EtasArret_Model> etasArret_models=new ArrayList<>();
+
+
+
+
+
+
+
+        etasArret_models=new ArrayList<>();
         etasArret_models.add(new EtasArret_Model("1/30","1:00","3/4","6:00","mauvais temps"));
         etasArret_models.add(new EtasArret_Model("3/30","3:00","1/4","64:00","idk"));
         PointageArretAdapter pointageArretAdapter=new PointageArretAdapter(getApplicationContext(),etasArret_models);
@@ -114,10 +150,17 @@ listofarrets.setAdapter(pointageArretAdapter);
     }
 
     private void setGearsAdapter() {
-        ArrayList<Gear_Model> gearstest=new ArrayList<>();
-        gearstest.add(new Gear_Model(1,"new",1));
-        gearstest.add(new Gear_Model(2,"gegws",47));
-        gearstest.add(new Gear_Model(5,"hweherh",754));
+
+
+        gearstest=new ArrayList<>();
+
+
+
+
+
+
+
+
 
         PointageGearAdapter pointageGearAdapter=new PointageGearAdapter(getApplicationContext(),gearstest);
         listofgears.setAdapter(pointageGearAdapter);

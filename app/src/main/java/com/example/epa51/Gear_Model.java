@@ -2,7 +2,7 @@ package com.example.epa51;
 
 import java.util.ArrayList;
 
-public class Gear_Model {
+public class Gear_Model implements java.io.Serializable {
 
     private int id;
     private String gear_type;
