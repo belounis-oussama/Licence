@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class modify_delete_gear extends AppCompatActivity {
 
@@ -14,6 +16,7 @@ public class modify_delete_gear extends AppCompatActivity {
 
     EditText modifytype,modifynumber;
     Button savegear;
+    ImageButton backbtn_mdg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,8 @@ public class modify_delete_gear extends AppCompatActivity {
         modifytype=findViewById(R.id.modiftype);
         modifynumber=findViewById(R.id.modifnumber);
         savegear=findViewById(R.id.savegear);
+        backbtn_mdg=findViewById(R.id.backbtn_mdg);
+
 
          int id=Integer.parseInt(getIntent().getStringExtra("idkeygear"));
 
@@ -51,6 +56,16 @@ public class modify_delete_gear extends AppCompatActivity {
 
             }
         });
+
+        backbtn_mdg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(modify_delete_gear.this,listGears.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     public void deletegear(View view) {

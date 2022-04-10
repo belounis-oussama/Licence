@@ -29,7 +29,7 @@ public class PointageArretAdapter extends ArrayAdapter<EtasArret_Model> {
         TextView startend_arret_cell=convertView.findViewById(R.id.startend_arret_cell);
         TextView motif_arret_cell=convertView.findViewById(R.id.motif_arret_cell);
 
-        startend_arret_cell.setText(arret.getStartDate()+arret.getStartHour()+"---"+arret.getEndDate()+arret.getEndHour());
+        startend_arret_cell.setText("Du "+arret.getStartDate()+" "+arret.getStartHour()+" A "+arret.getEndDate()+" "+arret.getEndHour());
         motif_arret_cell.setText(arret.getReason());
 
         return convertView;

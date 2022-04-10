@@ -1,6 +1,6 @@
 package com.example.epa51;
 
-public class EtasArret_Model {
+public class EtasArret_Model implements java.io.Serializable{
 
     private String StartDate;
     private String StartHour;

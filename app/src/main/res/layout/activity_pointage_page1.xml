@@ -25,6 +25,10 @@
             android:layout_height="match_parent"
             >
 
+
+
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -188,6 +192,10 @@
         app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
 
 
+
+
+
+
     <ImageView
         android:id="@+id/addarret"
         android:layout_width="40dp"
@@ -252,6 +260,16 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
+
+            <ImageView
+                android:id="@+id/p1to_emdeb"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/previousblue"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

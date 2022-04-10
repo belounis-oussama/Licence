@@ -10,12 +10,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -26,6 +28,8 @@ public class choose_stoppages extends AppCompatActivity {
     public TextInputEditText startdate,enddate,starttime,endtime;
     private DatePickerDialog datePickerDialog,datePickerDialog2;
     int hour,minute;
+    Button confirm_button_arret;
+    ArrayList<EtasArret_Model> arret;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class choose_stoppages extends AppCompatActivity {
         enddate=findViewById(R.id.enddate);
         starttime=findViewById(R.id.starttime);
         endtime=findViewById(R.id.endtime);
+        confirm_button_arret=findViewById(R.id.confirm_button_arret);
 
 
         startdate.setText(getTodayDate());
@@ -46,6 +51,9 @@ public class choose_stoppages extends AppCompatActivity {
         endtime.setKeyListener(null);
         initDatePicker();
         initDatePicker2();
+
+
+
 
 
 
@@ -70,6 +78,41 @@ public class choose_stoppages extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 datePickerDialog2.show();
+            }
+        });
+
+
+
+        confirm_button_arret.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //add copier to save
+                arret=new ArrayList<>();
+                Intent intent =new Intent(choose_stoppages.this,pointagePage1.class);
+
+                Intent newintent=getIntent();
+                if (newintent.hasExtra("currentarret")) {
+
+                    ArrayList<EtasArret_Model> newaaret = (ArrayList<EtasArret_Model>) getIntent().getSerializableExtra("currentarret");
+
+                    //Toast.makeText(pointagePage1.this,newgear.toString(),Toast.LENGTH_SHORT).show();
+
+                    for (int i = 0; i < newaaret.size(); i++) {
+                        arret.add(newaaret.get(i));
+
+                    }
+
+                }
+
+
+
+
+
+
+                arret.add(new EtasArret_Model(startdate.getText().toString(),starttime.getText().toString(),enddate.getText().toString(),endtime.getText().toString(),autoCompleteMotif.getText().toString()));
+                intent.putExtra("arretList",arret);
+                startActivity(intent);
+
             }
         });
 

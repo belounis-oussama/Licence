@@ -33,6 +33,11 @@ public class debarq_embarq extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(debarq_embarq.this,"embarquement",Toast.LENGTH_SHORT).show();
+
+                Intent intent =new Intent(debarq_embarq.this,pointagePage1.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                finish();
             }
         });
 
@@ -40,6 +45,11 @@ public class debarq_embarq extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(debarq_embarq.this,"debarquement",Toast.LENGTH_SHORT).show();
+
+                Intent intent =new Intent(debarq_embarq.this,pointagePage1.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                finish();
             }
         });
 
@@ -49,7 +59,7 @@ public class debarq_embarq extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent =new Intent(debarq_embarq.this,login.class);
                 startActivity(intent);
-
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
 
 
                 finish();

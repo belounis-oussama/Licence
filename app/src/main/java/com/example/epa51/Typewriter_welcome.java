@@ -39,6 +39,7 @@ public class Typewriter_welcome extends AppCompatActivity {
                 //we start the activity that contains the pointing page -1
 
 
+
                 finish();
             }
         },5000);

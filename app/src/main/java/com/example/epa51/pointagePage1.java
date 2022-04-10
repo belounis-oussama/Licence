@@ -19,7 +19,7 @@ public class pointagePage1 extends AppCompatActivity {
 
     Calendar calendar;
     TextInputEditText dateinpute;
-    ImageView addgearpointgae,addarret,p1Top2;
+    ImageView addgearpointgae,addarret,p1Top2,p1to_emdeb;
     ListView listofgears,listofarrets;
     public ArrayList<EtasArret_Model> etasArret_models;
     public ArrayList<Gear_Model> gearstest;
@@ -36,6 +36,7 @@ public class pointagePage1 extends AppCompatActivity {
         p1Top2=findViewById(R.id.p1Top2);
         listofgears=findViewById(R.id.listofgearsp1);
         listofarrets=findViewById(R.id.listofarrets);
+        p1to_emdeb=findViewById(R.id.p1to_emdeb);
         setGearsAdapter();
         setArretAdapter();
 
@@ -57,10 +58,23 @@ public class pointagePage1 extends AppCompatActivity {
 
             }
 
+        }
 
 
+        Intent newintentt=getIntent();
 
+        if (newintentt.hasExtra("arretList"))
+        {
 
+            ArrayList<EtasArret_Model>newarret=(ArrayList<EtasArret_Model>) getIntent().getSerializableExtra("arretList");
+
+            Toast.makeText(pointagePage1.this,newarret.toString(),Toast.LENGTH_SHORT).show();
+
+            for (int i=0;i<newarret.size();i++)
+            {
+                etasArret_models.add(newarret.get(i));
+
+            }
 
         }
 
@@ -76,6 +90,18 @@ public class pointagePage1 extends AppCompatActivity {
 
         dateinpute.setText(cureentdate);
         dateinpute.setKeyListener(null);  //so user can change date
+
+
+
+        p1to_emdeb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(pointagePage1.this,debarq_embarq.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            }
+        });
+
 
 
         p1Top2.setOnClickListener(new View.OnClickListener() {
@@ -143,8 +169,8 @@ public class pointagePage1 extends AppCompatActivity {
 
 
         etasArret_models=new ArrayList<>();
-        etasArret_models.add(new EtasArret_Model("1/30","1:00","3/4","6:00","mauvais temps"));
-        etasArret_models.add(new EtasArret_Model("3/30","3:00","1/4","64:00","idk"));
+        //etasArret_models.add(new EtasArret_Model("1/30","1:00","3/4","6:00","mauvais temps"));
+       // etasArret_models.add(new EtasArret_Model("3/30","3:00","1/4","64:00","idk"));
         PointageArretAdapter pointageArretAdapter=new PointageArretAdapter(getApplicationContext(),etasArret_models);
 listofarrets.setAdapter(pointageArretAdapter);
     }
