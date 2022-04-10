@@ -276,10 +276,9 @@ public class Gears_db extends SQLiteOpenHelper {
             do {
 
 
-                //0 for first column ,1 for sec colum .......
-                int GearID=cursor.getInt(0);
+
                 String GearType=cursor.getString(1);
-                int GearNumber=cursor.getInt(2);
+
 
 
 
