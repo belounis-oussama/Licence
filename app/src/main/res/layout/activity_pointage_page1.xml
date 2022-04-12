@@ -44,6 +44,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/navire"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="NAVIRE"
@@ -54,7 +55,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nature"
+        android:id="@+id/nature_input"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -66,6 +67,7 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nature"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="NATURE"
@@ -76,7 +78,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/brigade"
+        android:id="@+id/brigade_inpute"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -84,10 +86,11 @@
         android:layout_marginTop="20dp"
         app:boxStrokeColor="@color/darkblue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nature">
+        app:layout_constraintTop_toBottomOf="@+id/nature_input">
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/brigade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="BRIGADE"
@@ -99,18 +102,19 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/shift"
+        android:id="@+id/shift_input"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:boxStrokeColor="@color/darkblue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/brigade"
-        app:layout_constraintTop_toBottomOf="@+id/nature">
+        app:layout_constraintStart_toEndOf="@+id/brigade_inpute"
+        app:layout_constraintTop_toBottomOf="@+id/nature_input">
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/shift"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="SHIFT"
@@ -122,7 +126,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/date"
+        android:id="@+id/date_input"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -130,11 +134,11 @@
         android:layout_marginTop="20dp"
         app:boxStrokeColor="@color/darkblue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brigade">
+        app:layout_constraintTop_toBottomOf="@+id/brigade_inpute">
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/dateinpute"
+            android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="DATE"
@@ -146,18 +150,19 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/quai"
+        android:id="@+id/quai_input"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         app:boxStrokeColor="@color/darkblue"
-        app:layout_constraintStart_toEndOf="@+id/date"
-        app:layout_constraintTop_toBottomOf="@+id/shift">
+        app:layout_constraintStart_toEndOf="@+id/date_input"
+        app:layout_constraintTop_toBottomOf="@+id/shift_input">
 
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/quai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="QUAI"
@@ -178,7 +183,7 @@
         android:textColor="@color/darkblue"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/listofgearsp1"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintTop_toBottomOf="@+id/date_input" />
 
 
     <ImageView
@@ -214,7 +219,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.834"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintTop_toBottomOf="@+id/date_input" />
 
 
     <com.google.android.material.textview.MaterialTextView

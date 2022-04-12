@@ -8,13 +8,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class pointagePage2 extends AppCompatActivity {
@@ -24,7 +30,7 @@ public class pointagePage2 extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button add,delete;
     private EditText nature,nombre,poid;
-    ImageView p2Top1;
+    ImageView p2Top1,finishpointing;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +43,10 @@ public class pointagePage2 extends AppCompatActivity {
         poid=findViewById(R.id.poidinput);
         nombre=findViewById(R.id.nombreinpute);
         p2Top1=findViewById(R.id.p2Top1);
+        finishpointing=findViewById(R.id.finishpointing);
 
 
+        LoadListData();
 
 
 
@@ -49,8 +57,9 @@ public class pointagePage2 extends AppCompatActivity {
                 Intent intent =new Intent(pointagePage2.this,pointagePage1.class);
 
 
+                saveListdata();
 
-                intent.putExtra("listofgoods",goods_models);
+
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
 
@@ -59,9 +68,10 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
-        goods_models=new ArrayList<>();
+
 
         //change this after the test
+
 
 
 
@@ -96,14 +106,28 @@ public class pointagePage2 extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goods_models.remove(goods_models.size()-1); //delete last item in the list
+                //goods_models.remove(goods_models.size()-1); //delete last item in the list
 
+
+                goods_models.clear();
                 setAdapter();
             }
         });
 
 
         setAdapter();
+
+
+
+        finishpointing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor =sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+            }
+        });
 
 
 
@@ -121,6 +145,30 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
+    }
+
+    private void LoadListData() {
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=sharedPreferences.getString("listofgoods",null);
+        Type type= new TypeToken<ArrayList<Goods_Model>>() {}.getType();
+        goods_models =gson.fromJson(json,type);
+
+        if (goods_models==null)
+        {
+            goods_models=new ArrayList<>();
+        }
+
+    }
+
+    private void saveListdata() {
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=gson.toJson(goods_models);
+        editor.putString("listofgoods",json);
+        editor.apply();
     }
 
     private void setAdapter() {

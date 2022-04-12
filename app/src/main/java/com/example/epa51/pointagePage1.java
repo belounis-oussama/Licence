@@ -1,9 +1,13 @@
 package com.example.epa51;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.SavedStateHandle;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.Editable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,11 +22,16 @@ import java.util.Calendar;
 public class pointagePage1 extends AppCompatActivity {
 
     Calendar calendar;
-    TextInputEditText dateinpute;
+    TextInputEditText dateinpute,navire,nature,brigade,quai,shift;
     ImageView addgearpointgae,addarret,p1Top2,p1to_emdeb;
     ListView listofgears,listofarrets;
     public ArrayList<EtasArret_Model> etasArret_models;
     public ArrayList<Gear_Model> gearstest;
+    public static final String SHARED_PREFS ="sharedPrefs";
+
+
+
+
 
 
     @Override
@@ -30,15 +39,29 @@ public class pointagePage1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pointage_page1);
 
-        dateinpute=findViewById(R.id.dateinpute);
+        dateinpute=findViewById(R.id.date);
         addgearpointgae=findViewById(R.id.addgearpointgae);
         addarret=findViewById(R.id.addarret);
         p1Top2=findViewById(R.id.p1Top2);
         listofgears=findViewById(R.id.listofgearsp1);
         listofarrets=findViewById(R.id.listofarrets);
         p1to_emdeb=findViewById(R.id.p1to_emdeb);
+        navire=findViewById(R.id.navire);
+        nature=findViewById(R.id.nature);
+        brigade=findViewById(R.id.brigade);
+        quai=findViewById(R.id.quai);
+        shift=findViewById(R.id.shift);
+
+
+        getData();
         setGearsAdapter();
         setArretAdapter();
+
+
+
+
+
+
 
 
 
@@ -120,7 +143,15 @@ public class pointagePage1 extends AppCompatActivity {
                     ArrayList<Goods_Model> backuplist = (ArrayList<Goods_Model>) getIntent().getSerializableExtra("listofgoods");
                     intent.putExtra("backuplist",backuplist);
 
+
                 }
+
+                saveRecord();
+
+
+
+
+
 
 
 
@@ -160,6 +191,33 @@ public class pointagePage1 extends AppCompatActivity {
 
     }
 
+    private void getData() {
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+
+        if (sharedPreferences.contains("navire")) navire.setText(sharedPreferences.getString("navire",""));
+        if (sharedPreferences.contains("nature")) nature.setText(sharedPreferences.getString("nature",""));
+        if (sharedPreferences.contains("brigade")) brigade.setText(sharedPreferences.getString("brigade",""));
+        if (sharedPreferences.contains("shift")) shift.setText(sharedPreferences.getString("shift",""));
+        if (sharedPreferences.contains("quai")) quai.setText(sharedPreferences.getString("quai",""));
+
+    }
+
+    private void saveRecord() {
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+
+
+        editor.putString("navire",navire.getText().toString());
+        editor.putString("nature",nature.getText().toString());
+        editor.putString("brigade",brigade.getText().toString());
+        editor.putString("shift",shift.getText().toString());
+        editor.putString("quai",quai.getText().toString());
+        editor.apply();
+
+
+    }
+
     private void setArretAdapter() {
 
 
@@ -169,8 +227,7 @@ public class pointagePage1 extends AppCompatActivity {
 
 
         etasArret_models=new ArrayList<>();
-        //etasArret_models.add(new EtasArret_Model("1/30","1:00","3/4","6:00","mauvais temps"));
-       // etasArret_models.add(new EtasArret_Model("3/30","3:00","1/4","64:00","idk"));
+
         PointageArretAdapter pointageArretAdapter=new PointageArretAdapter(getApplicationContext(),etasArret_models);
 listofarrets.setAdapter(pointageArretAdapter);
     }
@@ -190,6 +247,19 @@ listofarrets.setAdapter(pointageArretAdapter);
 
         PointageGearAdapter pointageGearAdapter=new PointageGearAdapter(getApplicationContext(),gearstest);
         listofgears.setAdapter(pointageGearAdapter);
+
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        //you need to add this on last button
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor =sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
 
     }
 }
