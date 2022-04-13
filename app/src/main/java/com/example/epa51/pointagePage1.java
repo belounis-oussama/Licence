@@ -9,12 +9,16 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,6 +58,7 @@ public class pointagePage1 extends AppCompatActivity {
 
 
         getData();
+        loadListdata();
         setGearsAdapter();
         setArretAdapter();
 
@@ -147,7 +152,7 @@ public class pointagePage1 extends AppCompatActivity {
                 }
 
                 saveRecord();
-
+                saveListdata();
 
 
 
@@ -215,8 +220,39 @@ public class pointagePage1 extends AppCompatActivity {
         editor.putString("quai",quai.getText().toString());
         editor.apply();
 
+    }
+
+
+
+
+    private void saveListdata() {
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=gson.toJson(gearstest);
+        editor.putString("listofgears",json);
+        editor.apply();
+    }
+
+
+
+    private void loadListdata()
+    {
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=sharedPreferences.getString("listofgears",null);
+        Type type= new TypeToken<ArrayList<Gear_Model>>() {}.getType();
+        gearstest =gson.fromJson(json,type);
+
+        if (gearstest==null)
+        {
+            gearstest=new ArrayList<>();
+        }
 
     }
+
+
 
     private void setArretAdapter() {
 
@@ -229,24 +265,42 @@ public class pointagePage1 extends AppCompatActivity {
         etasArret_models=new ArrayList<>();
 
         PointageArretAdapter pointageArretAdapter=new PointageArretAdapter(getApplicationContext(),etasArret_models);
-listofarrets.setAdapter(pointageArretAdapter);
+        listofarrets.setAdapter(pointageArretAdapter);
+        listofarrets.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                etasArret_models.remove(i);
+                pointageArretAdapter.notifyDataSetChanged();
+                return false;
+            }
+        });
+
+
     }
+
+
 
     private void setGearsAdapter() {
 
 
-        gearstest=new ArrayList<>();
-
-
-
-
-
-
-
-
-
+        //gearstest=new ArrayList<>();
         PointageGearAdapter pointageGearAdapter=new PointageGearAdapter(getApplicationContext(),gearstest);
         listofgears.setAdapter(pointageGearAdapter);
+
+        listofgears.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                gearstest.remove(i);
+                pointageGearAdapter.notifyDataSetChanged();
+
+
+
+
+                return false;
+            }
+        });
 
     }
 

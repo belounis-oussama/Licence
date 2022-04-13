@@ -27,6 +27,7 @@ public class pointagePage2 extends AppCompatActivity {
 
 
     private ArrayList<Goods_Model>goods_models;
+    ArrayList<Gear_Model>gear;
     private RecyclerView recyclerView;
     private Button add,delete;
     private EditText nature,nombre,poid;
@@ -47,6 +48,9 @@ public class pointagePage2 extends AppCompatActivity {
 
 
         LoadListData();
+
+
+
 
 
 

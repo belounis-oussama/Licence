@@ -23,6 +23,8 @@ GearAdapter gearAdapter=new GearAdapter(getApplicationContext(),db.getallgears()
 
         //UserAdapter userAdapter=new UserAdapter(getApplicationContext(),User_Model.user_modelArrayList);
         gearlist.setAdapter(gearAdapter);
+
+
     }
 
 
