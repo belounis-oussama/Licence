@@ -10,6 +10,8 @@ import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,7 +28,8 @@ import java.util.Calendar;
 public class pointagePage1 extends AppCompatActivity {
 
     Calendar calendar;
-    TextInputEditText dateinpute,navire,nature,brigade,quai,shift;
+    TextInputEditText dateinpute,navire,nature;
+    AutoCompleteTextView shift,quai,brigade;
     ImageView addgearpointgae,addarret,p1Top2,p1to_emdeb;
     ListView listofgears,listofarrets;
     public ArrayList<EtasArret_Model> etasArret_models;
@@ -55,6 +58,30 @@ public class pointagePage1 extends AppCompatActivity {
         brigade=findViewById(R.id.brigade);
         quai=findViewById(R.id.quai);
         shift=findViewById(R.id.shift);
+
+
+
+        //change this , this is a test add data from db after im using list for now
+
+
+        String[] shifts=new String[]{"shift 1","shift 2","shift 3","shift 4"};
+        ArrayAdapter<String>adapter=new ArrayAdapter<>(this,R.layout.dropdownmenu_shift,shifts);
+        shift.setAdapter(adapter);
+        shift.setKeyListener(null);
+
+
+        String[] quais=new String[]{"quai 1","quai 2","quai 3","quai 4"};
+        ArrayAdapter<String>adapter_quai=new ArrayAdapter<>(this,R.layout.dropdownmenu_shift,quais);
+        quai.setAdapter(adapter_quai);
+        quai.setKeyListener(null);
+
+
+        String[] brigades=new String[]{"brigade 1","brigade 2","brigade 3","brigade 4"};
+        ArrayAdapter<String>adapter_brigade=new ArrayAdapter<>(this,R.layout.dropdownmenu_shift,brigades);
+        brigade.setAdapter(adapter_brigade);
+        brigade.setKeyListener(null);
+
+
 
 
         getData();
