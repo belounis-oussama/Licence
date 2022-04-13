@@ -30,7 +30,7 @@ public class Pointage_db extends SQLiteOpenHelper {
                 + COL_ID + "INTEGER PRIMARY KEY," + COL_NOM_POINTEUR +
                 "TEXT," + COL_NOM_NAVIRE + "TEXT," + COL_DATE + "TEXT,"
                 + COL_MODE_CONDITIONNEMENT + "TEXT," + COL_NATURE_MARCHANDISE + "TEXT," +
-                COL_BRIGADE + "INTEGER,"+ COL_SHIFT +"INTEGER,"+ COL_QUAI+"TEXT )";
+                COL_BRIGADE + "INTEGER,"+ COL_SHIFT +"TEXT,"+ COL_QUAI+"TEXT )";
     }
 
     @Override

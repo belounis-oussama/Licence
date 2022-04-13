@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class debarq_embarq extends AppCompatActivity {
@@ -14,6 +15,7 @@ public class debarq_embarq extends AppCompatActivity {
     ImageView debarqu_btn,vector;
     Button retour;
 
+    TextView titledebemb,titledebemb2,embtext,debtext;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,10 @@ public class debarq_embarq extends AppCompatActivity {
         debarqu_btn=findViewById(R.id.derquemnt_btn);
         retour=findViewById(R.id.retour);
         vector=findViewById(R.id.vectorembdeb);
+        titledebemb=findViewById(R.id.titledebemb);
+        titledebemb2=findViewById(R.id.titledebemb2);
+        embtext=findViewById(R.id.embtext);
+        debtext=findViewById(R.id.debtext);
 
 
 
@@ -46,10 +52,24 @@ public class debarq_embarq extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(debarq_embarq.this,"debarquement",Toast.LENGTH_SHORT).show();
 
+                /*
+                vector.animate().translationY(1600).setDuration(4000).setStartDelay(200);
+                vector.animate().scaleX(200);
+                vector.animate().scaleY(200);
+
+                debarqu_btn.setVisibility(View.INVISIBLE);
+                embarqu_btn.setVisibility(View.INVISIBLE);
+                retour.setVisibility(View.INVISIBLE);
+                titledebemb.setVisibility(View.INVISIBLE);
+                titledebemb2.setVisibility(View.INVISIBLE);
+                embtext.setVisibility(View.INVISIBLE);
+                debtext.setVisibility(View.INVISIBLE);
+*/
+
                 Intent intent =new Intent(debarq_embarq.this,pointagePage1.class);
-                startActivity(intent);
+               startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-                finish();
+               finish();
             }
         });
 
