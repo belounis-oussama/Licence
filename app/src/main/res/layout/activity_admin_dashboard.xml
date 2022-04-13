@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:backgroundTint="@color/yellow"
     android:background="@drawable/dashboard_bg"
     tools:context=".admin_dashboard">
 
@@ -31,12 +31,14 @@
        android:useDefaultMargins="true"
 
 
+
        android:rowCount="3"
        android:columnCount="2"
 
        >
 
        <androidx.cardview.widget.CardView
+
            android:id="@+id/utilisateur"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -47,6 +49,7 @@
            android:layout_column="0"
            app:cardCornerRadius="20dp"
            app:cardElevation="10dp"
+           android:backgroundTint="@color/darkblue"
            android:layout_marginTop="20dp"
            android:layout_marginBottom="50dp">
 
@@ -56,6 +59,7 @@
                android:layout_height="wrap_content"
                android:layout_gravity="center_vertical|center_horizontal"
                android:gravity="center"
+
                android:orientation="vertical"
 
                >
@@ -63,7 +67,7 @@
                <ImageView
                    android:layout_width="60dp"
                    android:layout_height="60dp"
-                   android:src="@drawable/users"
+                   android:src="@drawable/useryellow"
 
                    />
                <TextView
@@ -71,7 +75,7 @@
                    android:layout_height="wrap_content"
                    android:text="Utilisateur"
                    android:textSize="18sp"
-                   android:textColor="@color/darkblue"
+                   android:textColor="@color/yellow"
                    android:textStyle="normal"
                    />
 
@@ -89,7 +93,7 @@
            android:layout_row="0"
            android:layout_column="1"
            app:cardCornerRadius="20dp"
-
+           android:backgroundTint="@color/darkblue"
            android:layout_marginTop="20dp"
            android:layout_marginBottom="50dp"
            app:cardElevation="10dp">
@@ -106,7 +110,7 @@
                <ImageView
                    android:layout_width="60dp"
                    android:layout_height="60dp"
-                   android:src="@drawable/engins"
+                   android:src="@drawable/gearyellow"
 
                    />
                <TextView
@@ -114,7 +118,7 @@
                    android:layout_height="wrap_content"
                    android:text="Engins"
                    android:textSize="18sp"
-                   android:textColor="@color/darkblue"
+                   android:textColor="@color/yellow"
                    android:textStyle="normal"
                    />
 
@@ -129,6 +133,7 @@
            android:id="@+id/sortir"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:backgroundTint="@color/darkblue"
            android:layout_gravity="fill"
            android:layout_columnWeight="1"
            android:layout_marginBottom="50dp"
@@ -151,7 +156,7 @@
                <ImageView
                    android:layout_width="60dp"
                    android:layout_height="60dp"
-                   android:src="@drawable/exit"
+                   android:src="@drawable/exityellow"
 
                    />
                <TextView
@@ -159,7 +164,7 @@
                    android:layout_height="wrap_content"
                    android:text="Sortir"
                    android:textSize="18sp"
-                   android:textColor="@color/darkblue"
+                   android:textColor="@color/yellow"
                    android:textStyle="normal"
                    />
 
@@ -175,6 +180,7 @@
 
 
        <androidx.cardview.widget.CardView
+           android:backgroundTint="@color/darkblue"
            android:id="@+id/pointage"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
@@ -200,7 +206,7 @@
                <ImageView
                    android:layout_width="60dp"
                    android:layout_height="60dp"
-                   android:src="@drawable/pointage"
+                   android:src="@drawable/pointageyellow"
 
 
                    />
@@ -209,7 +215,7 @@
                    android:layout_height="wrap_content"
                    android:text="Pointage"
                    android:textSize="18sp"
-                   android:textColor="@color/darkblue"
+                   android:textColor="@color/yellow"
                    android:textStyle="normal"
                    />
 
@@ -231,6 +237,7 @@
            android:layout_marginBottom="50dp"
            android:layout_rowWeight="1"
            android:layout_row="1"
+           android:backgroundTint="@color/darkblue"
            android:layout_marginTop="20dp"
            android:layout_column="1"
            app:cardCornerRadius="20dp"
@@ -248,7 +255,7 @@
                <ImageView
                    android:layout_width="60dp"
                    android:layout_height="60dp"
-                   android:src="@drawable/team"
+                   android:src="@drawable/brigadeyellow"
 
                    />
                <TextView
@@ -256,7 +263,7 @@
                    android:layout_height="wrap_content"
                    android:text="Brigade"
                    android:textSize="18sp"
-                   android:textColor="@color/darkblue"
+                   android:textColor="@color/yellow"
                    android:textStyle="normal"
                    />
 
@@ -273,6 +280,7 @@
 
        <androidx.cardview.widget.CardView
            android:id="@+id/shift_dash"
+           android:backgroundTint="@color/darkblue"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_gravity="fill"
@@ -297,7 +305,7 @@
                <ImageView
                    android:layout_width="60dp"
                    android:layout_height="60dp"
-                   android:src="@drawable/shift"
+                   android:src="@drawable/shiftyellow"
 
                    />
                <TextView
@@ -305,7 +313,7 @@
                    android:layout_height="wrap_content"
                    android:text="Shift"
                    android:textSize="18sp"
-                   android:textColor="@color/darkblue"
+                   android:textColor="@color/yellow"
                    android:textStyle="normal"
                    />
 
