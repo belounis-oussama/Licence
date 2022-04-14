@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Epa51">
         <activity
+            android:name=".modify_delete_shift"
+            android:exported="false" />
+        <activity
             android:name=".ShiftDetails"
             android:exported="false" />
         <activity

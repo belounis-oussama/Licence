@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -30,6 +31,26 @@ public class Shiftlist extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent =new Intent(Shiftlist.this,ShiftDetails.class);
                 startActivity(intent);
+            }
+        });
+
+
+
+
+        shiftList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent =new Intent(Shiftlist.this,modify_delete_shift.class);
+                String shift= shiftList.getAdapter().getItem(i).toString();
+
+                String id = shift.substring(shift.indexOf("id=") + "id=".length(), shift.indexOf(","));
+
+
+                intent.putExtra("idkeyshift",id);
+
+
+                startActivity(intent);
+                return false;
             }
         });
     }

@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShiftDetails"
+    tools:context=".modify_delete_shift"
     android:theme="@style/Theme2">
+
 
 
 
@@ -27,20 +28,23 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:boxStrokeColor="@color/darkblue"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
+
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
 
-       <com.google.android.material.textfield.TextInputEditText
-           android:id="@+id/newshiftname"
-           android:layout_width="300dp"
-           android:layout_height="wrap_content"
-           android:hint="Nom de shift"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editShiftName"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
 
-           />
+
+            android:hint="Nom de shift"
+
+            />
 
 
 
@@ -65,12 +69,12 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/startshift"
+            android:id="@+id/editStartshift"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:hint="DE"
             android:inputType="time"
-            android:onClick="timerstart"
+
             android:textColorHint="@color/darkblue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />
@@ -93,12 +97,12 @@
 
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/endshift"
+            android:id="@+id/editEndShift"
             android:layout_width="100dp"
             android:layout_height="60dp"
             android:hint="A"
             android:inputType="time"
-            android:onClick="timerend"
+
             android:textColorHint="@color/darkblue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />
@@ -110,7 +114,23 @@
 
 
 
-
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveEditShift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="Save"
+        android:backgroundTint="@color/yellow"
+        android:textSize="24sp"
+        android:textColor="@color/darkblue"
+        app:icon="@drawable/save"
+        app:iconGravity="start"
+        app:cornerRadius="20dp"
+        app:iconSize="33dp"
+        app:iconTint="@color/darkblue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <LinearLayout
@@ -124,45 +144,24 @@
 
 
         <ImageView
-            android:id="@+id/canceltextsh"
+            android:id="@+id/deleteimgshift"
             android:layout_width="30dp"
             android:layout_height="40dp"
-            android:src="@drawable/cancelicon"
+            android:src="@drawable/deletered"
             android:layout_marginRight="5dp"
-
+            android:onClick="DeleteShift"
             />
 
         <TextView
-            android:id="@+id/cancelimgsh"
+            android:id="@+id/deletetextshift"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Annuler"
-            android:textColor="@color/darkblue"
+            android:text="Delete"
+            android:textColor="#ff0000"
             android:textSize="24sp"
-
+            android:onClick="DeleteShift"
             />
 
 
     </LinearLayout>
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/addShift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginBottom="30dp"
-        android:text="Save"
-        android:textSize="24sp"
-        android:textColor="@color/darkblue"
-        app:icon="@drawable/save"
-        app:iconGravity="start"
-        app:cornerRadius="20dp"
-        app:iconSize="33dp"
-        app:iconTint="@color/darkblue"
-        android:backgroundTint="@color/yellow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
