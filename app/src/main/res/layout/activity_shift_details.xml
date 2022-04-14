@@ -69,7 +69,7 @@
             android:layout_height="60dp"
             android:hint="DE"
             android:inputType="time"
-
+            android:onClick="timerstart"
             android:textColorHint="@color/darkblue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />
@@ -97,7 +97,7 @@
             android:layout_height="60dp"
             android:hint="A"
             android:inputType="time"
-
+            android:onClick="timerend"
             android:textColorHint="@color/darkblue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />

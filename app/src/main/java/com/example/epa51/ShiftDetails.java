@@ -2,19 +2,25 @@ package com.example.epa51;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.Locale;
+
 public class ShiftDetails extends AppCompatActivity {
 
     TextInputEditText startshift,endshift,nameshift;
     MaterialButton addShift;
+    int hour,minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,10 @@ public class ShiftDetails extends AppCompatActivity {
         startshift=findViewById(R.id.startshift);
         endshift=findViewById(R.id.endshift);
         addShift=findViewById(R.id.addShift);
+
+
+        startshift.setKeyListener(null);
+        endshift.setKeyListener(null);
 
 
 
@@ -64,5 +74,42 @@ public class ShiftDetails extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void timerstart(View view) {
+
+        TimePickerDialog.OnTimeSetListener onTimeSetListener=new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedhour, int selectedminute) {
+
+                hour=selectedhour;
+                minute=selectedminute;
+                startshift.setText(String.format(Locale.getDefault(),"%02d:%02d",hour,minute));
+            }
+        };
+
+        int style= AlertDialog.THEME_HOLO_LIGHT;
+
+        TimePickerDialog timePickerDialog=new TimePickerDialog(this,AlertDialog.THEME_HOLO_LIGHT,onTimeSetListener,hour,minute,true);
+        timePickerDialog.setTitle("choisissez l'heure de debut");
+        timePickerDialog.show();
+    }
+
+    public void timerend(View view) {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener=new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedhour, int selectedminute) {
+
+                hour=selectedhour;
+                minute=selectedminute;
+                endshift.setText(String.format(Locale.getDefault(),"%02d:%02d",hour,minute));
+            }
+        };
+
+        int style= AlertDialog.THEME_HOLO_LIGHT;
+
+        TimePickerDialog timePickerDialog=new TimePickerDialog(this,AlertDialog.THEME_HOLO_LIGHT,onTimeSetListener,hour,minute,true);
+        timePickerDialog.setTitle("choisissez l'heure de debut");
+        timePickerDialog.show();
     }
 }
