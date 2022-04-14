@@ -1,5 +1,7 @@
 package com.example.epa51;
 
+import java.util.ArrayList;
+
 public class Shift_Modele {
 
 
@@ -7,6 +9,7 @@ public class Shift_Modele {
     private String nom_shift;
     private String Debut;
     private String Fin;
+    public static ArrayList<Shift_Modele> shift_modeleArrayList=new ArrayList<>();
 
 
     public Shift_Modele(int id,String nom_shift,String Debut,String Fin)

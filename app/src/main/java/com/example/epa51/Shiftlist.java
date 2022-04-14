@@ -2,7 +2,9 @@ package com.example.epa51;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -21,6 +23,15 @@ public class Shiftlist extends AppCompatActivity {
         add_listofshifts=findViewById(R.id.add_listofshifts);
 
         setShiftsAdapter();
+
+
+        add_listofshifts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(Shiftlist.this,ShiftDetails.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setShiftsAdapter() {
@@ -28,11 +39,6 @@ public class Shiftlist extends AppCompatActivity {
 
 
         Shift_db db=new Shift_db(Shiftlist.this);
-
-
-
-
-
         ShiftAdapter shiftAdapter=new ShiftAdapter(getApplicationContext(),db.getAllShift());
         shiftList.setAdapter(shiftAdapter);
 
