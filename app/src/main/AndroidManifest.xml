@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Epa51">
         <activity
+            android:name=".Shiftlist"
+            android:exported="false" />
+        <activity
             android:name=".choose_stoppages"
             android:exported="false" />
         <activity
@@ -51,7 +54,6 @@
         <activity
             android:name=".login"
             android:exported="false" />
-
         <activity
             android:name=".splash"
             android:exported="true">

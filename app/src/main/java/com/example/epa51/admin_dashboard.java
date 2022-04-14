@@ -12,7 +12,7 @@ import java.util.List;
 
 public class admin_dashboard extends AppCompatActivity {
 
-    CardView pointage,sortir,engins,utilisateur;
+    CardView pointage,sortir,engins,utilisateur,shift_dash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,17 @@ public class admin_dashboard extends AppCompatActivity {
         sortir =findViewById(R.id.sortir);
         engins =findViewById(R.id.engin);
         utilisateur =findViewById(R.id.utilisateur);
+        shift_dash=findViewById(R.id.shift_dash);
+
+
+
+        shift_dash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(admin_dashboard.this,Shiftlist.class);
+                startActivity(intent);
+            }
+        });
 
 
         pointage.setOnClickListener(new View.OnClickListener() {
