@@ -255,5 +255,32 @@ public class Shift_db extends SQLiteOpenHelper {
 
     }
 
+    public List<String> getAllShiftNames()
+    {
+        List<String> returnedList=new ArrayList<String>();
+        String query="SELECT * FROM "+SHIFT_TABLE;
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst())
+        {
+
+            do {
+
+                String ShiftName=cursor.getString(1);
+                returnedList.add(ShiftName);
+
+            }
+            while (cursor.moveToNext());
+        }
+        else
+        {
+            //this is a failure so we do nothin
+        }
+
+
+
+        return returnedList;
+    }
 
 }

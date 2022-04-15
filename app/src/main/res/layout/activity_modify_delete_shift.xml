@@ -40,7 +40,8 @@
             android:id="@+id/editShiftName"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-
+            android:drawableStart="@drawable/shift30px"
+            android:drawablePadding="15dp"
 
             android:hint="Nom de shift"
 

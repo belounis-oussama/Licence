@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/vector_for_embdeb" />
 
     <ImageView
-        android:id="@+id/derquemnt_btn"
+        android:id="@+id/embarquement_btn"
         android:layout_width="99dp"
         android:layout_height="128dp"
         android:layout_marginEnd="16dp"
@@ -27,13 +27,14 @@
         app:srcCompat="@drawable/blueup" />
 
     <ImageView
-        android:id="@+id/embarquement_btn"
+        android:layout_marginTop="40dp"
+
+        android:id="@+id/derquemnt_btn"
         android:layout_width="99dp"
         android:layout_height="128dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="320dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titledebemb2"
         app:srcCompat="@drawable/whiteup" />
 
 
@@ -75,7 +76,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/derquemnt_btn" />
+        app:layout_constraintEnd_toStartOf="@+id/embarquement_btn" />
 
 
     <TextView
@@ -83,13 +84,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="356dp"
         android:text="Debarquement"
+        android:layout_marginTop="50dp"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/embarquement_btn"
-        app:layout_constraintTop_toTopOf="parent" />
+
+        app:layout_constraintStart_toEndOf="@+id/derquemnt_btn"
+        app:layout_constraintTop_toBottomOf="@+id/titledebemb2" />
 
     <Button
         android:id="@+id/retour"

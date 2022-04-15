@@ -39,6 +39,8 @@
            android:layout_width="300dp"
            android:layout_height="wrap_content"
            android:hint="Nom de shift"
+           android:drawableStart="@drawable/shift30px"
+           android:drawablePadding="15dp"
 
            />
 

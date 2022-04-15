@@ -24,6 +24,7 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class pointagePage1 extends AppCompatActivity {
 
@@ -64,8 +65,12 @@ public class pointagePage1 extends AppCompatActivity {
         //change this , this is a test add data from db after im using list for now
 
 
-        String[] shifts=new String[]{"shift 1","shift 2","shift 3","shift 4"};
-        ArrayAdapter<String>adapter=new ArrayAdapter<>(this,R.layout.dropdownmenu_shift,shifts);
+        Shift_db shift_db=new Shift_db(pointagePage1.this);
+
+
+
+
+        ArrayAdapter<String>adapter=new ArrayAdapter<>(this,R.layout.dropdownmenu_shift,shift_db.getAllShiftNames());
         shift.setAdapter(adapter);
         shift.setKeyListener(null);
 
