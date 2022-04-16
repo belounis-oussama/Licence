@@ -48,20 +48,6 @@ public class admin_dashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//this is temporary
-/*
-                Gears_db gears_db=new Gears_db(admin_dashboard.this);
-
-                //User_Model new_user=new User_Model(-1,User,Pass);
-                Gear_Model one=new Gear_Model(-1,"one",1);
-                Gear_Model onee=new Gear_Model(-1,"two",3);
-
-                gears_db.addGear(one);
-                gears_db.addGear(onee);
-
-                List<Gear_Model> all= gears_db.getallgears();
-                Toast.makeText(admin_dashboard.this,all.toString(),Toast.LENGTH_SHORT).show();
-*/
 
 
                 Intent intent =new Intent(admin_dashboard.this,listGears.class);

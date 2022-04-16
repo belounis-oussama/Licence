@@ -78,7 +78,7 @@ public class listusers extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(listusers.this,login.class);
+                Intent intent =new Intent(listusers.this,admin_dashboard.class);
                 startActivity(intent);
                 finish();
             }
