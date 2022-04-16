@@ -7,7 +7,9 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,7 +18,10 @@ import android.widget.TimePicker;
 
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -30,6 +35,7 @@ public class choose_stoppages extends AppCompatActivity {
     int hour,minute;
     Button confirm_button_arret;
     ArrayList<EtasArret_Model> arret;
+    ArrayList<EtasArret_Model>Arret;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,9 @@ public class choose_stoppages extends AppCompatActivity {
         enddate.setKeyListener(null);
         starttime.setKeyListener(null);
         endtime.setKeyListener(null);
+
+
+        LoadListofArret();
         initDatePicker();
         initDatePicker2();
 
@@ -90,32 +99,45 @@ public class choose_stoppages extends AppCompatActivity {
                 arret=new ArrayList<>();
                 Intent intent =new Intent(choose_stoppages.this,pointagePage1.class);
 
-                Intent newintent=getIntent();
-                if (newintent.hasExtra("currentarret")) {
-
-                    ArrayList<EtasArret_Model> newaaret = (ArrayList<EtasArret_Model>) getIntent().getSerializableExtra("currentarret");
-
-                    //Toast.makeText(pointagePage1.this,newgear.toString(),Toast.LENGTH_SHORT).show();
-
-                    for (int i = 0; i < newaaret.size(); i++) {
-                        arret.add(newaaret.get(i));
-
-                    }
-
-                }
 
 
 
 
 
 
-                arret.add(new EtasArret_Model(startdate.getText().toString(),starttime.getText().toString(),enddate.getText().toString(),endtime.getText().toString(),autoCompleteMotif.getText().toString()));
-                intent.putExtra("arretList",arret);
+
+                Arret.add(new EtasArret_Model(startdate.getText().toString(),starttime.getText().toString(),enddate.getText().toString(),endtime.getText().toString(),autoCompleteMotif.getText().toString()));
+                UpdateListofArrets();
                 startActivity(intent);
 
             }
         });
 
+    }
+
+    private void UpdateListofArrets() {
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=gson.toJson(Arret);
+        editor.putString("ListOfArrets",json);
+        editor.apply();
+
+    }
+
+    private void LoadListofArret() {
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=sharedPreferences.getString("ListOfArrets",null);
+        Type type= new TypeToken<ArrayList<EtasArret_Model>>() {}.getType();
+        Arret =gson.fromJson(json,type);
+
+
+        if (Arret==null)
+        {
+            Arret=new ArrayList<>();
+        }
     }
 
     private void initDatePicker2() {

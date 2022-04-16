@@ -37,6 +37,7 @@ public class pointagePage1 extends AppCompatActivity {
     public ArrayList<Gear_Model> gearstest;
     public static final String SHARED_PREFS ="sharedPrefs";
     public ArrayList<Gear_Model>Gears;
+    public ArrayList<EtasArret_Model>arret;
 
 
 
@@ -93,6 +94,7 @@ public class pointagePage1 extends AppCompatActivity {
 
 
         LoadListofGears();
+        LoadListofArrets();
         getData();
         setGearsAdapter();
         setArretAdapter();
@@ -206,8 +208,7 @@ public class pointagePage1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(pointagePage1.this,choose_stoppages.class);
-
-                intent.putExtra("currentarret",etasArret_models);
+                saveListArrets();
 
                 startActivity(intent);
             }
@@ -231,6 +232,32 @@ public class pointagePage1 extends AppCompatActivity {
 
 
 
+
+    }
+
+    private void LoadListofArrets() {
+
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=sharedPreferences.getString("ListOfArrets",null);
+        Type type= new TypeToken<ArrayList<EtasArret_Model>>() {}.getType();
+        arret =gson.fromJson(json,type);
+
+
+        if (arret==null)
+        {
+            arret=new ArrayList<>();
+        }
+    }
+
+    private void saveListArrets() {
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=gson.toJson(arret);
+        editor.putString("ListOfArrets",json);
+        editor.apply();
 
     }
 
@@ -296,7 +323,7 @@ public class pointagePage1 extends AppCompatActivity {
 
     private void setArretAdapter() {
         etasArret_models=new ArrayList<>();
-        PointageArretAdapter pointageArretAdapter=new PointageArretAdapter(getApplicationContext(),etasArret_models);
+        PointageArretAdapter pointageArretAdapter=new PointageArretAdapter(getApplicationContext(),arret);
         listofarrets.setAdapter(pointageArretAdapter);
         listofarrets.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
