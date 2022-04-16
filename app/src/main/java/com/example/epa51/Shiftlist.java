@@ -35,6 +35,14 @@ public class Shiftlist extends AppCompatActivity {
         });
 
 
+        backbtn_listofshifts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(Shiftlist.this,admin_dashboard.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         shiftList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

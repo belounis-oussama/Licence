@@ -11,7 +11,7 @@
 
 
     <ImageButton
-        android:id="@+id/backbtn_shift_details"
+        android:id="@+id/backbtn_shift_modifydelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
@@ -70,7 +70,7 @@
             android:layout_height="60dp"
             android:hint="DE"
             android:inputType="time"
-
+            android:onClick="TimerStart"
             android:textColorHint="@color/darkblue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />
@@ -98,7 +98,7 @@
             android:layout_height="60dp"
             android:hint="A"
             android:inputType="time"
-
+            android:onClick="TimerEnd"
             android:textColorHint="@color/darkblue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialAutoCompleteTextView" />

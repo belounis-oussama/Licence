@@ -2,14 +2,19 @@ package com.example.epa51;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.Locale;
 
 public class modify_delete_shift extends AppCompatActivity {
     MaterialButton saveEditShift;
@@ -17,6 +22,8 @@ public class modify_delete_shift extends AppCompatActivity {
 
     TextView deletetextshift;
     ImageView deleteimgshift;
+    ImageView Backbtn;
+    int hour,minute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,7 @@ public class modify_delete_shift extends AppCompatActivity {
         editStartshift=findViewById(R.id.editStartshift);
         editEndShift=findViewById(R.id.editEndShift);
         saveEditShift=findViewById(R.id.saveEditShift);
+        Backbtn=findViewById(R.id.backbtn_shift_modifydelete);
 
 
 
@@ -45,8 +53,18 @@ public class modify_delete_shift extends AppCompatActivity {
         editStartshift.setText(shiftstart);
         editEndShift.setText(shiftend);
 
+        editStartshift.setKeyListener(null);
+        editEndShift.setKeyListener(null);
 
 
+
+        Backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(modify_delete_shift.this,Shiftlist.class);
+                startActivity(intent);
+            }
+        });
 
         saveEditShift.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,5 +105,43 @@ public class modify_delete_shift extends AppCompatActivity {
 
         Intent intent =new Intent(modify_delete_shift.this,Shiftlist.class);
         startActivity(intent);
+    }
+
+    public void TimerStart(View view) {
+
+        TimePickerDialog.OnTimeSetListener onTimeSetListener=new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedhour, int selectedminute) {
+
+                hour=selectedhour;
+                minute=selectedminute;
+                editStartshift.setText(String.format(Locale.getDefault(),"%02d:%02d",hour,minute));
+            }
+        };
+
+        int style= AlertDialog.THEME_HOLO_LIGHT;
+
+        TimePickerDialog timePickerDialog=new TimePickerDialog(this,AlertDialog.THEME_HOLO_LIGHT,onTimeSetListener,hour,minute,true);
+        timePickerDialog.setTitle("choisissez l'heure de debut");
+        timePickerDialog.show();
+    }
+
+    public void TimerEnd(View view) {
+
+        TimePickerDialog.OnTimeSetListener onTimeSetListener=new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedhour, int selectedminute) {
+
+                hour=selectedhour;
+                minute=selectedminute;
+                editEndShift.setText(String.format(Locale.getDefault(),"%02d:%02d",hour,minute));
+            }
+        };
+
+        int style= AlertDialog.THEME_HOLO_LIGHT;
+
+        TimePickerDialog timePickerDialog=new TimePickerDialog(this,AlertDialog.THEME_HOLO_LIGHT,onTimeSetListener,hour,minute,true);
+        timePickerDialog.setTitle("choisissez l'heure de debut");
+        timePickerDialog.show();
     }
 }
