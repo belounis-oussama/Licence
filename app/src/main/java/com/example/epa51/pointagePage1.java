@@ -36,6 +36,7 @@ public class pointagePage1 extends AppCompatActivity {
     public ArrayList<EtasArret_Model> etasArret_models;
     public ArrayList<Gear_Model> gearstest;
     public static final String SHARED_PREFS ="sharedPrefs";
+    public ArrayList<Gear_Model>Gears;
 
 
 
@@ -46,6 +47,8 @@ public class pointagePage1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pointage_page1);
+
+
 
         dateinpute=findViewById(R.id.date);
         addgearpointgae=findViewById(R.id.addgearpointgae);
@@ -59,6 +62,7 @@ public class pointagePage1 extends AppCompatActivity {
         brigade=findViewById(R.id.brigade);
         quai=findViewById(R.id.quai);
         shift=findViewById(R.id.shift);
+
 
 
 
@@ -88,9 +92,8 @@ public class pointagePage1 extends AppCompatActivity {
 
 
 
-
+        LoadListofGears();
         getData();
-        loadListdata();
         setGearsAdapter();
         setArretAdapter();
 
@@ -184,7 +187,8 @@ public class pointagePage1 extends AppCompatActivity {
                 }
 
                 saveRecord();
-                saveListdata();
+
+
 
 
 
@@ -213,8 +217,10 @@ public class pointagePage1 extends AppCompatActivity {
         addgearpointgae.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(pointagePage1.this,choose_gear.class);
-                intent.putExtra("currentgear",gearstest);
+
+                saveListGears();
+                Intent intent =new Intent(pointagePage1.this,AddUsedGear.class);
+
 
                 startActivity(intent);
 
@@ -226,6 +232,32 @@ public class pointagePage1 extends AppCompatActivity {
 
 
 
+    }
+
+    private void LoadListofGears() {
+
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=sharedPreferences.getString("ListOfGears",null);
+        Type type= new TypeToken<ArrayList<Gear_Model>>() {}.getType();
+        Gears =gson.fromJson(json,type);
+
+
+        if (Gears==null)
+        {
+            Gears=new ArrayList<>();
+        }
+
+    }
+
+    private void saveListGears() {
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=gson.toJson(Gears);
+        editor.putString("ListOfGears",json);
+        editor.apply();
     }
 
     private void getData() {
@@ -257,45 +289,13 @@ public class pointagePage1 extends AppCompatActivity {
 
 
 
-    private void saveListdata() {
-        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-        Gson gson=new Gson();
-        String json=gson.toJson(gearstest);
-        editor.putString("listofgears",json);
-        editor.apply();
-    }
 
 
-
-    private void loadListdata()
-    {
-        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-        Gson gson=new Gson();
-        String json=sharedPreferences.getString("listofgears",null);
-        Type type= new TypeToken<ArrayList<Gear_Model>>() {}.getType();
-        gearstest =gson.fromJson(json,type);
-
-        if (gearstest==null)
-        {
-            gearstest=new ArrayList<>();
-        }
-
-    }
 
 
 
     private void setArretAdapter() {
-
-
-
-
-
-
-
         etasArret_models=new ArrayList<>();
-
         PointageArretAdapter pointageArretAdapter=new PointageArretAdapter(getApplicationContext(),etasArret_models);
         listofarrets.setAdapter(pointageArretAdapter);
         listofarrets.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -316,7 +316,7 @@ public class pointagePage1 extends AppCompatActivity {
 
 
         //gearstest=new ArrayList<>();
-        PointageGearAdapter pointageGearAdapter=new PointageGearAdapter(getApplicationContext(),gearstest);
+        PointageGearAdapter pointageGearAdapter=new PointageGearAdapter(getApplicationContext(),Gears);
         listofgears.setAdapter(pointageGearAdapter);
 
         listofgears.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -324,8 +324,6 @@ public class pointagePage1 extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                gearstest.remove(i);
-                pointageGearAdapter.notifyDataSetChanged();
 
 
 
