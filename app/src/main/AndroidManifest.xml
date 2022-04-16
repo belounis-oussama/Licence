@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Epa51">
         <activity
+            android:name=".AdminProfile"
+            android:exported="false" />
+        <activity
             android:name=".AddUsedGear"
             android:exported="false" />
         <activity
