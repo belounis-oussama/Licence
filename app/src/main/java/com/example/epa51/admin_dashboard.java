@@ -12,7 +12,7 @@ import java.util.List;
 
 public class admin_dashboard extends AppCompatActivity {
 
-    CardView pointage,sortir,engins,utilisateur,shift_dash;
+    CardView pointage,sortir,engins,utilisateur,shift_dash,profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class admin_dashboard extends AppCompatActivity {
         engins =findViewById(R.id.engin);
         utilisateur =findViewById(R.id.utilisateur);
         shift_dash=findViewById(R.id.shift_dash);
+        profile=findViewById(R.id.profile_dash);
 
 
 
@@ -84,6 +85,14 @@ public class admin_dashboard extends AppCompatActivity {
             }
         });
 
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(admin_dashboard.this,AdminProfile.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

@@ -229,7 +229,7 @@
 
 
        <androidx.cardview.widget.CardView
-           android:id="@+id/brigade_dash"
+           android:id="@+id/profile_dash"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_gravity="fill"
@@ -255,13 +255,13 @@
                <ImageView
                    android:layout_width="60dp"
                    android:layout_height="60dp"
-                   android:src="@drawable/brigadeyellow"
+                   android:src="@drawable/profileforadmin"
 
                    />
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:text="Brigade"
+                   android:text="Profile"
                    android:textSize="18sp"
                    android:textColor="@color/yellow"
                    android:textStyle="normal"

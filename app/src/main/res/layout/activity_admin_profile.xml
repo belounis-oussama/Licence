@@ -8,11 +8,28 @@
     android:theme="@style/Theme2">
 
 
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/profile_retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        app:icon="@drawable/simplegobackbnt"
+        app:iconSize="40dp"
+        android:text="Retour"
+        android:textColor="@color/darkblue"
+        android:textStyle="bold"
+        app:iconPadding="0dp"
+        app:iconTint="@color/darkblue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:src="@drawable/user_img"
         app:civ_border_color="@color/darkblue"
         app:civ_border_width="1dp"
@@ -22,7 +39,7 @@
 
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/changepic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -48,7 +65,7 @@
         app:endIconMode="clear_text"
         app:endIconTint="@color/darkblue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        app:layout_constraintTop_toBottomOf="@+id/changepic">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -120,6 +137,7 @@
 
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveProfilBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enregistrer"
