@@ -47,18 +47,21 @@ public class AdminProfile extends AppCompatActivity {
 
         Admin_db db=new Admin_db(AdminProfile.this);
 
+        if (db.getAllNames().isEmpty() == false)
+        {
+            ContentValues lastAdmin = db.getLastAdmin();
 
-        ContentValues lastAdmin = db.getLastAdmin();
 
+            name.setText(lastAdmin.get("FULLNAME").toString());
+            password.setText(lastAdmin.get("PASSWORD").toString());
+            date.setText(lastAdmin.get("DATE").toString());
 
-        name.setText(lastAdmin.get("FULLNAME").toString());
-        password.setText(lastAdmin.get("PASSWORD").toString());
-        date.setText(lastAdmin.get("DATE").toString());
+            byte [] imagebyte= (byte[]) lastAdmin.get("IMAGE");
 
-        byte [] imagebyte= (byte[]) lastAdmin.get("IMAGE");
+            Bitmap Image=BitmapFactory.decodeByteArray(imagebyte,0,imagebyte.length);
+            profilePic.setImageBitmap(Image);
+        }
 
-        Bitmap Image=BitmapFactory.decodeByteArray(imagebyte,0,imagebyte.length);
-        profilePic.setImageBitmap(Image);
 
 
 

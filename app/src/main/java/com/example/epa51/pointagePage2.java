@@ -22,6 +22,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class pointagePage2 extends AppCompatActivity {
 
@@ -126,6 +127,21 @@ public class pointagePage2 extends AppCompatActivity {
         finishpointing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                Pointage_db db=new Pointage_db(pointagePage2.this);
+                //Pointage_Model newPointage=new Pointage_Model(20,"oussa","oussa","oussa","oussa","oussa","oussa","oussa","oussa");
+                //boolean b = db.AddPointage(newPointage);
+
+
+
+
+
+
+
+
+
+
                 SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor =sharedPreferences.edit();
                 editor.clear();
