@@ -54,7 +54,7 @@ public class listusers extends AppCompatActivity {
 
 
                 startActivity(intent);
-                finish();
+
                 return false;
             }
         });

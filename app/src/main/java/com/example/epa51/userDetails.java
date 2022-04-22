@@ -8,12 +8,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class userDetails extends AppCompatActivity {
 
     private EditText nameedittext, passwordedittext;
     Button adduser;
+    ImageButton backbtn_details;
 
 
 
@@ -25,9 +27,18 @@ public class userDetails extends AppCompatActivity {
         nameedittext=findViewById(R.id.editname);
         passwordedittext=findViewById(R.id.editpassword);
         adduser=findViewById(R.id.adduser);
+        backbtn_details=findViewById(R.id.backbtn_details);
 
 
 
+
+        backbtn_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                finish();
+            }
+        });
 
 
 

@@ -269,6 +269,7 @@ public class pointagePage1 extends AppCompatActivity {
         String json=sharedPreferences.getString("ListOfGears",null);
         Type type= new TypeToken<ArrayList<Gear_Model>>() {}.getType();
         Gears =gson.fromJson(json,type);
+        
 
 
         if (Gears==null)
@@ -309,6 +310,7 @@ public class pointagePage1 extends AppCompatActivity {
         editor.putString("brigade",brigade.getText().toString());
         editor.putString("shift",shift.getText().toString());
         editor.putString("quai",quai.getText().toString());
+        editor.putString("date_pointage",dateinpute.getText().toString());
         editor.apply();
 
     }

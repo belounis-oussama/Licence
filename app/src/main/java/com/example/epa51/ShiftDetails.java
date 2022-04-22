@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class ShiftDetails extends AppCompatActivity {
 
     TextInputEditText startshift,endshift,nameshift;
     MaterialButton addShift;
+    ImageButton backbtn_shift_details;
     int hour,minute;
 
     @Override
@@ -31,6 +33,7 @@ public class ShiftDetails extends AppCompatActivity {
         startshift=findViewById(R.id.startshift);
         endshift=findViewById(R.id.endshift);
         addShift=findViewById(R.id.addShift);
+        backbtn_shift_details=findViewById(R.id.backbtn_shift_details);
 
 
         startshift.setKeyListener(null);
@@ -38,6 +41,14 @@ public class ShiftDetails extends AppCompatActivity {
 
 
 
+
+
+        backbtn_shift_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         addShift.setOnClickListener(new View.OnClickListener() {
             @Override

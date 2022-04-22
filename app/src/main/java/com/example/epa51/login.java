@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -66,10 +68,23 @@ public class login extends AppCompatActivity {
                     boolean checkinfo=db.checknamepassword(User,Pass);
                     if (checkinfo==true)
                     {
-                        Toast.makeText(login.this,"Correct infos",Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(login.this,"Correct infos",Toast.LENGTH_SHORT).show();
+
+
+
+
+
 
                         Intent intent =new Intent(login.this,debarq_embarq.class);
                         intent.putExtra("namekey",User);//send name to typewriter
+
+
+                        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor editor=sharedPreferences.edit();
+
+
+                        editor.putString("pointeur_name",User);
+
 
                         startActivity(intent);
                         finish();

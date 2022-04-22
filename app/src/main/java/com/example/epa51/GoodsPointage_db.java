@@ -107,4 +107,43 @@ public class GoodsPointage_db extends SQLiteOpenHelper {
         return returnedList;
     }
 
+    public List<Goods_Model>getAll()
+    {
+        List<Goods_Model> returnedList=new ArrayList<>();
+
+        String query="SELECT * FROM "+GOODS_POINTAGE_TABLE;
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst())
+        {
+
+            do {
+
+
+
+
+                String reference=cursor.getString(2);
+                int quantite=cursor.getInt(3);
+                int weight =cursor.getInt(4);
+
+                Goods_Model newGood=new Goods_Model(reference,quantite,weight);
+
+
+
+                returnedList.add(newGood);
+
+            }
+            while (cursor.moveToNext());
+        }
+        else
+        {
+            //this is a failure so we do nothin
+        }
+
+
+
+        return returnedList;
+    }
+
 }

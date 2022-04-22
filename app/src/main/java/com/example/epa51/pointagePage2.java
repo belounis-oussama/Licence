@@ -27,12 +27,15 @@ import java.util.List;
 public class pointagePage2 extends AppCompatActivity {
 
 
-    private ArrayList<Goods_Model>goods_models;
+    public ArrayList<Goods_Model>goods_models;
     ArrayList<Gear_Model>gear;
+    public ArrayList<EtasArret_Model>arret;
     private RecyclerView recyclerView;
     private Button add,delete;
     private EditText nature,nombre,poid;
     ImageView p2Top1,finishpointing;
+    public String navire,naturep,brigade,shift,quai,pointeur_name,date_pointage,mode_conditionnement;
+    public ArrayList<Gear_Model>Gears;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,9 +133,8 @@ public class pointagePage2 extends AppCompatActivity {
 
 
                 Pointage_db db=new Pointage_db(pointagePage2.this);
-                //Pointage_Model newPointage=new Pointage_Model(20,"oussa","oussa","oussa","oussa","oussa","oussa","oussa","oussa");
-                //boolean b = db.AddPointage(newPointage);
 
+                SavePointageData();
 
 
 
@@ -165,6 +167,104 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
+    }
+
+    private void SavePointageData() {
+
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+
+        if (sharedPreferences.contains("navire")) {  navire= sharedPreferences.getString("navire","");}
+        if (sharedPreferences.contains("nature")) {  naturep= sharedPreferences.getString("nature","");}
+        if (sharedPreferences.contains("brigade"))  {   brigade= sharedPreferences.getString("brigade","");}
+        if (sharedPreferences.contains("shift"))  {shift= sharedPreferences.getString("shift","");}
+        if (sharedPreferences.contains("quai")) { quai =sharedPreferences.getString("quai", "");}
+        if (sharedPreferences.contains("pointeur_name")) {  pointeur_name =sharedPreferences.getString("pointeur_name", ""); }
+        if (sharedPreferences.contains("date_pointage")) {  date_pointage =sharedPreferences.getString("date_pointage", ""); }
+        if (sharedPreferences.contains("mode_conditionnement")) { mode_conditionnement =sharedPreferences.getString("mode_conditionnement", ""); }
+        Pointage_Model newPointageInfos=new Pointage_Model(-1,pointeur_name,navire,date_pointage,mode_conditionnement,naturep,brigade,shift,quai);
+
+        Pointage_db DB=new Pointage_db(pointagePage2.this);
+        DB.AddPointage(newPointageInfos);
+
+
+        //getting pointage id
+        int idPointage=DB.getCurrentPointage();
+
+        //loading list of gears
+
+
+
+        Gson gson=new Gson();
+        String json=sharedPreferences.getString("ListOfGears",null);
+        Type type= new TypeToken<ArrayList<Gear_Model>>() {}.getType();
+        Gears =gson.fromJson(json,type);
+
+        if (Gears==null)
+        {
+            Gears=new ArrayList<>();
+        }
+
+        //saving all gears saved in sharedpreferences in the geardatabase
+
+        for (int i=0;i<Gears.size();i++)
+        {
+
+            GearPointage_db Geardb=new GearPointage_db(pointagePage2.this);
+            Geardb.AddnewPointageGear(Gears.get(i).getId(),idPointage);
+        }
+
+
+       // GearPointage_db dd=new GearPointage_db(pointagePage2.this);
+        //Toast.makeText(pointagePage2.this, dd.getGearUsed(idPointage).toString(),Toast.LENGTH_LONG).show();
+
+
+
+
+
+
+        GoodsPointage_db Goodsdb=new GoodsPointage_db(pointagePage2.this);
+
+
+
+        //saving to gooddatabse
+        for (int i=0;i<goods_models.size();i++)
+        {
+            Goodsdb.AddGood(goods_models.get(i),idPointage);
+        }
+
+        //Toast.makeText(pointagePage2.this, Goodsdb.getGood(idPointage).toString(),Toast.LENGTH_LONG).show();
+
+        LoadListofArrets();
+
+        ArretPointage_db Arretdb=new ArretPointage_db(pointagePage2.this);
+
+
+        for (int i=0;i<arret.size();i++)
+        {
+            Arretdb.AddArret(arret.get(0),idPointage);
+        }
+
+        Toast.makeText(pointagePage2.this, Arretdb.getArret(idPointage).toString(),Toast.LENGTH_LONG).show();
+
+
+
+
+    }
+
+    private void LoadListofArrets() {
+        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Gson gson=new Gson();
+        String json=sharedPreferences.getString("ListOfArrets",null);
+        Type type= new TypeToken<ArrayList<EtasArret_Model>>() {}.getType();
+        arret =gson.fromJson(json,type);
+
+
+        if (arret==null)
+        {
+            arret=new ArrayList<>();
+        }
     }
 
     private void LoadListData() {

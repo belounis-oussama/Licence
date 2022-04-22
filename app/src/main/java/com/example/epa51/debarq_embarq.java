@@ -3,7 +3,9 @@ package com.example.epa51;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,6 +43,14 @@ public class debarq_embarq extends AppCompatActivity {
                 Toast.makeText(debarq_embarq.this,"embarquement",Toast.LENGTH_SHORT).show();
 
                 Intent intent =new Intent(debarq_embarq.this,pointagePage1.class);
+
+
+                SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+
+
+                editor.putString("mode_conditionnement","embarquement");
+
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
@@ -67,6 +77,15 @@ public class debarq_embarq extends AppCompatActivity {
 */
 
                 Intent intent =new Intent(debarq_embarq.this,pointagePage1.class);
+
+
+                SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+
+
+                editor.putString("mode_conditionnement","debarquement");
+
+
                startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                finish();

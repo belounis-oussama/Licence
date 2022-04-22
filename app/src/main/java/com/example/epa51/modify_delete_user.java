@@ -112,7 +112,7 @@ public class modify_delete_user extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(modify_delete_user.this,listusers.class);
-                startActivity(intent);
+
                 finish();
             }
         });

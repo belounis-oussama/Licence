@@ -98,4 +98,39 @@ public class GearPointage_db extends SQLiteOpenHelper {
 
         return returnedList;
     }
+
+    public List<Integer> all()
+    {
+        List<Integer> returnedList=new ArrayList<>();
+        //Cursor cursor= db.rawQuery("SELECT * FROM "+GEARS_TABLE+" WHERE "+COL_ID+" = ?",new String[]{String.valueOf(id)});
+        String query="SELECT * FROM "+GEAR_POINTAGE_TABLE;
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst())
+        {
+
+            do {
+
+
+
+                int PointageID=cursor.getInt(0);
+                int GearID=cursor.getInt(2);
+
+
+                returnedList.add(GearID);
+                returnedList.add(PointageID);
+
+            }
+            while (cursor.moveToNext());
+        }
+        else
+        {
+            //this is a failure so we do nothin
+        }
+
+
+
+        return returnedList;
+    }
 }

@@ -118,4 +118,47 @@ public class Pointage_db extends SQLiteOpenHelper {
 
         return returnedList;
     }
+
+
+    public int getCurrentPointage()
+    {
+        int id=0;
+
+
+
+        String query="SELECT * FROM "+PG_TABLE+" ORDER BY "+COL_ID+" DESC LIMIT 1";
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor.moveToFirst())
+        {
+            //loop through the result (the cursor)  and create new list objet for each result
+            do {
+
+
+
+                id=cursor.getInt(0);
+
+
+
+
+                return id;
+
+
+
+
+
+            }
+            while (cursor.moveToNext());
+        }
+        else
+        {
+            //this is a failure so we do nothin
+        }
+
+
+
+
+        return id;
+    }
 }
