@@ -50,7 +50,7 @@ public class debarq_embarq extends AppCompatActivity {
 
 
                 editor.putString("mode_conditionnement","embarquement");
-
+                editor.apply();
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
@@ -84,6 +84,7 @@ public class debarq_embarq extends AppCompatActivity {
 
 
                 editor.putString("mode_conditionnement","debarquement");
+                editor.apply();
 
 
                startActivity(intent);

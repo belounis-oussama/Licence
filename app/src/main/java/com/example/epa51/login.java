@@ -66,13 +66,9 @@ public class login extends AppCompatActivity {
 
                     User_db db=new User_db(login.this);
                     boolean checkinfo=db.checknamepassword(User,Pass);
-                    if (checkinfo==true)
+                    boolean checkinfoUpper=db.checknamepassword(User.toLowerCase(),Pass.toLowerCase());
+                    if (checkinfo==true || checkinfoUpper==true)
                     {
-                       // Toast.makeText(login.this,"Correct infos",Toast.LENGTH_SHORT).show();
-
-
-
-
 
 
                         Intent intent =new Intent(login.this,debarq_embarq.class);
@@ -84,6 +80,7 @@ public class login extends AppCompatActivity {
 
 
                         editor.putString("pointeur_name",User);
+                        editor.apply();
 
 
                         startActivity(intent);

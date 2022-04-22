@@ -209,7 +209,7 @@ public class pointagePage1 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent =new Intent(pointagePage1.this,choose_stoppages.class);
                 saveListArrets();
-
+                saveRecord();
                 startActivity(intent);
             }
         });
@@ -222,8 +222,9 @@ public class pointagePage1 extends AppCompatActivity {
                 saveListGears();
                 Intent intent =new Intent(pointagePage1.this,AddUsedGear.class);
 
-
+                saveRecord();
                 startActivity(intent);
+
 
             }
         });
@@ -269,7 +270,7 @@ public class pointagePage1 extends AppCompatActivity {
         String json=sharedPreferences.getString("ListOfGears",null);
         Type type= new TypeToken<ArrayList<Gear_Model>>() {}.getType();
         Gears =gson.fromJson(json,type);
-        
+
 
 
         if (Gears==null)
