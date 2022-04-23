@@ -203,15 +203,11 @@ public class pointagePage1 extends AppCompatActivity {
                 {
                     Toast.makeText(pointagePage1.this,"Veuillez remplir tous les champs",Toast.LENGTH_SHORT).show();
 
-
                 }
 
                 else
                 {
-
                     Intent intent =new Intent(pointagePage1.this,pointagePage2.class);
-
-
                     Intent newintent=getIntent();
                     //save data history from pointage page 2
                     if (newintent.hasExtra("listofgoods"))
@@ -225,15 +221,6 @@ public class pointagePage1 extends AppCompatActivity {
                     }
 
                     saveRecord();
-
-
-
-
-
-
-
-
-
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 }
