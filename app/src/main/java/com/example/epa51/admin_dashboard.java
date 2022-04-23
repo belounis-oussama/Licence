@@ -20,7 +20,7 @@ public class admin_dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_admin_dashboard);
 
 
-
+        pointage =findViewById(R.id.pointage);
         sortir =findViewById(R.id.sortir);
         engins =findViewById(R.id.engin);
         utilisateur =findViewById(R.id.utilisateur);
