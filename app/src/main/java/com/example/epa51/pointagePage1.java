@@ -3,11 +3,13 @@ package com.example.epa51;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.SavedStateHandle;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -161,9 +164,30 @@ public class pointagePage1 extends AppCompatActivity {
         p1to_emdeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(pointagePage1.this,debarq_embarq.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+
+
+                MaterialAlertDialogBuilder dialog=new MaterialAlertDialogBuilder(pointagePage1.this);
+                dialog.setTitle("Avertissement");
+                dialog.setMessage("tout les données saisies seront supprimer \n voulez-vous continuer ?");
+                dialog.setIcon(R.drawable.ic_baseline_warning_24);
+                dialog.setBackground(getResources().getDrawable(R.drawable.alertdialogbg,null));
+
+                dialog.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent =new Intent(pointagePage1.this,debarq_embarq.class);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+                    }
+                });
+
+                dialog.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog.show();
             }
         });
 
@@ -173,22 +197,34 @@ public class pointagePage1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent =new Intent(pointagePage1.this,pointagePage2.class);
 
 
-                Intent newintent=getIntent();
-                //save data history from pointage page 2
-                if (newintent.hasExtra("listofgoods"))
+                if (TextUtils.isEmpty(navire.getText().toString())||TextUtils.isEmpty(nature.getText().toString())||TextUtils.isEmpty(brigade.getText().toString())||TextUtils.isEmpty(shift.getText().toString())||TextUtils.isEmpty(quai.getText().toString()))
                 {
-
-                    ArrayList<Goods_Model>goods_models=new ArrayList<>();
-                    ArrayList<Goods_Model> backuplist = (ArrayList<Goods_Model>) getIntent().getSerializableExtra("listofgoods");
-                    intent.putExtra("backuplist",backuplist);
+                    Toast.makeText(pointagePage1.this,"Veuillez remplir tous les champs",Toast.LENGTH_SHORT).show();
 
 
                 }
 
-                saveRecord();
+                else
+                {
+
+                    Intent intent =new Intent(pointagePage1.this,pointagePage2.class);
+
+
+                    Intent newintent=getIntent();
+                    //save data history from pointage page 2
+                    if (newintent.hasExtra("listofgoods"))
+                    {
+
+                        ArrayList<Goods_Model>goods_models=new ArrayList<>();
+                        ArrayList<Goods_Model> backuplist = (ArrayList<Goods_Model>) getIntent().getSerializableExtra("listofgoods");
+                        intent.putExtra("backuplist",backuplist);
+
+
+                    }
+
+                    saveRecord();
 
 
 
@@ -198,8 +234,11 @@ public class pointagePage1 extends AppCompatActivity {
 
 
 
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                }
+
+
 
             }
         });

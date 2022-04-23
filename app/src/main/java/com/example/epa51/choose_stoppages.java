@@ -10,12 +10,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.MaterialAutoCompleteTextView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
@@ -33,7 +36,7 @@ public class choose_stoppages extends AppCompatActivity {
     public TextInputEditText startdate,enddate,starttime,endtime;
     private DatePickerDialog datePickerDialog,datePickerDialog2;
     int hour,minute;
-    Button confirm_button_arret;
+    Button confirm_button_arret,cancel_button_arret;
     ArrayList<EtasArret_Model> arret;
     ArrayList<EtasArret_Model>Arret;
 
@@ -47,6 +50,7 @@ public class choose_stoppages extends AppCompatActivity {
         starttime=findViewById(R.id.starttime);
         endtime=findViewById(R.id.endtime);
         confirm_button_arret=findViewById(R.id.confirm_button_arret);
+        cancel_button_arret=findViewById(R.id.cancel_button_arret);
 
 
         startdate.setText(getTodayDate());
@@ -91,6 +95,41 @@ public class choose_stoppages extends AppCompatActivity {
         });
 
 
+        cancel_button_arret.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                MaterialAlertDialogBuilder dialog=new MaterialAlertDialogBuilder(choose_stoppages.this);
+
+                dialog.setMessage("voulez vous annuler l'opération ?");
+                dialog.setIcon(R.drawable.ic_round_question_answer_24);
+
+                dialog.setBackground(getResources().getDrawable(R.drawable.alertdialogbg,null));
+
+                dialog.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        finish();
+                    }
+                });
+
+                dialog.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                dialog.show();
+
+
+
+
+            }
+        });
+
 
         confirm_button_arret.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,13 +141,20 @@ public class choose_stoppages extends AppCompatActivity {
 
 
 
+                if (TextUtils.isEmpty(starttime.getText().toString())||TextUtils.isEmpty(endtime.getText().toString()) || TextUtils.isEmpty(autoCompleteMotif.getText().toString())) {
+                    Toast.makeText(choose_stoppages.this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Arret.add(new EtasArret_Model(startdate.getText().toString(),starttime.getText().toString(),enddate.getText().toString(),endtime.getText().toString(),autoCompleteMotif.getText().toString()));
+                    UpdateListofArrets();
+                    startActivity(intent);
+                }
 
 
 
 
-                Arret.add(new EtasArret_Model(startdate.getText().toString(),starttime.getText().toString(),enddate.getText().toString(),endtime.getText().toString(),autoCompleteMotif.getText().toString()));
-                UpdateListofArrets();
-                startActivity(intent);
+
 
             }
         });

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -132,6 +133,9 @@ public class pointagePage2 extends AppCompatActivity {
             public void onClick(View view) {
 
 
+
+
+
                 Pointage_db db=new Pointage_db(pointagePage2.this);
 
                 SavePointageData();
@@ -159,8 +163,22 @@ public class pointagePage2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                goods_models.add(new Goods_Model(nature.getText().toString(),Integer.parseInt(nombre.getText().toString()),Integer.parseInt(poid.getText().toString())));
-                setAdapter();
+
+
+
+                if (TextUtils.isEmpty(nature.getText().toString())||TextUtils.isEmpty(nombre.getText().toString()) || TextUtils.isEmpty(poid.getText().toString()))
+                {
+                    Toast.makeText(pointagePage2.this,"Veuillez remplir tous les champs",Toast.LENGTH_SHORT).show();
+
+
+                }
+                else
+                {
+                    goods_models.add(new Goods_Model(nature.getText().toString(),Integer.parseInt(nombre.getText().toString()),Integer.parseInt(poid.getText().toString())));
+                    setAdapter();
+                }
+
+
             }
         });
 
