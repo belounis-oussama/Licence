@@ -27,6 +27,7 @@
         <entry key="app/src/main/res/layout/activity_debarq_embarq.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_gear_details.xml" value="0.2334330910645575" />
         <entry key="app/src/main/res/layout/activity_list_gears.xml" value="0.2334330910645575" />
+        <entry key="app/src/main/res/layout/activity_list_pointages.xml" value="0.2302810516772439" />
         <entry key="app/src/main/res/layout/activity_listusers.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2463768115942029" />
@@ -46,6 +47,7 @@
         <entry key="app/src/main/res/layout/p_arret_cell.xml" value="0.22030825022665457" />
         <entry key="app/src/main/res/layout/p_gear_cell.xml" value="0.22030825022665457" />
         <entry key="app/src/main/res/layout/pointage2_cell.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/pointage_cell.xml" value="0.2302810516772439" />
         <entry key="app/src/main/res/layout/shiftcell.xml" value="0.22030825022665457" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.22" />
         <entry key="app/src/main/res/layout/user_cell.xml" value="0.2334330910645575" />

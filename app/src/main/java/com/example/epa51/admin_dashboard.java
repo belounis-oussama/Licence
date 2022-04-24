@@ -41,7 +41,8 @@ public class admin_dashboard extends AppCompatActivity {
         pointage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent =new Intent(admin_dashboard.this,ListPointages.class);
+                startActivity(intent);
             }
         });
 
