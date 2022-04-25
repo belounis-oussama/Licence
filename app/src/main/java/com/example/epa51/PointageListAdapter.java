@@ -1,70 +1,37 @@
 package com.example.epa51;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PointageListAdapter extends RecyclerView.Adapter<PointageListAdapter.MyViewHolder> {
+public class PointageListAdapter extends ArrayAdapter<Pointage_Model> {
 
-    private List<Pointage_Model> pointage;
-    public PointageListAdapter(List<Pointage_Model> pointage)
+    public PointageListAdapter(Context context, List<Pointage_Model> pointages)
     {
-        this.pointage=pointage;
+        super(context,0,pointages);
     }
-
-
-
-
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        private TextView navire_cell;
-        private TextView date_cell;
-
-
-
-        public MyViewHolder(final View view)
-        {
-            super(view);
-            navire_cell= view.findViewById(R.id.navire_cell);
-            date_cell= view.findViewById(R.id.date_cell);
-
-        }
-    }
-
-
 
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.pointage_cell,parent,false);
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Pointage_Model pointage =getItem(position);
+        if (convertView==null)
+            convertView= LayoutInflater.from(getContext()).inflate(R.layout.pointage_cell, parent, false);
+        TextView navire=convertView.findViewById(R.id.navire_cell);
+        TextView date=convertView.findViewById(R.id.date_cell);
 
-        return new PointageListAdapter.MyViewHolder(itemView);
+        navire.setText(pointage.getNom_navire());
+        date.setText(pointage.getDate());
+
+        return convertView;
     }
-
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
-
-        String navire= pointage.get(position).getNom_navire();
-        String date= pointage.get(position).getDate();
-
-
-        holder.navire_cell.setText(navire);
-        holder.date_cell.setText(date);
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return pointage.size();
-    }
-
 }

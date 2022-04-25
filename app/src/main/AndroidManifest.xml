@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Epa51">
         <activity
+            android:name=".Pointage_details"
+            android:exported="false" />
+        <activity
             android:name=".ListPointages"
             android:exported="false" />
         <activity
