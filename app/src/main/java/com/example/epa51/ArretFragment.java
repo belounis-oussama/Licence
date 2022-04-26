@@ -22,6 +22,12 @@ public class ArretFragment extends Fragment {
         Bundle id=getArguments();
         String idPointage = id.getString("idPointage");
         Toast.makeText(getActivity(),idPointage,Toast.LENGTH_SHORT).show();
+        
+
+
+
+
+
         return inflater.inflate(R.layout.arrets_fragment,container,false);
     }
 }
