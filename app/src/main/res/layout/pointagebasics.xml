@@ -5,13 +5,104 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/navire_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pointage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        android:text="Navire : xxxx"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/pointeur_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pointeur : xxxx"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navire_details" />
+
+
+    <TextView
+        android:id="@+id/mode_conditionement_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mode de conditionement : xxxx"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pointeur_details" />
+
+
+    <TextView
+        android:id="@+id/date_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date : dd/mm/yy"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mode_conditionement_details" />
+
+    <TextView
+        android:id="@+id/nature_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nature : xxx"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_details" />
+
+    <TextView
+        android:id="@+id/brigade_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="brigade : x"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nature_details" />
+
+
+    <TextView
+        android:id="@+id/shift_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="shift : x"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/brigade_details"
+        app:layout_constraintTop_toBottomOf="@+id/nature_details" />
+
+
+    <TextView
+        android:id="@+id/quai_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="quai : x"
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/brigade_details" />
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,8 +43,12 @@ public class ListPointages extends AppCompatActivity {
                 String id = pointage.substring(pointage.indexOf("id=") + "id=".length(), pointage.indexOf(","));
                 Toast.makeText(ListPointages.this,id,Toast.LENGTH_SHORT).show();
 
-//                intent.putExtra("idkey",id);
+                intent.putExtra("idPointage",id);
                 startActivity(intent);
+
+
+
+
                 return false;
             }
         });
