@@ -14,6 +14,7 @@
         android:layout_marginLeft="20dp"
         android:textSize="18sp"
         android:text="Navire : xxxx"
+        android:textColor="@color/darkblue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pointeur : xxxx"
+        android:textColor="@color/darkblue"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:textSize="18sp"
@@ -37,6 +39,7 @@
         android:text="Mode de conditionement : xxxx"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:textColor="@color/darkblue"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pointeur_details" />
@@ -48,6 +51,7 @@
         android:layout_height="wrap_content"
         android:text="Date : dd/mm/yy"
         android:layout_marginTop="20dp"
+        android:textColor="@color/darkblue"
         android:layout_marginLeft="20dp"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="nature : xxx"
+        android:textColor="@color/darkblue"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:textSize="18sp"
@@ -68,6 +73,7 @@
         android:id="@+id/brigade_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/darkblue"
         android:text="brigade : x"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
@@ -84,6 +90,7 @@
         android:layout_marginTop="20dp"
         android:text="shift : x"
         android:textSize="18sp"
+        android:textColor="@color/darkblue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/brigade_details"
         app:layout_constraintTop_toBottomOf="@+id/nature_details" />
@@ -96,6 +103,7 @@
         android:text="quai : x"
         android:textSize="18sp"
         android:layout_marginLeft="20dp"
+        android:textColor="@color/darkblue"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/brigade_details" />
