@@ -298,4 +298,38 @@ public class Gears_db extends SQLiteOpenHelper {
     }
 
 
+    public Gear_Model  getGearInfo(int IdGear)
+    {
+        Gear_Model GearInfo = null;
+        String gear="";
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor= db.rawQuery("SELECT * FROM "+GEARS_TABLE+" WHERE "+COL_ID+" = ?",new String[]{String.valueOf(IdGear)});
+
+
+
+        if (cursor.moveToFirst())
+        {
+            //loop through the result (the cursor)  and create new list objet for each result
+            do {
+
+
+                int GearID=cursor.getInt(0);
+                String GearType=cursor.getString(1);
+                int GearNumber=cursor.getInt(2);
+                GearInfo=new Gear_Model(GearID,GearType,GearNumber);
+
+
+
+            }
+            while (cursor.moveToNext());
+        }
+
+        return GearInfo;
+
+    }
+
+
+
+
+
 }
