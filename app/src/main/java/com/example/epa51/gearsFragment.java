@@ -47,7 +47,7 @@ public class gearsFragment extends Fragment {
 
 
 
-        //UserAdapter userAdapter=new UserAdapter(getApplicationContext(),User_Model.user_modelArrayList);
+
 
 
 
