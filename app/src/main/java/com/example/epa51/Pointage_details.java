@@ -8,12 +8,15 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Pointage_details extends AppCompatActivity {
 
     public BottomNavigationView bottomNav;
+    public ImageButton backbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,17 @@ public class Pointage_details extends AppCompatActivity {
         setContentView(R.layout.activity_pointage_details);
         bottomNav=findViewById(R.id.BottomNavigationP);
         bottomNav.setOnNavigationItemSelectedListener(navlistener);
+        backbtn=findViewById(R.id.backbtn_pointageDetails);
 
+
+
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         //Bundle ID=new Bundle();
         //                ID.putString("idPointage",id);

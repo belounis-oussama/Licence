@@ -7,12 +7,26 @@
     tools:context=".Pointage_details"
     android:theme="@style/Theme2">
 
-<FrameLayout
-    android:id="@+id/Fragment_Pointage"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_above="@+id/BottomNavigationP"
-    />
+
+
+    <ImageButton
+        android:id="@+id/backbtn_pointageDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="@drawable/arrowleftb"
+
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <FrameLayout
+        android:id="@+id/Fragment_Pointage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/BottomNavigationP" />
 
 
 
