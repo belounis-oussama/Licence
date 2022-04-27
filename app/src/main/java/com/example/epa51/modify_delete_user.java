@@ -2,6 +2,7 @@ package com.example.epa51;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class modify_delete_user extends AppCompatActivity {
 
@@ -75,16 +78,42 @@ public class modify_delete_user extends AppCompatActivity {
         deletetext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newname=fullname.getText().toString();
-                String newpass=password.getText().toString();
-
-                User_Model userinfo=new User_Model(id,newname,newpass);
 
 
-                boolean success = db.deleteUser(userinfo);
-                Intent intent =new Intent(modify_delete_user.this,listusers.class);
-                startActivity(intent);
-                finish();
+
+                MaterialAlertDialogBuilder dialog=new MaterialAlertDialogBuilder(modify_delete_user.this);
+                dialog.setTitle("Avertissement");
+                dialog.setMessage("Voulez-vous vraiment supprimer ce pointeur ?");
+                dialog.setIcon(R.drawable.delete_icon);
+                dialog.setBackground(getResources().getDrawable(R.drawable.alertdialogbg,null));
+                dialog.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String newname=fullname.getText().toString();
+                        String newpass=password.getText().toString();
+
+                        User_Model userinfo=new User_Model(id,newname,newpass);
+
+
+                        boolean success = db.deleteUser(userinfo);
+                        Intent intent =new Intent(modify_delete_user.this,listusers.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                dialog.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                dialog.show();
+
+
+
             }
         });
 

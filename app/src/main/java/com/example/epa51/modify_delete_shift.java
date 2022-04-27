@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Locale;
@@ -88,23 +90,50 @@ public class modify_delete_shift extends AppCompatActivity {
 
     public void DeleteShift(View view) {
 
-        int id=Integer.parseInt(getIntent().getStringExtra("idkeyshift"));
-
-        Shift_db db=new Shift_db(modify_delete_shift.this);
-        String Name=editShiftName.getText().toString();
-        String Start=editStartshift.getText().toString();
-        String End=editEndShift.getText().toString();
 
 
+        MaterialAlertDialogBuilder dialog=new MaterialAlertDialogBuilder(modify_delete_shift.this);
+        dialog.setTitle("Avertissement");
+        dialog.setMessage("Voulez-vous vraiment supprimer ce shift ?");
+        dialog.setIcon(R.drawable.delete_icon);
+        dialog.setBackground(getResources().getDrawable(R.drawable.alertdialogbg,null));
+        dialog.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-        Shift_Modele shiftInfo=new Shift_Modele(id,Name,Start,End);
+                int id=Integer.parseInt(getIntent().getStringExtra("idkeyshift"));
 
-        boolean success=db.DeleteShift(shiftInfo);
+                Shift_db db=new Shift_db(modify_delete_shift.this);
+                String Name=editShiftName.getText().toString();
+                String Start=editStartshift.getText().toString();
+                String End=editEndShift.getText().toString();
 
 
 
-        Intent intent =new Intent(modify_delete_shift.this,Shiftlist.class);
-        startActivity(intent);
+                Shift_Modele shiftInfo=new Shift_Modele(id,Name,Start,End);
+
+                boolean success=db.DeleteShift(shiftInfo);
+
+
+
+                Intent intent =new Intent(modify_delete_shift.this,Shiftlist.class);
+                startActivity(intent);
+            }
+        });
+
+        dialog.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        dialog.show();
+
+
+
+
+
     }
 
     public void TimerStart(View view) {
