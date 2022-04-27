@@ -39,20 +39,8 @@ public class gearsFragment extends Fragment {
         gears.add(db.getGearInfo(gearUsed.get(i)));
         }
 
-
-
         GearAdapter gearAdapter=new GearAdapter(getContext(),gears);
         listOfGear.setAdapter(gearAdapter);
-
-
-
-
-
-
-
-
-
-
 
         return view;
     }
