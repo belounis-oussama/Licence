@@ -9,11 +9,14 @@
         <entry key="app/src/main/res/drawable/alertdialogbg.xml" value="0.2" />
         <entry key="app/src/main/res/drawable/buttomlightblue.xml" value="0.2385" />
         <entry key="app/src/main/res/drawable/dashboard_bg.xml" value="0.2385" />
+        <entry key="app/src/main/res/drawable/gears_icon.xml" value="0.244" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2" />
         <entry key="app/src/main/res/drawable/ic_round_question_answer_24.xml" value="0.2" />
         <entry key="app/src/main/res/drawable/lightbluebar.xml" value="0.2385" />
         <entry key="app/src/main/res/drawable/lightbluerounded.xml" value="0.2385" />
         <entry key="app/src/main/res/drawable/person_user.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/pointageicon.xml" value="0.244" />
+        <entry key="app/src/main/res/drawable/time_icon.xml" value="0.244" />
         <entry key="app/src/main/res/drawable/yellowbgcornered.xml" value="0.2385" />
         <entry key="app/src/main/res/drawable/yellowcircle.xml" value="0.2385" />
         <entry key="app/src/main/res/layout-land/activity_login.xml" value="0.2" />
