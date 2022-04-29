@@ -2,14 +2,20 @@ package com.example.epa51;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.PackageManagerCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
@@ -21,6 +27,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +45,7 @@ public class pointagePage2 extends AppCompatActivity {
     ImageView p2Top1,finishpointing;
     public String navire,naturep,brigade,shift,quai,pointeur_name,date_pointage,mode_conditionnement;
     public ArrayList<Gear_Model>Gears;
+    String[]permission;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +59,7 @@ public class pointagePage2 extends AppCompatActivity {
         nombre=findViewById(R.id.nombreinpute);
         p2Top1=findViewById(R.id.p2Top1);
         finishpointing=findViewById(R.id.finishpointing);
+        permission=new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
 
         LoadListData();
@@ -144,6 +154,14 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
+                if (VerifyPermission())
+                {
+                    ExportPointageCsv();
+                }
+                else {
+                    AskPermissionStorage();
+                }
+
 
 
 
@@ -182,6 +200,63 @@ public class pointagePage2 extends AppCompatActivity {
             }
         });
 
+
+
+
+    }
+
+    private boolean VerifyPermission()
+    {
+
+        //this verify is the user has already accept permission
+        boolean permission= ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)==(PackageManager.PERMISSION_GRANTED);
+        return permission;
+    }
+
+
+    private void AskPermissionStorage()
+    {
+        ActivityCompat.requestPermissions(this,permission,1);
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode)
+        {
+            case 1:
+            {
+                if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
+                {
+                    ExportPointageCsv();
+                }
+                else
+                {
+                    Toast.makeText(this,"Permission manquante..",Toast.LENGTH_LONG).show();
+                }
+                break;
+            }
+        }
+    }
+
+    private void ExportPointageCsv() {
+        Pointage_db db=new Pointage_db(pointagePage2.this);
+
+
+
+        File folder=new File(Environment.getExternalStorageDirectory(),"PointageEpa");
+        boolean folderCreated=false;
+        if (!folder.exists())
+        {
+            boolean mkdir = folder.mkdir();//if created folderCreate =true
+            Toast.makeText(pointagePage2.this,"succeful"+mkdir,Toast.LENGTH_SHORT).show();
+
+        }
+        else
+        {
+            Toast.makeText(pointagePage2.this,"alredy exist",Toast.LENGTH_SHORT).show();
+        }
 
 
 
@@ -263,7 +338,7 @@ public class pointagePage2 extends AppCompatActivity {
             Arretdb.AddArret(arret.get(0),idPointage);
         }
 
-        Toast.makeText(pointagePage2.this, Arretdb.getArret(idPointage).toString(),Toast.LENGTH_LONG).show();
+
 
 
 

@@ -65,7 +65,7 @@ public class login extends AppCompatActivity {
                 {
 
                     User_db db=new User_db(login.this);
-                    boolean checkinfo=db.checknamepassword(User,Pass);
+                    boolean checkinfo=db.checknamepassword(User,Pass);  //true if name and password are matching
                     boolean checkinfoUpper=db.checknamepassword(User.toLowerCase(),Pass.toLowerCase());
                     if (checkinfo==true || checkinfoUpper==true)
                     {
@@ -74,6 +74,8 @@ public class login extends AppCompatActivity {
                         Intent intent =new Intent(login.this,debarq_embarq.class);
                         intent.putExtra("namekey",User);//send name to typewriter
 
+
+                        //save username in sharedPreferences , We need it for our DB
 
                         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         SharedPreferences.Editor editor=sharedPreferences.edit();
@@ -110,15 +112,6 @@ public class login extends AppCompatActivity {
 
 
 
-/*
-                Button confirme,cancel;
-                confirme=findViewById(R.id.dialog_confimer);
-                cancel=findViewById(R.id.dialog_annuler);
-                dialog_admin.setContentView(R.layout.dialog_admin);
-                dialog_admin.show();
-*/
-
-
                 Intent intent =new Intent(login.this,admin_dashboard.class);
                 startActivity(intent);
                 finish();
@@ -127,6 +120,8 @@ public class login extends AppCompatActivity {
 
             }
         });
+
+
         adminimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

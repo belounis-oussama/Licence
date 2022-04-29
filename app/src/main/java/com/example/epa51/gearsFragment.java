@@ -33,14 +33,20 @@ public class gearsFragment extends Fragment {
         GearPointage_db GPdb=new GearPointage_db(getActivity());
         List<Integer> gearUsed = GPdb.getGearUsed(Integer.parseInt(idPointage));
 
+
+
+
         List<Gear_Model> gears=new ArrayList<>();
         for (int i=0;i<gearUsed.size();i++)
         {
         gears.add(db.getGearInfo(gearUsed.get(i)));
         }
 
-        GearAdapter gearAdapter=new GearAdapter(getContext(),gears);
-        listOfGear.setAdapter(gearAdapter);
+
+
+            GearAdapter gearAdapter=new GearAdapter(getContext(),gears);
+            listOfGear.setAdapter(gearAdapter);
+
 
         return view;
     }

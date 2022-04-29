@@ -30,20 +30,20 @@ public class AddUsedGear extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_used_gear);
 
+
+        //init wigdets
         ListGears=findViewById(R.id.chooseGearList);
         gobackbnt=findViewById(R.id.gobackbnt);
 
 
-        setListAdapter();
-        LoadListData();
+        setListAdapter();  //adapter for listView
+        LoadListData();   //load data saved ....list of gears used
 
 
         gobackbnt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(AddUsedGear.this,pointagePage1.class);
-
-
                 startActivity(intent);
             }
         });
@@ -72,9 +72,10 @@ public class AddUsedGear extends AppCompatActivity {
         });
     }
 
+
+
     private void UpdateListData() {
-
-
+        //add new gear to previous data of gears
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor=sharedPreferences.edit();
         Gson gson=new Gson();
@@ -85,8 +86,6 @@ public class AddUsedGear extends AppCompatActivity {
     }
 
     private void LoadListData() {
-
-
         SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor=sharedPreferences.edit();
         Gson gson=new Gson();
@@ -98,15 +97,12 @@ public class AddUsedGear extends AppCompatActivity {
         {
             Gears=new ArrayList<>();
         }
-
     }
 
     private void setListAdapter() {
 
         Gears_db db=new Gears_db(AddUsedGear.this);
         GearAdapter gearAdapter=new GearAdapter(getApplicationContext(),db.getallgears());
-
-        //UserAdapter userAdapter=new UserAdapter(getApplicationContext(),User_Model.user_modelArrayList);
         ListGears.setAdapter(gearAdapter);
     }
 }

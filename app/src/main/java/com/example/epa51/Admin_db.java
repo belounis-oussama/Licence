@@ -73,13 +73,7 @@ public class Admin_db extends SQLiteOpenHelper {
             //loop through the result (the cursor)  and create new list objet for each result
             do {
 
-
-
                 String Name=cursor.getString(1);
-
-
-
-
                 returnedList.add(Name);
 
             }
@@ -130,10 +124,6 @@ public class Admin_db extends SQLiteOpenHelper {
                 contentValues.put("DATE",date);
                 contentValues.put("IMAGE",image);
 
-
-
-
-
             }
             while (cursor.moveToNext());
         }
@@ -141,10 +131,6 @@ public class Admin_db extends SQLiteOpenHelper {
         {
             //this is a failure so we do nothin
         }
-
-
-
-
 
         return contentValues;
     }

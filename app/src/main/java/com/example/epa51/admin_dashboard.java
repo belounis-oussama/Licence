@@ -20,6 +20,7 @@ public class admin_dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_admin_dashboard);
 
 
+        //init widgets
         pointage =findViewById(R.id.pointage);
         sortir =findViewById(R.id.sortir);
         engins =findViewById(R.id.engin);
@@ -49,18 +50,8 @@ public class admin_dashboard extends AppCompatActivity {
         engins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
                 Intent intent =new Intent(admin_dashboard.this,listGears.class);
                 startActivity(intent);
-
-
-
-
-
-
-
             }
         });
 
@@ -71,7 +62,6 @@ public class admin_dashboard extends AppCompatActivity {
                 Intent intent =new Intent(admin_dashboard.this,login.class);
                 startActivity(intent);
                 finish();
-
             }
         });
 
