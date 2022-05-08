@@ -154,13 +154,6 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
-                if (VerifyPermission())
-                {
-                    ExportPointageCsv();
-                }
-                else {
-                    AskPermissionStorage();
-                }
 
 
 

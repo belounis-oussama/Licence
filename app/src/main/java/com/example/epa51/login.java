@@ -25,7 +25,6 @@ public class login extends AppCompatActivity {
     EditText fullName,password,adminpass;
     TextView admin;
     ImageView adminimg;
-    Timer timer;
     Dialog dialog_admin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +70,7 @@ public class login extends AppCompatActivity {
                     {
 
 
-                        Intent intent =new Intent(login.this,debarq_embarq.class);
+                        Intent intent =new Intent(login.this,Typewriter_welcome.class);
                         intent.putExtra("namekey",User);//send name to typewriter
 
 

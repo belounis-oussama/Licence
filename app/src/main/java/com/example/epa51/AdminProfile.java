@@ -37,6 +37,7 @@ public class AdminProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_profile);
 
+        //init widget
         profilePic=findViewById(R.id.circleImageView);
         changePic=findViewById(R.id.changepic);
         name=findViewById(R.id.nom_admin);
@@ -48,11 +49,12 @@ public class AdminProfile extends AppCompatActivity {
 
         Admin_db db=new Admin_db(AdminProfile.this);
 
-        if (db.getAllNames().isEmpty() == false)
+
+        //if there is an admin in database
+
+        if (!db.getAllNames().isEmpty())
         {
             ContentValues lastAdmin = db.getLastAdmin();
-
-
             name.setText(lastAdmin.get("FULLNAME").toString());
             password.setText(lastAdmin.get("PASSWORD").toString());
             date.setText(lastAdmin.get("DATE").toString());
@@ -64,21 +66,12 @@ public class AdminProfile extends AppCompatActivity {
         }
 
 
-
-
-
-       // Toast.makeText(AdminProfile.this, lastAdmin.toString(),Toast.LENGTH_SHORT).show();
-
-
-
-
-
-
         //request permission for camera
         if (ContextCompat.checkSelfPermission(AdminProfile.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(AdminProfile.this,new String[]{Manifest.permission.CAMERA},100);
         }
+
 
         changePic.setOnClickListener(new View.OnClickListener() {
             @Override
