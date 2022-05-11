@@ -2,7 +2,6 @@ package com.example.epa51;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +30,9 @@ public class AdminDialog extends AppCompatDialogFragment {
 
 
         builder.setView(view)
-                .setTitle("Password")
+                .setTitle("Veuillez entrer le mot de passe d'administration" +
+                        "" +
+                        "" )
                 .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
