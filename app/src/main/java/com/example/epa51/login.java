@@ -3,7 +3,6 @@ package com.example.epa51;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,10 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class login extends AppCompatActivity {
     Button cnxBtn;
@@ -125,9 +120,11 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent =new Intent(login.this,admin_dashboard.class);
-                startActivity(intent);
-                finish();
+                openDialog();
+
+               // Intent intent =new Intent(login.this,admin_dashboard.class);
+                //startActivity(intent);
+                //finish();
 
             }
         });
@@ -135,6 +132,13 @@ public class login extends AppCompatActivity {
 
 
 
+
+    }
+
+    private void openDialog() {
+
+        AdminDialog adminDialog=new AdminDialog();
+        adminDialog.show(getSupportFragmentManager(),"Password");
 
     }
 

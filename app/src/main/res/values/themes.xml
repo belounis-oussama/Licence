@@ -21,7 +21,28 @@
     <style name="Theme2" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
         <item name="hintTextColor">@color/darkblue</item>
         <item name="colorPrimary">@color/darkblue</item>
+
+
+
+
+
     </style>
+
+
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
+    </style>
+
+    <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/darkblue</item>
+    </style>
+
+    <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/darkblue</item>
+    </style>
+
 
 
 
