@@ -134,4 +134,49 @@ public class Admin_db extends SQLiteOpenHelper {
 
         return contentValues;
     }
+
+
+
+    public String getLastAdminPassword()
+    {
+
+
+
+
+
+        String password = null;
+
+        String query="SELECT * FROM "+ADMIN_TABLE+" ORDER BY "+COL_ID+" DESC LIMIT 1";
+        SQLiteDatabase db=this.getReadableDatabase();  //getReadablDatabase is for reading inside the database
+        Cursor cursor = db.rawQuery(query,null); //result of the query in a cursur
+
+        if (cursor.moveToFirst())
+        {
+            //loop through the result (the cursor)  and create new list objet for each result
+            do {
+
+
+                //0 for first column ,1 for sec colum .......
+                int id=cursor.getInt(0);
+                String name=cursor.getString(1);
+                 password=cursor.getString(2);
+                String date=cursor.getString(3);
+                byte[] image=cursor.getBlob(4);
+
+
+
+
+            }
+            while (cursor.moveToNext());
+        }
+        else
+        {
+            //this is a failure so we do nothin
+        }
+
+        return password;
+    }
+
+
+
 }
