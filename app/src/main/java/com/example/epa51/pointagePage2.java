@@ -29,6 +29,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -149,14 +150,14 @@ public class pointagePage2 extends AppCompatActivity {
                 Pointage_db db=new Pointage_db(pointagePage2.this);
 
                 SavePointageData();
+                try {
+                    ExportTextFile();
 
-
-
-
-
-
-
-
+                    Toast.makeText(pointagePage2.this,"YES",Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(pointagePage2.this,"NO",Toast.LENGTH_SHORT).show();
+                }
 
 
                 SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -198,13 +199,20 @@ public class pointagePage2 extends AppCompatActivity {
 
     }
 
-    private boolean VerifyPermission()
-    {
+    private void ExportTextFile() throws IOException {
 
-        //this verify is the user has already accept permission
-        boolean permission= ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)==(PackageManager.PERMISSION_GRANTED);
-        return permission;
+        File d=getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+        File file=new File(d,"data.txt");
+        FileWriter writer=new FileWriter(file);
+        writer.append("Hiiiii");
+        Toast.makeText(pointagePage2.this,file.getPath(),Toast.LENGTH_SHORT).show();
+        writer.close();
+
+
+
     }
+
+
 
 
     private void AskPermissionStorage()

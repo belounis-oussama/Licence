@@ -40,10 +40,9 @@ GearAdapter gearAdapter=new GearAdapter(getApplicationContext(),db.getallgears()
 
 
         setGearAdapter();
-        gearlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        gearlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent =new Intent(listGears.this,modify_delete_gear.class);
                 String type= gearlist.getAdapter().getItem(i).toString();
 
@@ -54,10 +53,8 @@ GearAdapter gearAdapter=new GearAdapter(getApplicationContext(),db.getallgears()
 
 
                 startActivity(intent);
-                return false;
             }
         });
-
 
         backbtn_listgears.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -45,20 +45,15 @@ public class Shiftlist extends AppCompatActivity {
 
 
 
-        shiftList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        shiftList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent =new Intent(Shiftlist.this,modify_delete_shift.class);
                 String shift= shiftList.getAdapter().getItem(i).toString();
 
                 String id = shift.substring(shift.indexOf("id=") + "id=".length(), shift.indexOf(","));
-
-
                 intent.putExtra("idkeyshift",id);
-
-
                 startActivity(intent);
-                return false;
             }
         });
     }

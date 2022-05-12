@@ -32,9 +32,9 @@ public class ListPointages extends AppCompatActivity {
 
 
         setAdapter();
-        pointage_list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        pointage_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent =new Intent(ListPointages.this,Pointage_details.class);
                 //String name= userslistview.getAdapter().getItem(i).toString();
 
@@ -45,14 +45,8 @@ public class ListPointages extends AppCompatActivity {
 
                 intent.putExtra("idPointage",id);
                 startActivity(intent);
-
-
-
-
-                return false;
             }
         });
-
 
 
         goback.setOnClickListener(new View.OnClickListener() {

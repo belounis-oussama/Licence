@@ -39,11 +39,9 @@ public class listusers extends AppCompatActivity {
            UserAdapter userAdapter=new UserAdapter(getApplicationContext(),db.getall());
 
         userslistview.setAdapter(userAdapter);
-        userslistview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        userslistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent =new Intent(listusers.this,modify_delete_user.class);
                 String name= userslistview.getAdapter().getItem(i).toString();
 
@@ -54,8 +52,6 @@ public class listusers extends AppCompatActivity {
 
 
                 startActivity(intent);
-
-                return false;
             }
         });
 
