@@ -1,5 +1,9 @@
 package com.example.epa51;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -11,12 +15,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -24,13 +32,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.epa51.databinding.ActivityAddUsedGearBinding;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +59,7 @@ public class pointagePage2 extends AppCompatActivity {
     public String navire,naturep,brigade,shift,quai,pointeur_name,date_pointage,mode_conditionnement;
     public ArrayList<Gear_Model>Gears;
     String[]permission;
+    ActivityResultLauncher<Intent> activityResultLauncher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +76,27 @@ public class pointagePage2 extends AppCompatActivity {
         permission=new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
 
+        activityResultLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+
+                if (result.getResultCode()== Activity.RESULT_OK)
+                {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+                    {
+                        if (Environment.isExternalStorageManager())
+                        {
+                            Toast.makeText(getApplicationContext(),"permission Granted" , Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(),"permission Denied" , Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+
+            }
+        });
         LoadListData();
 
 
@@ -149,14 +183,16 @@ public class pointagePage2 extends AppCompatActivity {
 
                 Pointage_db db=new Pointage_db(pointagePage2.this);
 
-                SavePointageData();
-                try {
-                    ExportTextFile();
+             //   SavePointageData();
 
-                    Toast.makeText(pointagePage2.this,"YES",Toast.LENGTH_SHORT).show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(pointagePage2.this,"NO",Toast.LENGTH_SHORT).show();
+                if (CheckPermission())
+                {
+                    ExportTextFile();
+                }
+
+                else
+                {
+                    AskPermissionStorage();
                 }
 
 
@@ -166,6 +202,7 @@ public class pointagePage2 extends AppCompatActivity {
                 editor.apply();
             }
         });
+
 
 
 
@@ -199,14 +236,45 @@ public class pointagePage2 extends AppCompatActivity {
 
     }
 
-    private void ExportTextFile() throws IOException {
+    private boolean CheckPermission() {
 
-        File d=getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
-        File file=new File(d,"data.txt");
-        FileWriter writer=new FileWriter(file);
-        writer.append("Hiiiii");
-        Toast.makeText(pointagePage2.this,file.getPath(),Toast.LENGTH_SHORT).show();
-        writer.close();
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.R)
+        {
+            return Environment.isExternalStorageManager();
+        }
+        else
+        {
+            int writeCheck=ContextCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            return writeCheck==PackageManager.PERMISSION_GRANTED ;
+        }
+
+    }
+
+    private void ExportTextFile()  {
+
+
+        String text="hey this is my text";
+        FileOutputStream file=null;
+        try {
+
+            File f=new File(Environment.getExternalStoragePublicDirectory("Download"),"file.txt");
+            f.createNewFile();
+            file=new FileOutputStream(f);
+            file.write(text.getBytes());
+            file.close();
+
+        }
+
+        catch(FileNotFoundException exception)
+        {
+            Toast.makeText(pointagePage2.this,"File not found",Toast.LENGTH_SHORT).show();
+        }
+        catch (IOException exception2)
+        {
+            Toast.makeText(pointagePage2.this,"IO Exception",Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
 
@@ -217,7 +285,26 @@ public class pointagePage2 extends AppCompatActivity {
 
     private void AskPermissionStorage()
     {
-        ActivityCompat.requestPermissions(this,permission,1);
+        if (Build.VERSION.SDK_INT>= Build.VERSION_CODES.R)
+        {
+            try {
+                Intent intent=new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                intent.addCategory("android.intent.category.DEFAULT");
+                intent.setData(Uri.parse(String.format("package:%s",new Object[]{getApplicationContext().getPackageName()})));
+                activityResultLauncher.launch(intent);
+            }
+            catch (Exception e)
+            {
+                Intent intent=new Intent();
+                intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                activityResultLauncher.launch(intent);
+
+            }
+        }
+
+        else {
+            ActivityCompat.requestPermissions(pointagePage2.this,permission,30);
+        }
     }
 
 
@@ -226,19 +313,26 @@ public class pointagePage2 extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode)
         {
-            case 1:
-            {
-                if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
+            case 30:
+                if (grantResults.length>0)
                 {
-                    ExportPointageCsv();
+                    boolean write=grantResults[0]==PackageManager.PERMISSION_GRANTED;
+                    if (write)
+                    {
+                        Toast.makeText(this,"Permission Granded..",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(this,"Permission manquante..",Toast.LENGTH_LONG).show();
+                    }
+
                 }
-                else
-                {
-                    Toast.makeText(this,"Permission manquante..",Toast.LENGTH_LONG).show();
+
+                else {
+                    Toast.makeText(this,"You denied the permission",Toast.LENGTH_LONG).show();
                 }
                 break;
-            }
-        }
+                }
     }
 
     private void ExportPointageCsv() {

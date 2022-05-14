@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Studies/LicenceUpdate/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.2755208333333333" />
+        <entry key="..\:/Studies/LicenceUpdate/app/src/main/res/layout/activity_admin_profile.xml" value="0.2755208333333333" />
+        <entry key="..\:/Studies/LicenceUpdate/app/src/main/res/layout/activity_choose_gear.xml" value="0.2755208333333333" />
+        <entry key="..\:/Studies/LicenceUpdate/app/src/main/res/layout/activity_debarq_embarq.xml" value="0.11504424778761062" />
+        <entry key="..\:/Studies/LicenceUpdate/app/src/main/res/layout/activity_listusers.xml" value="0.13131313131313133" />
+        <entry key="..\:/Studies/LicenceUpdate/app/src/main/res/layout/activity_login.xml" value="0.13131313131313133" />
+        <entry key="..\:/Studies/LicenceUpdate/app/src/main/res/layout/gear_fragment.xml" value="0.2755208333333333" />
+        <entry key="..\:/Studies/LicenceUpdate/app/src/main/res/layout/password_admin.xml" value="0.2755208333333333" />
+        <entry key="..\:/Studies/LicenceUpdate/app/src/main/res/layout/pointagebasics.xml" value="0.2755208333333333" />
         <entry key="Epa_admin/src/main/res/layout/activity_dashboard.xml" value="0.2334330910645575" />
         <entry key="app/src/main/res/drawable-v24/bluecircle.xml" value="0.2385" />
         <entry key="app/src/main/res/drawable-v24/whitecircle.xml" value="0.2385" />

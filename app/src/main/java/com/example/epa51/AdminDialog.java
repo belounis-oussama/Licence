@@ -20,7 +20,7 @@ public class AdminDialog extends AppCompatDialogFragment {
 
     EditText passwordField;
 
-    private String TITLE_COLOR = "#000080";
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
