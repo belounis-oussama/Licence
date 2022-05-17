@@ -51,9 +51,9 @@ public class Gear_details extends AppCompatActivity {
                 {
                     Gears_db data=new Gears_db(Gear_details.this);
 
-                    //dont forget to implement this plz
 
-                    if (data.Checkgearinfos(Gear,Number)==true)
+
+                    if (data.Checkgearinfos(Gear)==true)
                     {
                         Toast.makeText(Gear_details.this,"Gear already exists",Toast.LENGTH_SHORT).show();
                     }

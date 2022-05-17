@@ -48,20 +48,27 @@ public class login extends AppCompatActivity {
 
 
                 //if user dosent fill all textfields
-                if (TextUtils.isEmpty(User)||TextUtils.isEmpty(Pass))
+                if (TextUtils.isEmpty(User))
                 {
+                    fullName.setError("Champ vide");
+                    fullName.requestFocus();
                     Toast.makeText(login.this,"Veuillez remplir tous les champs",Toast.LENGTH_SHORT).show();
-
-
                 }
 
+                else if (TextUtils.isEmpty(Pass))
+                {
+
+
+                    password.setError("Champ vide");
+                    password.requestFocus();
+                }
                 else
                 {
 
                     User_db db=new User_db(login.this);
                     boolean checkinfo=db.checknamepassword(User,Pass);  //true if name and password are matching
                     boolean checkinfoUpper=db.checknamepassword(User.toLowerCase(),Pass.toLowerCase());
-                    if (checkinfo==true || checkinfoUpper==true)
+                    if (checkinfo || checkinfoUpper)
                     {
 
 
@@ -101,17 +108,7 @@ public class login extends AppCompatActivity {
         admin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               // openDialog();
-
-
-
-                Intent intent =new Intent(login.this,admin_dashboard.class);
-                startActivity(intent);
-                finish();
-
-
-
+                openDialog();
             }
         });
 
@@ -119,13 +116,7 @@ public class login extends AppCompatActivity {
         adminimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 openDialog();
-
-               // Intent intent =new Intent(login.this,admin_dashboard.class);
-                //startActivity(intent);
-                //finish();
-
             }
         });
 
@@ -136,10 +127,8 @@ public class login extends AppCompatActivity {
     }
 
     private void openDialog() {
-
         AdminDialog adminDialog=new AdminDialog();
         adminDialog.show(getSupportFragmentManager(),"Password_Admin");
-
     }
 
 
