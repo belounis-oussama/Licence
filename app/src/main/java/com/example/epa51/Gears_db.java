@@ -93,20 +93,16 @@ public class Gears_db extends SQLiteOpenHelper {
         List<Gear_Model> returnedList=new ArrayList<>();
         String query="SELECT * FROM "+GEARS_TABLE;
         SQLiteDatabase db=this.getReadableDatabase();  //getReadablDatabase is for reading inside the database
-        Cursor cursor = db.rawQuery(query,null); //result of the query in a cursur
-
+        Cursor cursor = db.rawQuery(query,null);
         if (cursor.moveToFirst())
         {
             //loop through the result (the cursor)  and create new list objet for each result
             do {
 
-
                 //0 for first column ,1 for sec colum .......
                 int GearID=cursor.getInt(0);
                 String GearType=cursor.getString(1);
                 int GearNumber=cursor.getInt(2);
-
-
                 Gear_Model newgear=new Gear_Model(GearID,GearType,GearNumber);//send to the constructor
                 returnedList.add(newgear);
 
@@ -115,11 +111,8 @@ public class Gears_db extends SQLiteOpenHelper {
         }
         else
         {
-            //this is a failure so we do nothin
+            //this is a failure so we do nothing
         }
-
-
-
         return returnedList;
     }
 
@@ -159,7 +152,6 @@ public class Gears_db extends SQLiteOpenHelper {
         info_holder.put(COL_ID,gear_model.getId());
         info_holder.put(COL_TYPE,gear_model.getGear_type());
         info_holder.put(COL_NUMBER,gear_model.getGear_number());
-
 
         //add data to ContentValues then add ContentValues to db
 

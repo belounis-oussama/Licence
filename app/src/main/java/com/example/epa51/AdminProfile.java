@@ -88,21 +88,21 @@ public class AdminProfile extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Admin_db db=new Admin_db(AdminProfile.this);
 
+                Admin_db db=new Admin_db(AdminProfile.this);
                 Bitmap bm=((BitmapDrawable)profilePic.getDrawable()).getBitmap();
                 ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
                 bm.compress(Bitmap.CompressFormat.PNG,100,byteArrayOutputStream);
                 byte[] Image=byteArrayOutputStream.toByteArray();
                 boolean b = db.InsertData(name.getText().toString(), password.getText().toString(), date.getText().toString(), Image);
 
-                if (b==true)
+                if (b)
                 {
-                    Toast.makeText(AdminProfile.this,"Done",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminProfile.this,"Données enregistrées avec succès",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    Toast.makeText(AdminProfile.this,"Error",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminProfile.this,"Erreur lors de la sauvegarde de données",Toast.LENGTH_SHORT).show();
                 }
             }
         });
