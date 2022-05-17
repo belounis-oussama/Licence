@@ -36,6 +36,13 @@ import com.example.epa51.databinding.ActivityAddUsedGearBinding;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -183,7 +190,7 @@ public class pointagePage2 extends AppCompatActivity {
 
                 Pointage_db db=new Pointage_db(pointagePage2.this);
 
-             //   SavePointageData();
+             SavePointageData();
 
                 if (CheckPermission())
                 {
@@ -257,12 +264,62 @@ public class pointagePage2 extends AppCompatActivity {
         FileOutputStream file=null;
         try {
 
-            File f=new File(Environment.getExternalStoragePublicDirectory("Download"),"file.txt");
+
+
+            File f=new File(Environment.getExternalStoragePublicDirectory("Download"),"newfile.xls");
             f.createNewFile();
             file=new FileOutputStream(f);
             file.write(text.getBytes());
             file.close();
 
+
+
+            //hna try
+
+/*
+            Workbook wb=new HSSFWorkbook();
+            Cell cell=null;
+            CellStyle cellStyle=wb.createCellStyle();
+
+
+
+
+            Sheet sheet=null;
+            sheet =wb.createSheet("myfile");
+
+            Row row=sheet.createRow(0);
+
+            cell =row.createCell(0);
+            cell.setCellValue("HEy 1");
+            cell.setCellStyle(cellStyle);
+
+
+            cell =row.createCell(1);
+            cell.setCellValue("HEy 2");
+            cell.setCellStyle(cellStyle);
+
+
+
+            sheet.setColumnWidth(0,200);
+            sheet.setColumnWidth(1,250);
+
+
+            File f=new File(Environment.getExternalStoragePublicDirectory("Download"),"file.xls");
+            file=new FileOutputStream(f);
+            wb.write(file);
+
+
+
+
+
+
+
+
+
+
+
+            file.close();
+*/
         }
 
         catch(FileNotFoundException exception)

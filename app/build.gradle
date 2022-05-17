@@ -44,6 +44,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0' //this one for storing list in sharedpref
     implementation 'de.hdodenhof:circleimageview:3.1.0' //circle imageview
     implementation 'com.opencsv:opencsv:4.6'
+    implementation 'org.apache.poi:poi:4.0.0'
+    implementation 'org.apache.poi:poi-ooxml:4.0.0'
 
 
 }

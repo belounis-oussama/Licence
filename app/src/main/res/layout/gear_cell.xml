@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:text="Numero"
+            android:text="Nombre"
             android:textColor="@color/darkblue"
             android:textSize="14sp" />
 

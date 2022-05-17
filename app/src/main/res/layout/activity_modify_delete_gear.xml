@@ -45,7 +45,7 @@
         android:drawableStart="@drawable/number40dp"
         android:gravity="center"
         android:inputType="number"
-        android:hint="Numero d'engin"
+        android:hint="Nombre d'engin"
         android:textColor="@color/darkblue"
         android:textColorHint="@color/darkblue"
         app:layout_constraintEnd_toEndOf="parent"
