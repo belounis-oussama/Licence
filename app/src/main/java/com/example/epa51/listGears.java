@@ -19,7 +19,7 @@ ImageButton add_listgears,backbtn_listgears;
 
         Gears_db db=new Gears_db(listGears.this);
 
-GearAdapter gearAdapter=new GearAdapter(getApplicationContext(),db.getallgears());
+        GearAdapter gearAdapter=new GearAdapter(getApplicationContext(),db.getallgears());
 
         //UserAdapter userAdapter=new UserAdapter(getApplicationContext(),User_Model.user_modelArrayList);
         gearlist.setAdapter(gearAdapter);

@@ -70,6 +70,7 @@ public class pointagePage2 extends AppCompatActivity {
     public ArrayList<Gear_Model>Gears;
     String[]permission;
     ActivityResultLauncher<Intent> activityResultLauncher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -211,6 +212,16 @@ public class pointagePage2 extends AppCompatActivity {
                 SharedPreferences.Editor editor =sharedPreferences.edit();
                 editor.clear();
                 editor.apply();
+
+                //save user logged in
+
+
+
+
+                String currentUserLoggeed=db.getPointageData(db.getCurrentPointage()).getNom_pointeur();
+                editor.putString("pointeur_name",currentUserLoggeed);
+                editor.apply();
+
             }
         });
 
@@ -467,7 +478,6 @@ public class pointagePage2 extends AppCompatActivity {
                 Intent intent=new Intent();
                 intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
                 activityResultLauncher.launch(intent);
-
             }
         }
 
@@ -504,27 +514,7 @@ public class pointagePage2 extends AppCompatActivity {
                 }
     }
 
-    private void ExportPointageCsv() {
-        Pointage_db db=new Pointage_db(pointagePage2.this);
 
-
-
-        File folder=new File(Environment.getExternalStorageDirectory(),"PointageEpa");
-        boolean folderCreated=false;
-        if (!folder.exists())
-        {
-            boolean mkdir = folder.mkdir();//if created folderCreate =true
-            Toast.makeText(pointagePage2.this,"succeful"+mkdir,Toast.LENGTH_SHORT).show();
-
-        }
-        else
-        {
-            Toast.makeText(pointagePage2.this,"alredy exist",Toast.LENGTH_SHORT).show();
-        }
-
-
-
-    }
 
     private void SavePointageData() {
 
@@ -540,6 +530,7 @@ public class pointagePage2 extends AppCompatActivity {
         if (sharedPreferences.contains("date_pointage")) {  date_pointage =sharedPreferences.getString("date_pointage", ""); }
         if (sharedPreferences.contains("mode_conditionnement")) { mode_conditionnement =sharedPreferences.getString("mode_conditionnement", ""); }
         Pointage_Model newPointageInfos=new Pointage_Model(-1,pointeur_name,navire,date_pointage,mode_conditionnement,naturep,brigade,shift,quai);
+
 
         Pointage_db DB=new Pointage_db(pointagePage2.this);
         DB.AddPointage(newPointageInfos);
@@ -616,7 +607,6 @@ public class pointagePage2 extends AppCompatActivity {
         String json=sharedPreferences.getString("ListOfArrets",null);
         Type type= new TypeToken<ArrayList<EtasArret_Model>>() {}.getType();
         arret =gson.fromJson(json,type);
-
 
         if (arret==null)
         {

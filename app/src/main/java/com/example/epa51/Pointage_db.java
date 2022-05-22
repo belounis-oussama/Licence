@@ -201,4 +201,41 @@ public class Pointage_db extends SQLiteOpenHelper {
     }
 
 
+    public List<Pointage_Model> getPointagesOfUser(String username)
+    {
+
+        List<Pointage_Model> returnedList=new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + PG_TABLE + " WHERE " + COL_NOM_POINTEUR + " = ?", new String[]{username});
+
+
+        Pointage_Model data = null;
+        if (cursor.moveToFirst()) {
+            //loop through the result (the cursor)  and create new list objet for each result
+            do {
+
+
+                int id=cursor.getInt(0);
+                String poiteurName = cursor.getString(1);
+                String nomNavire = cursor.getString(2);
+                String date = cursor.getString(3);
+                String Mode_conditionnement = cursor.getString(4);
+                String nature = cursor.getString(5);
+                String brigade = cursor.getString(6);
+                String shift = cursor.getString(7);
+                String quai = cursor.getString(8);
+
+
+                data = new Pointage_Model(id, poiteurName, nomNavire, date, Mode_conditionnement, nature, brigade, shift, quai);
+                returnedList.add(data);
+
+            }
+            while (cursor.moveToNext());
+        }
+
+
+        return returnedList;
+    }
+
+
 }

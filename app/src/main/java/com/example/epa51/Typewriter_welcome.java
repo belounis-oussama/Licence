@@ -34,7 +34,7 @@ public class Typewriter_welcome extends AppCompatActivity {
 
 
 
-                Intent intent =new Intent(Typewriter_welcome.this,debarq_embarq.class);
+                Intent intent =new Intent(Typewriter_welcome.this,Pointeur_profile.class);
                 startActivity(intent);
                 //we start the activity that contains the pointing page -1
 

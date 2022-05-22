@@ -1,44 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".listGears"
+    tools:context=".Pointeur_profile"
     android:orientation="vertical">
+
 
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/myalyout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <ImageButton
-            android:id="@+id/backbtn_listgears"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:background="@drawable/arrowleftb"
-
+            android:layout_alignParentTop="true"
+            android:id="@+id/addnewpointageprofile"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/plusyellowadd"
 
             />
 
+
+
+
         <ImageButton
-            android:id="@+id/add_listgears"
+            android:id="@+id/logoutprofile"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_alignParentRight="true"
+
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/plusyellowadd" />
+
+            android:background="@drawable/logout"
+            />
+
     </RelativeLayout>
 
 
+
     <ListView
-        android:id="@+id/listView_gears"
+        android:id="@+id/listViewPoiteurwork"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/myalyout"
         android:layout_marginTop="5dp"
         android:dividerHeight="1dp"
 
@@ -46,4 +56,10 @@
         />
 
 
-</LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

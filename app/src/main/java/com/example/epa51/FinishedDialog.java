@@ -33,7 +33,11 @@ public class FinishedDialog  extends AppCompatDialogFragment {
         confirmer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(),login.class);
+
+
+
+
+                Intent intent=new Intent(getActivity(),Pointeur_profile.class);
                 startActivity(intent);
                 getActivity().finish();
 
