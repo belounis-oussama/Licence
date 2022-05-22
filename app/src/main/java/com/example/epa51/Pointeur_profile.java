@@ -2,6 +2,7 @@ package com.example.epa51;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class Pointeur_profile extends AppCompatActivity {
     ImageButton add;
@@ -36,9 +39,9 @@ public class Pointeur_profile extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Pointeur_profile.this,login.class);
-                startActivity(intent);
-                finish();
+                openLogoutDialog();
+
+
             }
         });
 
@@ -47,6 +50,31 @@ public class Pointeur_profile extends AppCompatActivity {
 
 
 
+    }
+
+    private void openLogoutDialog() {
+
+        MaterialAlertDialogBuilder dialog=new MaterialAlertDialogBuilder(Pointeur_profile.this);
+        dialog.setTitle("Déconnexion");
+        dialog.setMessage("voulez-vous vraiment vous déconnecter ?");
+        dialog.setIcon(R.drawable.logout);
+        dialog.setBackground(getResources().getDrawable(R.drawable.alertdialogbg,null));
+        dialog.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                Intent intent=new Intent(Pointeur_profile.this,login.class);
+                startActivity(intent);
+                Pointeur_profile.this.finish();
+            }
+        });
+        dialog.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        dialog.show();
     }
 
     private void setAdapter() {
