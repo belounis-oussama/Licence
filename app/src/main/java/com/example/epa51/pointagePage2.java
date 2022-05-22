@@ -36,6 +36,9 @@ import com.example.epa51.databinding.ActivityAddUsedGearBinding;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -195,6 +198,7 @@ public class pointagePage2 extends AppCompatActivity {
                 if (CheckPermission())
                 {
                     ExportTextFile();
+                    Toast.makeText(getApplicationContext(),"Exported",Toast.LENGTH_SHORT).show();
                 }
 
                 else
@@ -259,82 +263,184 @@ public class pointagePage2 extends AppCompatActivity {
 
     private void ExportTextFile()  {
 
+        HSSFWorkbook hssfWorkbook=new HSSFWorkbook();
+        HSSFSheet hssfSheet=hssfWorkbook.createSheet();
 
-        String text="hey this is my text";
-        FileOutputStream file=null;
+
+
+        Pointage_db db=new Pointage_db(pointagePage2.this);
+        int currentPointageId = db.getCurrentPointage();
+
+        Pointage_Model pointageData = db.getPointageData(currentPointageId);
+
+
+        /*--------------------------ROW 0----------------------------------------*/
+
+        HSSFRow row0=hssfSheet.createRow(0);
+        HSSFCell cell0=row0.createCell(0);
+        cell0.setCellValue("Pointeur name= "+pointageData.getNom_pointeur()); //cell0
+
+
+        HSSFCell cell2=row0.createCell(2);
+        cell2.setCellValue("Date = "+pointageData.getDate()); //cell2
+
+
+        HSSFCell cell4 =row0.createCell(4);
+        cell4.setCellValue("Nature de marchandise = "+pointageData.getNature_marchandise()); //cell4
+
+        HSSFCell cell6= row0.createCell(6);
+        cell6.setCellValue("Shift = "+pointageData.getShift()); //cell6
+
+
+        /*--------------------------ROW 1----------------------------------------*/
+
+
+        HSSFRow row1=hssfSheet.createRow(1);
+        HSSFCell cell10=row1.createCell(0);
+        cell10.setCellValue("Nom de navire "+pointageData.getNom_navire()); //cell0
+
+        HSSFCell cell12=row1.createCell(2);
+        cell12.setCellValue("Mode de conditionement = "+pointageData.getMode_conditionnement()); //cell2
+
+        HSSFCell cell14 =row1.createCell(4);
+        cell14.setCellValue("Brigade = "+pointageData.getBrigade()); //cell4
+
+        HSSFCell cell16= row1.createCell(6);
+        cell16.setCellValue("Quai = "+pointageData.getQuai()); //cell6
+
+
+        /*--------------------------ROW 2----------------------------------------*/
+
+        HSSFRow row2=hssfSheet.createRow(2);
+        HSSFCell cell20=row2.createCell(3);
+        cell20.setCellValue("---------les marchandisee--------");
+
+
+
+        /*--------------------------ROW 3----------------------------------------*/
+
+        GoodsPointage_db goodsdb=new GoodsPointage_db(pointagePage2.this);
+        List<Goods_Model> goodsData = goodsdb.getGood(currentPointageId);
+
+        HSSFRow row3=hssfSheet.createRow(3);
+
+        if (!goodsData.isEmpty())
+        {
+
+            for (int i=0;i<goodsData.size();i++)
+            {
+                HSSFCell cellGood=row3.createCell(i);
+                cellGood.setCellValue(goodsData.get(i).toString());
+            }
+
+        }
+        else
+        {
+            HSSFCell cell30=row3.createCell(0);
+            cell30.setCellValue("pas de marchandise");
+
+        }
+
+
+
+
+        /*--------------------------ROW 4----------------------------------------*/
+
+
+        HSSFRow row4=hssfSheet.createRow(4);
+        HSSFCell cell23=row4.createCell(3);
+
+        cell23.setCellValue("---------Les engins utilise--------");
+
+
+        /*--------------------------ROW 5----------------------------------------*/
+
+        GearPointage_db geardb=new GearPointage_db(pointagePage2.this);
+        List<Integer> gearUsedIds = geardb.getGearUsed(currentPointageId);
+
+
+        Gears_db gearData=new Gears_db(pointagePage2.this);
+
+
+        HSSFRow row5=hssfSheet.createRow(5);
+        if (!gearUsedIds.isEmpty())
+        {
+
+        for (int i=0 ; i<gearUsedIds.size() ;i++)
+        {
+            Gear_Model gearInfo = gearData.getGearInfo(gearUsedIds.get(i));
+
+            HSSFCell cellGear=row5.createCell(i);
+            cellGear.setCellValue(gearInfo.getGear_type());
+        }
+
+        }
+        else
+        {
+            HSSFCell cellGear=row5.createCell(0);
+            cellGear.setCellValue("pas d'engins utiliser");
+        }
+
+
+
+        /*--------------------------ROW 6----------------------------------------*/
+
+
+        HSSFRow row6=hssfSheet.createRow(6);
+        HSSFCell cell63=row6.createCell(3);
+
+        cell63.setCellValue("---------Les arrets de travail--------");
+
+
+        /*--------------------------ROW 7----------------------------------------*/
+
+
+        HSSFRow row7=hssfSheet.createRow(7);
+
+        ArretPointage_db arretdb=new ArretPointage_db(pointagePage2.this);
+        List<EtasArret_Model> arrets = arretdb.getArret(currentPointageId);
+
+
+        if (!arret.isEmpty())
+        {
+            for (int i=0;i<arrets.size();i++)
+            {
+                HSSFCell cellArret=row7.createCell(i);
+                cellArret.setCellValue(arrets.get(i).toString());
+            }
+        }
+        else
+        {
+            HSSFCell cellArret=row7.createCell(3);
+            cellArret.setCellValue("pas d'arret");
+        }
+
+
+
+
+
+        File filePath=new File(Environment.getExternalStoragePublicDirectory("Download"),"myfile.xls");
         try {
-
-
-
-            File f=new File(Environment.getExternalStoragePublicDirectory("Download"),"newfile.xls");
-            f.createNewFile();
-            file=new FileOutputStream(f);
-            file.write(text.getBytes());
-            file.close();
-
-
-
-            //hna try
-
-/*
-            Workbook wb=new HSSFWorkbook();
-            Cell cell=null;
-            CellStyle cellStyle=wb.createCellStyle();
-
-
-
-
-            Sheet sheet=null;
-            sheet =wb.createSheet("myfile");
-
-            Row row=sheet.createRow(0);
-
-            cell =row.createCell(0);
-            cell.setCellValue("HEy 1");
-            cell.setCellStyle(cellStyle);
-
-
-            cell =row.createCell(1);
-            cell.setCellValue("HEy 2");
-            cell.setCellStyle(cellStyle);
-
-
-
-            sheet.setColumnWidth(0,200);
-            sheet.setColumnWidth(1,250);
-
-
-            File f=new File(Environment.getExternalStoragePublicDirectory("Download"),"file.xls");
-            file=new FileOutputStream(f);
-            wb.write(file);
-
-
-
-
-
-
-
-
-
-
-
-            file.close();
-*/
-        }
-
-        catch(FileNotFoundException exception)
+        if (!filePath.exists())
         {
-            Toast.makeText(pointagePage2.this,"File not found",Toast.LENGTH_SHORT).show();
+
+                filePath.createNewFile();
         }
-        catch (IOException exception2)
+
+        FileOutputStream fileOutputStream=new FileOutputStream(filePath);
+        hssfWorkbook.write(fileOutputStream);
+
+        if (fileOutputStream!=null)
         {
-            Toast.makeText(pointagePage2.this,"IO Exception",Toast.LENGTH_SHORT).show();
+            fileOutputStream.flush();
+            fileOutputStream.close();
         }
 
 
-
-
-
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

@@ -37,6 +37,7 @@
         android:backgroundTint="@color/darkblue"
         android:drawableStart="@drawable/user_login"
         android:gravity="center"
+        android:textSize="15dp"
         android:hint="le nom complet"
         android:textColor="@color/darkblue"
         android:textColorHint="@color/darkblue"
@@ -48,12 +49,13 @@
     <EditText
         android:id="@+id/password"
         android:inputType="textPassword"
-
+        android:textSize="15dp"
         android:layout_width="357dp"
         android:layout_height="63dp"
         android:backgroundTint="@color/darkblue"
         android:drawableStart="@drawable/password_login"
         android:gravity="center"
+
         android:hint="mot de pass"
         android:textColor="@color/darkblue"
         android:textColorHint="@color/darkblue"
@@ -78,31 +80,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
         android:text="Connexion"
         android:textColor="@color/darkblue"
-        android:textSize="18dp"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/loginBtn" />
 
     <TextView
         android:id="@+id/admin"
+        android:layout_marginRight="20dp"
         android:fontFamily="@font/poppinsblack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="Administration"
         android:textColor="@color/darkblue"
-        android:textSize="18dp"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.236"
         app:layout_constraintStart_toEndOf="@+id/adminimg" />
+
 
     <ImageView
         android:id="@+id/adminimg"

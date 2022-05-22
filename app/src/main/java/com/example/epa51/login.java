@@ -84,13 +84,8 @@ public class login extends AppCompatActivity {
 
                         editor.putString("pointeur_name",User);
                         editor.apply();
-
-
                         startActivity(intent);
                         finish();
-
-
-
 
                     }
                     else
