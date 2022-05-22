@@ -193,11 +193,12 @@ public class pointagePage2 extends AppCompatActivity {
 
                 Pointage_db db=new Pointage_db(pointagePage2.this);
 
-             SavePointageData();
+                 SavePointageData(); //save pointage to database
 
                 if (CheckPermission())
                 {
                     ExportTextFile();
+                    openFinishedDialog();
                     Toast.makeText(getApplicationContext(),"Exported",Toast.LENGTH_SHORT).show();
                 }
 
@@ -205,7 +206,6 @@ public class pointagePage2 extends AppCompatActivity {
                 {
                     AskPermissionStorage();
                 }
-
 
                 SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor editor =sharedPreferences.edit();
@@ -245,6 +245,12 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
+    }
+
+    private void openFinishedDialog() {
+
+        FinishedDialog finishedDialog=new FinishedDialog();
+        finishedDialog.show(getSupportFragmentManager(),"FinishedDialog");
     }
 
     private boolean CheckPermission() {
@@ -416,10 +422,10 @@ public class pointagePage2 extends AppCompatActivity {
         }
 
 
+        String navire = pointageData.getNom_navire();
+        String date = pointageData.getDate();
 
-
-
-        File filePath=new File(Environment.getExternalStoragePublicDirectory("Download"),"myfile.xls");
+        File filePath=new File(Environment.getExternalStoragePublicDirectory("Download"),navire+" ("+date+").xls");
         try {
         if (!filePath.exists())
         {

@@ -122,6 +122,7 @@ public class login extends AppCompatActivity {
     }
 
     private void openDialog() {
+
         AdminDialog adminDialog=new AdminDialog();
         adminDialog.show(getSupportFragmentManager(),"Password_Admin");
     }
