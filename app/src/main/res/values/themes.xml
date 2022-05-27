@@ -1,11 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Epa51" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Epa51" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
 
 
         <item name="colorPrimary">@color/yellow</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">@color/darkblue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
