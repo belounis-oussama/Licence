@@ -188,10 +188,6 @@ public class pointagePage2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
-
-
                 Pointage_db db=new Pointage_db(pointagePage2.this);
 
                  SavePointageData(); //save pointage to database
@@ -334,20 +330,39 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
-        /*--------------------------ROW 3----------------------------------------*/
+        /*--------------------------ROW 3 4 5----------------------------------------*/
 
         GoodsPointage_db goodsdb=new GoodsPointage_db(pointagePage2.this);
         List<Goods_Model> goodsData = goodsdb.getGood(currentPointageId);
 
         HSSFRow row3=hssfSheet.createRow(3);
+        HSSFRow row4=hssfSheet.createRow(4);
+        HSSFRow row5=hssfSheet.createRow(5);
+
+        row3.createCell(0).setCellValue("nature: ");
+        row4.createCell(0).setCellValue("poid: ");
+        row5.createCell(0).setCellValue("quantite: ");
 
         if (!goodsData.isEmpty())
         {
+            
 
+            
             for (int i=0;i<goodsData.size();i++)
             {
-                HSSFCell cellGood=row3.createCell(i);
-                cellGood.setCellValue(goodsData.get(i).toString());
+                for (int j=0;j<3 ;j++)
+                {
+                    HSSFCell cellGood=row3.createCell(i+1);
+                    HSSFCell cellGood2=row4.createCell(i+1);
+                    HSSFCell cellGood3=row5.createCell(i+1);
+
+                    cellGood.setCellValue(goodsData.get(i).getReference());
+                    cellGood2.setCellValue(goodsData.get(i).getPoid());
+                    cellGood3.setCellValue(goodsData.get(i).getQuantite());
+
+                }
+
+
             }
 
         }
@@ -360,17 +375,16 @@ public class pointagePage2 extends AppCompatActivity {
 
 
 
-
-        /*--------------------------ROW 4----------------------------------------*/
-
-
-        HSSFRow row4=hssfSheet.createRow(4);
-        HSSFCell cell23=row4.createCell(3);
-
-        cell23.setCellValue("---------Les engins utilise--------");
+        /*--------------------------ROW 6----------------------------------------*/
 
 
-        /*--------------------------ROW 5----------------------------------------*/
+        HSSFRow row6=hssfSheet.createRow(6);
+        HSSFCell cell63=row6.createCell(3);
+
+        cell63.setCellValue("---------Les engins utilise--------");
+
+
+        /*--------------------------ROW 7----------------------------------------*/
 
         GearPointage_db geardb=new GearPointage_db(pointagePage2.this);
         List<Integer> gearUsedIds = geardb.getGearUsed(currentPointageId);
@@ -379,40 +393,42 @@ public class pointagePage2 extends AppCompatActivity {
         Gears_db gearData=new Gears_db(pointagePage2.this);
 
 
-        HSSFRow row5=hssfSheet.createRow(5);
+        HSSFRow row7=hssfSheet.createRow(7);
         if (!gearUsedIds.isEmpty())
         {
 
-        for (int i=0 ; i<gearUsedIds.size() ;i++)
-        {
-            Gear_Model gearInfo = gearData.getGearInfo(gearUsedIds.get(i));
+            row7.createCell(0).setCellValue("engins ");
+            for (int i=0 ; i<gearUsedIds.size() ;i++)
+            {
+                Gear_Model gearInfo = gearData.getGearInfo(gearUsedIds.get(i));
 
-            HSSFCell cellGear=row5.createCell(i);
-            cellGear.setCellValue(gearInfo.getGear_type());
-        }
+                HSSFCell cellGear=row7.createCell(i+1);
+                cellGear.setCellValue(gearInfo.getGear_type());
+            }
 
         }
         else
         {
-            HSSFCell cellGear=row5.createCell(0);
+            HSSFCell cellGear=row7.createCell(0);
             cellGear.setCellValue("pas d'engins utiliser");
         }
 
 
 
-        /*--------------------------ROW 6----------------------------------------*/
+        /*--------------------------ROW 8----------------------------------------*/
 
 
-        HSSFRow row6=hssfSheet.createRow(6);
-        HSSFCell cell63=row6.createCell(3);
+        HSSFRow row8=hssfSheet.createRow(8);
+        HSSFCell cell83=row8.createCell(3);
 
-        cell63.setCellValue("---------Les arrets de travail--------");
+        cell83.setCellValue("---------Les arrets de travail--------");
 
 
         /*--------------------------ROW 7----------------------------------------*/
 
 
-        HSSFRow row7=hssfSheet.createRow(7);
+
+        HSSFRow row9=hssfSheet.createRow(9);
 
         ArretPointage_db arretdb=new ArretPointage_db(pointagePage2.this);
         List<EtasArret_Model> arrets = arretdb.getArret(currentPointageId);
@@ -422,14 +438,14 @@ public class pointagePage2 extends AppCompatActivity {
         {
             for (int i=0;i<arrets.size();i++)
             {
-                HSSFCell cellArret=row7.createCell(i);
-                cellArret.setCellValue(arrets.get(i).toString());
+                HSSFCell cellArret=row9.createCell(i);
+                cellArret.setCellValue("Debut: ( date: "+arrets.get(i).getStartDate()+"),(heure: "+arrets.get(i).getStartHour()+")\n "+"Fin: ( date: "+arrets.get(i).getEndDate()+"),(heure: "+arrets.get(i).getEndHour()+") \n Motif: '"+arrets.get(i).getReason()+"'");
             }
         }
         else
         {
-            HSSFCell cellArret=row7.createCell(3);
-            cellArret.setCellValue("pas d'arret");
+            HSSFCell cellArret=row9.createCell(3);
+            cellArret.setCellValue("pas d'arret ");
         }
 
 

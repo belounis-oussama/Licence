@@ -6,6 +6,9 @@
     android:layout_height="match_parent">
 
 
+
+
+
     <TextView
         android:id="@+id/navire_details"
         android:layout_width="wrap_content"

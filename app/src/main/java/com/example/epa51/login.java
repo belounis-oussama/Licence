@@ -61,6 +61,7 @@ public class login extends AppCompatActivity {
 
                     password.setError("Champ vide");
                     password.requestFocus();
+
                 }
                 else
                 {
@@ -90,7 +91,9 @@ public class login extends AppCompatActivity {
                     }
                     else
                     {
-                        Toast.makeText(login.this,"False infos",Toast.LENGTH_SHORT).show();
+                        password.setError("");
+                        fullName.setError("");
+                        Toast.makeText(login.this,"Le nom ou le mot de passe que vous avez saisi(e) n’est pas associé(e) à un compte !",Toast.LENGTH_SHORT).show();
                     }
 
 

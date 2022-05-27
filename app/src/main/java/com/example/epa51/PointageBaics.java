@@ -1,9 +1,13 @@
 package com.example.epa51;
 
 import android.app.Application;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +18,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 public class PointageBaics extends Fragment{
 TextView navire,pointeur,date,mode_conditionement,nature,brigade,shift,quai;
+
 
 
 
@@ -49,6 +55,8 @@ TextView navire,pointeur,date,mode_conditionement,nature,brigade,shift,quai;
 
 
 
+
+
         navire.setText("Navire : "+pointageData.getNom_navire());
         pointeur.setText("pointeur : "+pointageData.getNom_pointeur());
         date.setText("date : "+pointageData.getDate());
@@ -57,6 +65,8 @@ TextView navire,pointeur,date,mode_conditionement,nature,brigade,shift,quai;
         brigade.setText("brigade : "+pointageData.getBrigade());
         shift.setText("shift : "+pointageData.getShift());
         quai.setText("quai : "+pointageData.getQuai());
+
+
 
 
 
@@ -77,4 +87,6 @@ TextView navire,pointeur,date,mode_conditionement,nature,brigade,shift,quai;
 
 
     }
+
+
 }

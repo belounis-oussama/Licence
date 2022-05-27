@@ -15,10 +15,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class AdminDialog extends AppCompatDialogFragment {
 
 
-    EditText passwordField;
+    TextInputEditText passwordField;
 
 
     @NonNull
@@ -30,6 +32,7 @@ public class AdminDialog extends AppCompatDialogFragment {
         View view=inflater.inflate(R.layout.password_admin,null);
 
         passwordField=view.findViewById(R.id.password_admin);
+
 
 
         builder.setView(view)

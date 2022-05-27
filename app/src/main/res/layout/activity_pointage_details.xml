@@ -5,18 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Pointage_details"
-    android:theme="@style/Theme2">
+    android:theme="@style/Theme2"
+    >
 
 
 
-    <ImageButton
-        android:id="@+id/backbtn_pointageDetails"
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:background="@drawable/arrowleftb"
-
-
+        android:layout_height="45dp"
+        android:id="@+id/exportpointage"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/yellow"
+        android:capitalize="none"
+        android:drawableLeft="@drawable/export_icon"
+        android:text="Exporter"
+        android:textColor="@color/darkblue"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

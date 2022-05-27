@@ -29,6 +29,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="60dp"
         android:layout_marginRight="20dp"
+        app:helperText="nature pour divers ,et reference pour un conteneur"
+        app:helperTextTextColor="@color/darkblue"
         app:boxStrokeColor="@color/darkblue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

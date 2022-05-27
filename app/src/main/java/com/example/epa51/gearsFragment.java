@@ -23,7 +23,7 @@ public class gearsFragment extends Fragment {
 
         Bundle id=getArguments();
         String idPointage = id.getString("idPointage");
-        Toast.makeText(getActivity(),idPointage,Toast.LENGTH_SHORT).show();
+
 
 
         View view =inflater.inflate(R.layout.gear_fragment,container,false);
