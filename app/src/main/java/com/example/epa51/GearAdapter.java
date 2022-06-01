@@ -18,12 +18,6 @@ public class GearAdapter extends ArrayAdapter<Gear_Model> {public GearAdapter(Co
 
 }
 
-
-
-
-
-
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {

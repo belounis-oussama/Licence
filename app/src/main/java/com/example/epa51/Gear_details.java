@@ -57,7 +57,7 @@ public class Gear_details extends AppCompatActivity {
                     {
                         Toast.makeText(Gear_details.this,"Gear already exists",Toast.LENGTH_SHORT).show();
                     }
-else
+                        else
 
 
                     {

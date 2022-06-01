@@ -36,8 +36,6 @@ public class GoodsFragment extends Fragment {
         GoodsPointage_db db=new GoodsPointage_db(getActivity());
         List<Goods_Model> goods = db.getGood(Integer.parseInt(idPointage));
 
-//ArrayList<String> listOfStrings = new ArrayList<>(list.size());
-//listOfStrings.addAll(list);
 
         //setting Adapter
 

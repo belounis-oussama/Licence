@@ -95,19 +95,6 @@ public class userDetails extends AppCompatActivity {
 
 
     public void saveUser(View view) {
-/*
-        String name =String.valueOf(nameedittext.getText());
-        String pass =String.valueOf(passwordedittext.getText());
-
-        int id= User_Model.user_modelArrayList.size();
-
-
-
-        User_Model new_user=new User_Model(-1,name,pass);
-        User_db data=new User_db(userDetails.this);
-
-        boolean success = data.addUser(new_user);
-*/
 
         String User=nameedittext.getText().toString();
         String Pass=passwordedittext.getText().toString();

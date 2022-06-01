@@ -61,21 +61,6 @@ public class debarq_embarq extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(debarq_embarq.this,"debarquement",Toast.LENGTH_SHORT).show();
-
-                /*
-                vector.animate().translationY(1600).setDuration(4000).setStartDelay(200);
-                vector.animate().scaleX(200);
-                vector.animate().scaleY(200);
-
-                debarqu_btn.setVisibility(View.INVISIBLE);
-                embarqu_btn.setVisibility(View.INVISIBLE);
-                retour.setVisibility(View.INVISIBLE);
-                titledebemb.setVisibility(View.INVISIBLE);
-                titledebemb2.setVisibility(View.INVISIBLE);
-                embtext.setVisibility(View.INVISIBLE);
-                debtext.setVisibility(View.INVISIBLE);
-*/
-
                 Intent intent =new Intent(debarq_embarq.this,pointagePage1.class);
 
 
