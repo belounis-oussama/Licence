@@ -3,7 +3,9 @@ package com.example.epa51;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.ImageView;
 
 import java.util.Timer;
@@ -34,9 +36,22 @@ public class splash extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent =new Intent(splash.this,login.class);
-                startActivity(intent);
-                finish();
+
+                SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                boolean hasLogged=sharedPreferences.getBoolean("hasLoggedIn",false);
+                if (hasLogged)
+                {
+                    Intent intent =new Intent(splash.this,Pointeur_profile.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                {
+                    Intent intent =new Intent(splash.this,login.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         },4000);
 

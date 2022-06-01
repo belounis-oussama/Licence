@@ -35,8 +35,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginRight="20dp"
+        android:layout_margin="10dp"
         app:boxStrokeColor="@color/darkblue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +58,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
         app:boxStrokeColor="@color/darkblue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,116 +75,132 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/brigade_inpute"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        app:boxStrokeColor="@color/darkblue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nature_input">
+                app:layout_constraintTop_toBottomOf="@+id/nature_input"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
 
-        <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/brigade"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="BRIGADE"
-            android:inputType="number"
-            android:textColorHint="@color/darkblue" />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/brigade_inpute"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:boxStrokeColor="@color/darkblue"
+                    >
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/shift_input"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:boxStrokeColor="@color/darkblue"
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/brigade"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/brigade_inpute"
-        app:layout_constraintTop_toBottomOf="@+id/nature_input">
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="BRIGADE"
+                        android:inputType="number"
+                        android:textColorHint="@color/darkblue" />
 
 
-        <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/shift"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="SHIFT"
-            android:inputType="number"
-            android:textColorHint="@color/darkblue" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/shift_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:boxStrokeColor="@color/darkblue"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/date_input"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        app:boxStrokeColor="@color/darkblue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brigade_inpute">
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/shift"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="SHIFT"
+                        android:inputType="number"
+                        android:textColorHint="@color/darkblue" />
 
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="DATE"
-            android:inputType="date"
-            android:textColorHint="@color/darkblue" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/linear"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/date_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:boxStrokeColor="@color/darkblue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linear">
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/quai_input"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        app:boxStrokeColor="@color/darkblue"
-        app:layout_constraintStart_toEndOf="@+id/date_input"
-        app:layout_constraintTop_toBottomOf="@+id/shift_input">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DATE"
+                        android:inputType="date"
+                        android:textColorHint="@color/darkblue" />
 
 
-        <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/quai"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="QUAI"
-            android:inputType="number"
-            android:textColorHint="@color/darkblue" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/quai_input"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    app:boxStrokeColor="@color/darkblue"
+                    >
+
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/quai"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="QUAI"
+                        android:inputType="number"
+                        android:textColorHint="@color/darkblue" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
 
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/materialTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:text="ENGINS UTILISER"
         android:textColor="@color/darkblue"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/listofgearsp1"
-        app:layout_constraintTop_toBottomOf="@+id/date_input" />
+        app:layout_constraintTop_toBottomOf="@+id/linear2" />
 
 
     <ImageView
@@ -216,12 +231,12 @@
         android:id="@+id/listofgearsp1"
         android:layout_width="200dp"
         android:layout_height="100dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/lightbluerounded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.834"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_input" />
+        app:layout_constraintTop_toBottomOf="@+id/linear2" />
 
 
     <com.google.android.material.textview.MaterialTextView

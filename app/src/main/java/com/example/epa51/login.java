@@ -72,16 +72,17 @@ public class login extends AppCompatActivity {
                     if (checkinfo || checkinfoUpper)
                     {
 
+                        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor editor =sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
 
                         Intent intent =new Intent(login.this,Typewriter_welcome.class);
                         intent.putExtra("namekey",User);//send name to typewriter
 
 
                         //save username in sharedPreferences , We need it for our DB
-
-                        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                        SharedPreferences.Editor editor=sharedPreferences.edit();
-
+                        setUserOn();
 
                         editor.putString("pointeur_name",User);
                         editor.apply();
@@ -122,6 +123,13 @@ public class login extends AppCompatActivity {
 
 
 
+    }
+
+    private void setUserOn() {
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor =sharedPreferences.edit();
+        editor.putBoolean("hasLoggedIn",true);
+        editor.apply();
     }
 
     private void openDialog() {

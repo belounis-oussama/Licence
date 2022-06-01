@@ -18,10 +18,10 @@
         >
 
         <ImageButton
-            android:layout_alignParentTop="true"
             android:id="@+id/addnewpointageprofile"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/plusyellowadd"
 

@@ -52,6 +52,8 @@ public class ListPointages extends AppCompatActivity {
         goback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent =new Intent(ListPointages.this,admin_dashboard.class);
+                startActivity(intent);
                 finish();
             }
         });

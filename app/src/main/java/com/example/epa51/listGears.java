@@ -61,6 +61,7 @@ ImageButton add_listgears,backbtn_listgears;
             public void onClick(View view) {
                 Intent intent =new Intent(listGears.this,admin_dashboard.class);
                 startActivity(intent);
+                finish();
             }
         });
 

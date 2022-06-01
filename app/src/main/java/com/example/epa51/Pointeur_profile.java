@@ -65,6 +65,7 @@ public class Pointeur_profile extends AppCompatActivity {
 
                 Intent intent=new Intent(Pointeur_profile.this,login.class);
                 startActivity(intent);
+                setUserOff();
                 Pointeur_profile.this.finish();
             }
         });
@@ -75,6 +76,13 @@ public class Pointeur_profile extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    private void setUserOff() {
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor =sharedPreferences.edit();
+        editor.putBoolean("hasLoggedIn",false);
+        editor.apply();
     }
 
     private void setAdapter() {

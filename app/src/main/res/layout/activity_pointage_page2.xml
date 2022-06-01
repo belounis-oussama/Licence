@@ -27,7 +27,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         app:helperText="nature pour divers ,et reference pour un conteneur"
         app:helperTextTextColor="@color/darkblue"
@@ -55,7 +55,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         app:boxStrokeColor="@color/darkblue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
@@ -78,7 +78,7 @@
         android:id="@+id/textInputLayout3"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="150dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="40dp"
         android:layout_height="wrap_content"
         app:boxStrokeColor="@color/darkblue"
@@ -204,10 +204,10 @@
             app:layout_constraintTop_toBottomOf="@+id/pointage2add" />
 
         <androidx.recyclerview.widget.RecyclerView
-
+            android:layout_margin="10dp"
             android:id="@+id/pointage_recycle"
             android:layout_width="wrap_content"
-            android:layout_height="500dp"
+            android:layout_height="250dp"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

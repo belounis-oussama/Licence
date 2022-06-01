@@ -97,11 +97,9 @@ public class debarq_embarq extends AppCompatActivity {
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(debarq_embarq.this,login.class);
+                Intent intent =new Intent(debarq_embarq.this,Pointeur_profile.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-
-
                 finish();
             }
         });
