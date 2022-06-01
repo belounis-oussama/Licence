@@ -157,7 +157,7 @@ public class pointagePage1 extends AppCompatActivity {
 
 
         dateinpute.setText(cureentdate);
-        dateinpute.setKeyListener(null);  //so user can change date
+        //dateinpute.setKeyListener(null);  //so user can change date
 
 
 

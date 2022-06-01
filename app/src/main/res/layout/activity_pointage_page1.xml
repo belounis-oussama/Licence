@@ -18,6 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingTop="40dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +35,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
         android:layout_margin="10dp"
         app:boxStrokeColor="@color/darkblue"
         app:layout_constraintEnd_toEndOf="parent"
@@ -190,86 +191,125 @@
             </LinearLayout>
 
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        android:text="ENGINS UTILISER"
-        android:textColor="@color/darkblue"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/listofgearsp1"
-        app:layout_constraintTop_toBottomOf="@+id/linear2" />
+            <LinearLayout
+                android:id="@+id/holder1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/linear2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/textimage1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/listofgearsp1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linear2">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/materialTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="ENGINS UTILISER"
+                        android:textColor="@color/darkblue"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/listofgearsp1"
+                        app:layout_constraintTop_toBottomOf="@+id/linear2" />
 
 
-    <ImageView
-        android:id="@+id/addgearpointgae"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="68dp"
-        android:src="@drawable/plusyellowadd"
-        app:layout_constraintEnd_toStartOf="@+id/listofgearsp1"
-        app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
+                    <ImageView
+                        android:id="@+id/addgearpointgae"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:src="@drawable/plusyellowadd"
+                        app:layout_constraintEnd_toStartOf="@+id/listofgearsp1"
+                        app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
+
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listofgearsp1"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+
+                    android:background="@drawable/lightbluerounded"
+
+
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/holder2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/holder1">
+
+                <LinearLayout
+
+                    android:id="@+id/textimage2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/listofarrets"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/holder1">
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/materialTextView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ATTENT ET ARRET"
+                        android:textColor="@color/darkblue"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/listofarrets"
+                        app:layout_constraintTop_toBottomOf="@+id/textimage1" />
+
+
+                    <ImageView
+                        android:id="@+id/addarret"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/plusyellowadd"
+                        app:layout_constraintEnd_toStartOf="@+id/listofarrets"
+                        app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
+                </LinearLayout>
+
+
+                <ListView
+                    android:id="@+id/listofarrets"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+
+                    android:background="@drawable/lightbluerounded"
+                    app:layout_constraintEnd_toEndOf="parent"
+
+                    app:layout_constraintTop_toBottomOf="@+id/holder1" />
+            </LinearLayout>
 
 
 
 
 
 
-    <ImageView
-        android:id="@+id/addarret"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="68dp"
-        android:src="@drawable/plusyellowadd"
-        app:layout_constraintEnd_toStartOf="@+id/listofarrets"
-        app:layout_constraintTop_toBottomOf="@+id/materialTextView2" />
-    <ListView
-        android:id="@+id/listofgearsp1"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/lightbluerounded"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.834"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear2" />
 
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/materialTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="20dp"
-        android:text="ATTENT ET ARRET"
-        android:textColor="@color/darkblue"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/listofarrets"
-        app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
-
-    <ListView
-        android:id="@+id/listofarrets"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/lightbluerounded"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.853"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listofgearsp1" />
-
-
-
-
-   <!-- <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:src="@drawable/buttomlightblue"
-        app:layout_constraintBottom_toBottomOf="parent" />-->
 
     <ImageView
         android:id="@+id/p1Top2"
