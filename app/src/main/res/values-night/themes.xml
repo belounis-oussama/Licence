@@ -21,9 +21,12 @@
     <style name="Theme2" parent="ThemeOverlay.AppCompat.DayNight.ActionBar">
         <item name="hintTextColor">@color/darkblue</item>
         <item name="colorPrimary">@color/darkblue</item>
+
+
+
+
+
     </style>
-
-
 
 
 
@@ -48,3 +51,4 @@
         <item name="cornerSize">50%</item>
     </style>
 </resources>
+
