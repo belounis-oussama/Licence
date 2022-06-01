@@ -26,7 +26,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
     <FrameLayout
         android:id="@+id/Fragment_Pointage"
         android:layout_width="match_parent"

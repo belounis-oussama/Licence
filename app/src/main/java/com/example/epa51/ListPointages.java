@@ -36,7 +36,7 @@ public class ListPointages extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent =new Intent(ListPointages.this,Pointage_details.class);
-                //String name= userslistview.getAdapter().getItem(i).toString();
+
 
                 String pointage=pointage_list.getAdapter().getItem(i).toString();
 
@@ -62,9 +62,7 @@ public class ListPointages extends AppCompatActivity {
     private void setAdapter() {
         Pointage_db db=new Pointage_db(ListPointages.this);
 
-    PointageListAdapter adapter=new PointageListAdapter(getApplicationContext(),db.getAllPointages());
-
-
+        PointageListAdapter adapter=new PointageListAdapter(getApplicationContext(),db.getAllPointages());
         pointage_list.setAdapter(adapter);
 
 
