@@ -26,7 +26,6 @@ public class ListPointages extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_pointages);
-
         pointage_list=findViewById(R.id.listofPointages);
         goback=findViewById(R.id.back_listofpointages);
 
