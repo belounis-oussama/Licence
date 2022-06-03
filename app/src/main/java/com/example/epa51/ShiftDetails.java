@@ -66,7 +66,6 @@ public class ShiftDetails extends AppCompatActivity {
                 {
                     Toast.makeText(ShiftDetails.this,"Veuillez remplir tous les champs",Toast.LENGTH_SHORT).show();
 
-
                 }
 
 
@@ -78,10 +77,9 @@ public class ShiftDetails extends AppCompatActivity {
                     Shift_db data=new Shift_db(ShiftDetails.this);
                     Shift_Modele newShift=new Shift_Modele(-1,Shiftname,Start,end);
                     data.addShift(newShift);
+                    Toast.makeText(ShiftDetails.this,"Shift ajouté avec succès ",Toast.LENGTH_SHORT).show();
 
-
-                    Intent intent =new Intent(ShiftDetails.this,Shiftlist.class);
-                    startActivity(intent);
+                    finish();
                 }
             }
         });

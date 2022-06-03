@@ -38,12 +38,12 @@ public class ListPointages extends AppCompatActivity {
 
 
                 String pointage=pointage_list.getAdapter().getItem(i).toString();
-
                 String id = pointage.substring(pointage.indexOf("id=") + "id=".length(), pointage.indexOf(","));
 
 
                 intent.putExtra("idPointage",id);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -52,7 +52,7 @@ public class ListPointages extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(ListPointages.this,admin_dashboard.class);
-                startActivity(intent);
+
                 finish();
             }
         });

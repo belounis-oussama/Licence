@@ -30,37 +30,6 @@ public class listusers extends AppCompatActivity {
 
 
 
-
-    private void setUserAdapter() {
-
-        User_db db=new User_db(listusers.this);
-
-
-           UserAdapter userAdapter=new UserAdapter(getApplicationContext(),db.getall());
-
-        userslistview.setAdapter(userAdapter);
-        userslistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent =new Intent(listusers.this,modify_delete_user.class);
-                String name= userslistview.getAdapter().getItem(i).toString();
-
-                String id = name.substring(name.indexOf("id=") + "id=".length(), name.indexOf(","));
-
-
-                intent.putExtra("idkey",id);
-
-
-                startActivity(intent);
-            }
-        });
-
-
-
-    }
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,8 +43,7 @@ public class listusers extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(listusers.this,admin_dashboard.class);
-                startActivity(intent);
+
                 finish();
             }
         });
@@ -131,10 +99,38 @@ public class listusers extends AppCompatActivity {
 
 
 
+    private void setUserAdapter() {
+
+        User_db db=new User_db(listusers.this);
+        UserAdapter userAdapter=new UserAdapter(getApplicationContext(),db.getall());
+
+        userslistview.setAdapter(userAdapter);
+        userslistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent =new Intent(listusers.this,modify_delete_user.class);
+                String name= userslistview.getAdapter().getItem(i).toString();
+
+                String id = name.substring(name.indexOf("id=") + "id=".length(), name.indexOf(","));
+
+
+                intent.putExtra("idkey",id);
+
+
+                startActivity(intent);
+            }
+        });
+
+
+
+    }
+
+
 
 
     public void newuser(View view) {
         Intent newuserintent =new Intent(this,userDetails.class);
         startActivity(newuserintent);
+        finish();
     }
 }

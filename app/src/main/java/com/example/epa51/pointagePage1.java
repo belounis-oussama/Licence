@@ -32,13 +32,12 @@ import java.util.List;
 public class pointagePage1 extends AppCompatActivity {
 
     Calendar calendar;
-    TextInputEditText dateinpute,navire,nature;
-    AutoCompleteTextView shift,quai,brigade;
+    TextInputEditText dateinpute,navire;
+    AutoCompleteTextView shift,quai,brigade,nature;
     ImageView addgearpointgae,addarret,p1Top2,p1to_emdeb;
     ListView listofgears,listofarrets;
     public ArrayList<EtasArret_Model> etasArret_models;
     public ArrayList<Gear_Model> gearstest;
-    public static final String SHARED_PREFS ="sharedPrefs";
     public ArrayList<Gear_Model>Gears;
     public ArrayList<EtasArret_Model>arret;
 
@@ -93,6 +92,11 @@ public class pointagePage1 extends AppCompatActivity {
         ArrayAdapter<String>adapter_brigade=new ArrayAdapter<>(this,R.layout.dropdownmenu_shift,brigades);
         brigade.setAdapter(adapter_brigade);
         brigade.setKeyListener(null);
+
+
+        String[] natures=new String[]{"Divers","Conteneur"};
+        ArrayAdapter<String>adapter_natures=new ArrayAdapter<>(this,R.layout.dropdownmenu_shift,natures);
+        nature.setAdapter(adapter_natures);
 
 
 

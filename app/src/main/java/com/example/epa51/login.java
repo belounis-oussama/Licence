@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class login extends AppCompatActivity {
     Button cnxBtn;
     EditText fullName,password,adminpass;
@@ -42,8 +44,8 @@ public class login extends AppCompatActivity {
             public void onClick(View view) {
                 //action we want on click
 
-                String User=fullName.getText().toString();
-                String Pass=password.getText().toString();
+                String User=fullName.getText().toString().trim();
+                String Pass=password.getText().toString().trim();
                 User_Model user;
 
 
@@ -58,20 +60,20 @@ public class login extends AppCompatActivity {
                 else if (TextUtils.isEmpty(Pass))
                 {
 
-
                     password.setError("Champ vide");
                     password.requestFocus();
-
+                    Toast.makeText(login.this,"Veuillez remplir tous les champs",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
 
                     User_db db=new User_db(login.this);
                     boolean checkinfo=db.checknamepassword(User,Pass);  //true if name and password are matching
-                    boolean checkinfoUpper=db.checknamepassword(User.toLowerCase(),Pass.toLowerCase());
+                    boolean checkinfoUpper=db.checknamepassword(User.toUpperCase(),Pass.toUpperCase());
                     if (checkinfo || checkinfoUpper)
                     {
 
+                            //clear sharedPref saved
                         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                         SharedPreferences.Editor editor =sharedPreferences.edit();
                         editor.clear();

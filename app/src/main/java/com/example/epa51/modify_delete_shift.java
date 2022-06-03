@@ -73,9 +73,9 @@ public class modify_delete_shift extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                String newName=editShiftName.getText().toString();
-                String newStart=editStartshift.getText().toString();
-                String newEnd=editEndShift.getText().toString();
+                String newName=editShiftName.getText().toString().trim();
+                String newStart=editStartshift.getText().toString().trim();
+                String newEnd=editEndShift.getText().toString().trim();
 
 
                 Shift_Modele shiftInfo=new Shift_Modele(id,newName,newStart,newEnd);

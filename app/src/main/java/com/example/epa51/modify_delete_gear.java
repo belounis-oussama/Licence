@@ -41,14 +41,14 @@ public class modify_delete_gear extends AppCompatActivity {
         String number=String.valueOf(db.getNumber(id));
 
 
-        modifytype.setText(type);
-        modifynumber.setText(number);
+        modifytype.setText(type.trim());
+        modifynumber.setText(number.trim());
 
         savegear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newtype=modifytype.getText().toString();
-                String newnumber=modifynumber.getText().toString();
+                String newtype=modifytype.getText().toString().trim();
+                String newnumber=modifynumber.getText().toString().trim();
 
                 Gear_Model gearinfo=new Gear_Model(id,newtype,Integer.parseInt(newnumber));
 

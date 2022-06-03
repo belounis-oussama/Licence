@@ -96,8 +96,8 @@ public class userDetails extends AppCompatActivity {
 
     public void saveUser(View view) {
 
-        String User=nameedittext.getText().toString();
-        String Pass=passwordedittext.getText().toString();
+        String User=nameedittext.getText().toString().trim();
+        String Pass=passwordedittext.getText().toString().trim();
         User_Model user;
 
 
@@ -106,14 +106,11 @@ public class userDetails extends AppCompatActivity {
         {
             Toast.makeText(userDetails.this,"Veuillez remplir tous les champs",Toast.LENGTH_SHORT).show();
 
-
         }
 
         else
         {
-
             User_db db=new User_db(userDetails.this);
-
         }
 
         Intent intent =new Intent(userDetails.this,listusers.class);

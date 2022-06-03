@@ -83,6 +83,7 @@ public class Gear_details extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent =new Intent(Gear_details.this,listGears.class);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -91,6 +92,6 @@ public class Gear_details extends AppCompatActivity {
     public void gotolistgear(View view) {
         Intent intent =new Intent(Gear_details.this,listGears.class);
         startActivity(intent);
-
+        finish();
     }
 }

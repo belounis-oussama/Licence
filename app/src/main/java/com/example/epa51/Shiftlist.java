@@ -39,7 +39,7 @@ public class Shiftlist extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(Shiftlist.this,admin_dashboard.class);
-                startActivity(intent);
+
                 finish();
             }
         });

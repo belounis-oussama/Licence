@@ -58,8 +58,8 @@ public class modify_delete_user extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newname=fullname.getText().toString();
-                String newpass=password.getText().toString();
+                String newname=fullname.getText().toString().trim();
+                String newpass=password.getText().toString().trim();
 
                 User_Model userinfo=new User_Model(id,newname,newpass);
 

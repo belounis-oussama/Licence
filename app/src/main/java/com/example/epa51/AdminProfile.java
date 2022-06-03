@@ -99,6 +99,7 @@ public class AdminProfile extends AppCompatActivity {
                 if (b)
                 {
                     Toast.makeText(AdminProfile.this,"Données enregistrées avec succès",Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 else
                 {
@@ -112,8 +113,7 @@ public class AdminProfile extends AppCompatActivity {
         profile_retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(AdminProfile.this,admin_dashboard.class);
-                startActivity(intent);
+                finish();
             }
         });
 
