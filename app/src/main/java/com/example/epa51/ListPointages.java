@@ -43,7 +43,7 @@ public class ListPointages extends AppCompatActivity {
 
                 intent.putExtra("idPointage",id);
                 startActivity(intent);
-                finish();
+
             }
         });
 

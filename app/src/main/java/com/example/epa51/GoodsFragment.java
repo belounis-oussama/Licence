@@ -27,7 +27,7 @@ public class GoodsFragment extends Fragment {
 
         Bundle id=getArguments();
         String idPointage = id.getString("idPointage");
-        Toast.makeText(getActivity(),idPointage,Toast.LENGTH_SHORT).show();
+
 
 
         View view =inflater.inflate(R.layout.goods_fragment,container,false);

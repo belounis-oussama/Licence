@@ -112,8 +112,7 @@ public class pointagePage1 extends AppCompatActivity {
 
 
 
-
-
+        
 
         Intent newintent=getIntent();
 

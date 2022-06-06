@@ -188,38 +188,26 @@ public class pointagePage2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_SHORT).show();
+
                 Pointage_db db=new Pointage_db(pointagePage2.this);
 
                  SavePointageData(); //save pointage to database
 
                 if (CheckPermission())
                 {
-                    Toast.makeText(getApplicationContext(),"permission",Toast.LENGTH_SHORT).show();
+
                     ExportTextFile();
                     openFinishedDialog();
-                    Toast.makeText(getApplicationContext(),"Exported",Toast.LENGTH_SHORT).show();
+
                 }
 
                 else
                 {
-                    Toast.makeText(getApplicationContext(),"no permission",Toast.LENGTH_SHORT).show();
+
                     AskPermissionStorage();
                 }
 
-                SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor editor =sharedPreferences.edit();
-                editor.clear();
-                editor.apply();
 
-                //save user logged in
-
-
-
-
-                String currentUserLoggeed=db.getPointageData(db.getCurrentPointage()).getNom_pointeur();
-                editor.putString("pointeur_name",currentUserLoggeed);
-                editor.apply();
 
             }
         });
@@ -582,9 +570,6 @@ public class pointagePage2 extends AppCompatActivity {
         }
 
 
-       // GearPointage_db dd=new GearPointage_db(pointagePage2.this);
-        //Toast.makeText(pointagePage2.this, dd.getGearUsed(idPointage).toString(),Toast.LENGTH_LONG).show();
-
 
 
 
@@ -600,8 +585,7 @@ public class pointagePage2 extends AppCompatActivity {
             Goodsdb.AddGood(goods_models.get(i),idPointage);
         }
 
-        Toast.makeText(pointagePage2.this,"goods added",Toast.LENGTH_SHORT).show();
-        //Toast.makeText(pointagePage2.this, Goodsdb.getGood(idPointage).toString(),Toast.LENGTH_LONG).show();
+
 
         LoadListofArrets();
 

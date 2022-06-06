@@ -31,6 +31,22 @@ public class Pointeur_profile extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(Pointeur_profile.this,debarq_embarq.class);
                 startActivity(intent);
+
+
+                SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+
+                String pointeur_name = sharedPreferences.getString("pointeur_name", "");
+
+
+                editor.clear();
+                editor.apply();
+
+                //save user logged in
+
+
+                editor.putString("pointeur_name",pointeur_name);
+                editor.apply();
                 finish();
             }
         });

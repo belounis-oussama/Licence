@@ -40,7 +40,6 @@ public class debarq_embarq extends AppCompatActivity {
         embarqu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(debarq_embarq.this,"embarquement",Toast.LENGTH_SHORT).show();
 
                 Intent intent =new Intent(debarq_embarq.this,pointagePage1.class);
 
@@ -60,7 +59,7 @@ public class debarq_embarq extends AppCompatActivity {
         debarqu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(debarq_embarq.this,"debarquement",Toast.LENGTH_SHORT).show();
+
                 Intent intent =new Intent(debarq_embarq.this,pointagePage1.class);
 
 
